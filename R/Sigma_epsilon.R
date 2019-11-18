@@ -1,4 +1,4 @@
-source("~/Desktop/implant/Sigma_i.R")
+#source("~/Desktop/implant/Sigma_i.R")
 Sigma_epsilon = function(Y_na,Y.hat.matrix,n){
   m = matrix(NA, nrow = nrow(Y_na) , ncol = 1)
   for ( i in 1: n){

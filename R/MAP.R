@@ -1,11 +1,11 @@
-setwd("/Users/ronghaowang/Doc/HMRF")
-library(matrixcalc)
+#setwd("/Users/ronghaowang/Doc/HMRF")
+#library(matrixcalc)
 #ij conversion
-ij = function(index,m){
-  i = (index-1) %% m + 1
-  j = floor((index-1)/m) + 1
-  return (c(i,j))
-}
+#ij = function(index,m){
+ # i = (index-1) %% m + 1
+  #j = floor((index-1)/m) + 1
+ #return (c(i,j))
+#}
 ### MAP Estimation ###
 MAP = function(X,Y,Z,mu,sigma,k,map_iter,epsilon_map,beta,sp){
   #Size of Y
@@ -19,14 +19,14 @@ MAP = function(X,Y,Z,mu,sigma,k,map_iter,epsilon_map,beta,sp){
   for (t in 1: map_iter){
     U1 = U
     U2 = U
-    
+
     for (l in 1:k){
       yi = y-mu[l]
       term1 = yi*yi/(2*(sigma[l]^2))
       term2 = term1 + log(sigma[l])
       U1[,l] = U1[,l] + term1
-    
-    
+
+
     for (index in 1:(m*n)){
       i = ij(index,m)[1]
       j = ij(index,m)[2]
@@ -55,12 +55,12 @@ MAP = function(X,Y,Z,mu,sigma,k,map_iter,epsilon_map,beta,sp){
    x = apply(U,1,which.min)
    X = matrix(x, nrow = m, ncol = n, byrow = FALSE)
   sumUmap[t] = sum(temp)
-  
+
    if ((t >= 3) && (sd(sumUmap[(t-2):t])/sumUmap[t] < epsilon_map)){
         break
    }
   }
-  
+
  sum_U = 0
  for ( index in 1:(m*n)){
    sum_U = sum_U + U[index,x[index]]

@@ -1,5 +1,5 @@
-library(SDMTools)
-library(matlab)
+#library(SDMTools)
+#library(matlab)
 
 flc = function(A,thred){
 

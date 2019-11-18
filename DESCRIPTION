@@ -16,8 +16,8 @@ Depends: fda,
          png,
          matrixcalc,
          MASS
-Suggests: matlab,
-          SDMTools
+Imports: matlab,
+         SDMTools
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true

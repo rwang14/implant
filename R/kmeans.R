@@ -1,5 +1,5 @@
-setwd("~/Desktop/HMRF")
-library(matrixcalc)
+#setwd("~/Desktop/HMRF")
+#library(matrixcalc)
 imkmeans<-function(Y,k){
  set.seed(6007)
  y = vec(t(Y))

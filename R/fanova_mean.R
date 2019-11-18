@@ -1,6 +1,6 @@
-library(MASS)
-library(fda)
-source("~/Desktop/implant/input.list.R")
+#library(MASS)
+#library(fda)
+#source("~/Desktop/implant/input.list.R")
 fanova_mean = function(Y.na.mat, X, tt, formula, K.int = 6, order = 4,
                        interact = 0, p = 2, d0 = 0, d1 = 2, d2 = 2, lower = -10, upper = 15){
   data.time = rbind(tt,Y.na.mat)

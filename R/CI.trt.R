@@ -1,8 +1,8 @@
-source("~/Desktop/implant/Sigma_epsilon.R")
-source("~/Desktop/implant/Var_bhat.R")
-source("~/Desktop/implant/Y.hat.matrix_1.R")
-source("~/Desktop/implant/function_C.R")
-library(fda)
+#source("~/Desktop/implant/Sigma_epsilon.R")
+#source("~/Desktop/implant/Var_bhat.R")
+#source("~/Desktop/implant/Y.hat.matrix_1.R")
+#source("~/Desktop/implant/function_C.R")
+#library(fda)
 
 CI.trt.diff = function(fit, j1,j2,alpha){
   if (j1 == j2){
