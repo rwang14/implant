@@ -15,8 +15,8 @@ Depends: fda,
          spatstat,
          png,
          matrixcalc,
-         MASS
-Imports: matlab,
+         MASS,
+         matlab,
          SDMTools
 License: What license is it under?
 Encoding: UTF-8
