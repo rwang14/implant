@@ -1,7 +1,7 @@
 \name{Largest Connection}
 \alias{Largest Connection}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{
+\title{ Finding the largest connection
 %%  ~~function to do ... ~~
 }
 \description{
