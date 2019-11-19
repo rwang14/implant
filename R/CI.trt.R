@@ -2,14 +2,7 @@
 #source("~/Desktop/implant/Var_bhat.R")
 #source("~/Desktop/implant/Y.hat.matrix_1.R")
 #source("~/Desktop/implant/function_C.R")
-#library(fda)
-
-CI.trt.diff = function(fit, j1,j2,alpha){
-  if (j1 == j2){
-    stop('j1 should be different from j2')
-  }
-  if (j1 != j2){
- # X,Y_na,trt,tps, total.time, K, order, d0, Phi, beta.hat, j1,j2, S, alpha){
+CI.trt = function(fit,L,alpha){
   X = fit$X
   Y_na = fit$Y_na
   total.time = fit$total.time
@@ -21,31 +14,36 @@ CI.trt.diff = function(fit, j1,j2,alpha){
   S = fit$S
   tps = fit$tps
   nf = ncol(Phi)/K
+  est_fun = fit$est_fun
   n = dim(fit$Y_na)[1]
-  C1 = C(K,nf,j1)
-  if (j2 == 1){
-    C2 = 0
-    trt = fit$est_fun[,j1]
+  cols = which(L[]!=0)
+  ###C###
+  for ( i in 1:1){
+    C_temp= L[cols[i]]*C(K,nf,cols[i])
   }
-  else{
-    C2 = C(K,nf,j2)
-    trt = fit$est_fun[,j1]-fit$est_fun[,j2]
+  for ( i in 2:length(cols)){
+  C_i_mat = L[cols[i]]*C(K,nf,cols[i])
+      C_temp = rbind(C_temp,C_i_mat)
   }
-  C = C1-C2
+  C_array = array(0,dim = c(K,nf*K,length(cols)))
+  for ( i in 1:length(cols)){
+    C_array[,,i] = C_temp[((i-1)*K+1):(i*K),]
   }
+  C = apply(C_array, MARGIN=c(1, 2), sum)
+###trt###
+  for ( i in 1:1){
+    trt_temp= L[cols[i]]*fit$est_fun[,cols[i]]
+  }
+  for ( i in 2:length(cols)){
+    trt_i = L[cols[i]]*est_fun[,cols[i]]
+    trt_temp = rbind(trt_temp,trt_i)
+  }
+  trt = apply(trt_temp, MARGIN = 2, sum)
   Y.hat.matrix = Y.hat.matrix_1(Y_na, Phi, beta.hat)
   Cov = Sigma_epsilon(Y_na,Y.hat.matrix,n)
   Var = Var_bhat(X,tps, total.time, K, order, d0, C,S, Cov)
   c.i.me = qnorm(alpha/2)*sqrt(Var)
   ci.up = trt - c.i.me
   ci.lw = trt + c.i.me
-  return(list("trt" =  trt, "ub" = ci.up, "lb" = ci.lw))
+  return(list("trt" = trt,"ub" = ci.up, "lb" = ci.lw, "Cov" = Cov))
 }
-
-
-#ci = CI.trt(X,Y_na,Y.hat.matrix, trt = b2, tps = as.vector(sort(unique(T.vec))),total.time = 60,
- #K = 10, order = 4,d0 = 0, C = C2,S = S, alpha = 0.05)
-
-#plot(x = tt, y = b2, type = "l")
-#lines(x = tt, y = ci$ub, type = "l", col = "red")
-#lines(x = tt, y = ci$lb, type = "l", col = "blue")

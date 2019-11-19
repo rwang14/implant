@@ -4,52 +4,46 @@
 \title{
 %%  ~~function to do ... ~~
 }
-\description{
+\description{This function is used for fitting fanova models using B-Spline basis expansion.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-fanova_mean(Y.na.mat, X, tt, formula, K.int = 6, order = 4, interact = 0, p = 2, d0 = 0, d1 = 2, d2 = 2, lower = -10, upper = 15)
+fanova_mean(Y.na.mat, X, tt, formula,
+            K.int = 6, order = 4,
+            d0 = 0, d1 = 2, d2 = 2, lower = -10, upper = 15)
 }
-Y.na.mat, X, tt, formula, K.int = 6, order = 4,
-                       interact = 0, p = 2, d0 = 0, d1 = 2, d2 = 2, lower = -10, upper = 15
+
 \arguments{
-  \item{Y.na.mat}{
-%%     ~~Describe \code{Y.na.mat} here~~
+  \item{Y.na.mat}{ A n by t matrix of response variable (the extracted features), where n is the number of observations (in general, plant ids), and t is the number of observation time points. If a measurement of a plant is missing on a particular date, the value is filled by “NA” in the matrix.
 }
-  \item{X}{
-%%     ~~Describe \code{X} here~~
+
+  \item{X}{ A n by r matrix, where n is the number of observations and r is the number of explanatory variables.
 }
-  \item{tt}{
-%%     ~~Describe \code{tt} here~~
+  \item{tt}{ A t by 1 vector, in which elements implie the observation days.
 }
-  \item{formula}{
-%%     ~~Describe \code{formula} here~~
+  \item{formula}{An object of class "formula", which specifies the model to use.
 }
-  \item{K.int}{
-%%     ~~Describe \code{K.int} here~~
+  \item{K.int}{A positive integer, which refers to the number of interior knots.
 }
-  \item{order}{
+  \item{order}{A positive integer, which refers to the order of the polynomial.
 %%     ~~Describe \code{order} here~~
 }
-  \item{interact}{
-%%     ~~Describe \code{interact} here~~
-}
-  \item{p}{
-%%     ~~Describe \code{p} here~~
-}
+
   \item{d0}{
 %%     ~~Describe \code{d0} here~~
+ A non-negative integer. 0 if you want to evaluate the original basis function,
+ 1 for the first derivative and 2 for the second derivatives of the basis function.
 }
-  \item{d1}{
+  \item{d1}{A non-negative integer. For the original function, use 2. For punishing the second derivative, use 4.
 %%     ~~Describe \code{d1} here~~
 }
-  \item{d2}{
+  \item{d2}{A non-negative integer. For the original function, use 2. For punishing the second derivative, use 4.
 %%     ~~Describe \code{d2} here~~
 }
-  \item{lower}{
-%%     ~~Describe \code{lower} here~~
+  \item{lower}{Lower bound of the possible values of the smoothing parameter, lambda.
+%%
 }
-  \item{upper}{
+  \item{upper}{Upper bound of the possible values of the smoothing parameter, lambda.
 %%     ~~Describe \code{upper} here~~
 }
 }
@@ -57,6 +51,15 @@ Y.na.mat, X, tt, formula, K.int = 6, order = 4,
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
+\item{est_fun}{
+A t by q matrix of the estimates, where t is the number of observation time points, and q is the number of columns of the design matrix. The ijth element represents the estimate of the jth variable of the design matrix at the ith observation time point.(i.e. beta.hat_j(t_i))
+}
+\item{bhat}{
+A q by K numeric vector, in which contains all the estimated parameters (i.e., betahat), where q is the number of columns of the design matrix, and K is the rank of the spline expansion.
+}
+\item{lambda}{The estimated smoothing parameter.
+}
+
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
@@ -79,123 +82,11 @@ Y.na.mat, X, tt, formula, K.int = 6, order = 4,
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (Y.na.mat, X, tt, formula, K.int = 6, order = 4, interact = 0,
-    p = 2, d0 = 0, d1 = 2, d2 = 2, lower = -10, upper = 15)
-{
-    data.time = rbind(tt, Y.na.mat)
-    T_na = Y.na.mat
-    for (i in 1:dim(Y.na.mat)[1]) {
-        for (j in 1:dim(Y.na.mat)[2]) {
-            if (is.na(Y.na.mat[i, j])) {
-                T_na[i, j] = NA
-            }
-            else {
-                T_na[i, j] = data.time[1, j]
-            }
-        }
-    }
-    Y = input.list(data = Y.na.mat, Time_na = as.matrix(T_na),
-        p = 0)$Y
-    T = input.list(data = Y.na.mat, Time_na = as.matrix(T_na),
-        p = 0)$T
-    Y.vec = Reduce(c, Y)
-    T.vec = Reduce(c, T)
-    n = length(Y)
-    order = order
-    knots = max(tt) * (1:K.int)/(1 + K.int)
-    K = length(knots) + order
-    basis = create.bspline.basis(c(0, total.time), K, norder = order)
-    design_matrix = NULL
-    if (interact == 1) {
-        design_matrix = model.matrix(as.formula(paste("~.^",
-            p, sep = "")), data = X)
-    }
-    if (interact == 0) {
-        design_matrix = model.matrix(as.formula(formula), data = X)
-    }
-    Omega = inprod(basis, basis, d1, d2)
-    BS = eval.basis(T[[1]], basis, d0)
-    for (i in 2:n) {
-        BSnew = eval.basis(T[[i]], basis, d0)
-        BS = rbind(BS, BSnew)
-    }
-    nf = ncol(design_matrix)
-    if (nf == 1) {
-        BSmat = BS
-    }
-    if (nf > 1) {
-        BSmat = BS
-        for (i in 2:nf) {
-            BSnew1 = BS
-            BSmat = cbind(BSmat, BSnew1)
-        }
-    }
-    m = matrix(NA, nrow = n, ncol = 1)
-    for (i in 1:n) {
-        m[i] = length(as.numeric(T[[i]]))
-    }
-    des_X = matrix(NA, nrow = nrow(BSmat), ncol = ncol(BSmat))
-    for (j in 1:ncol(design_matrix)) {
-        for (i in 1:1) {
-            des_X[(1:m[i]), ((j - 1) * K + 1):((j - 1) * K +
-                1):(j * K)] = design_matrix[i, j]
-        }
-        for (i in 2:nrow(design_matrix)) {
-            des_X[(1:m[i]), (1:K)] = design_matrix[i, 1]
-            des_X[(sum(m[1:(i - 1)]) + 1):(sum(m[1:i])), ((j -
-                1) * K + 1):(j * K)] = design_matrix[i, j]
-        }
-    }
-    Xmat = des_X * BSmat
-    tuning_nointer = function(lower, upper, Omega, Xmat, Y.vec) {
-        lam.list = exp(seq(lower, upper, 1))
-        gcv = rep(0, length(lam.list))
-        for (ii in 1:length(lam.list)) {
-            Omega_lam = matrix(0, nrow = ncol(design_matrix) *
-                nrow(Omega), ncol = ncol(design_matrix) * ncol(Omega))
-            for (i in 1:ncol(design_matrix)) {
-                Omega_lam[((1 + (i - 1) * dim(Omega)[1]):(i *
-                  dim(Omega)[1])), ((1 + (i - 1) * dim(Omega)[2]):(i *
-                  dim(Omega)[2]))] = Omega * lam.list[ii]
-            }
-            A <- solve(t(Xmat) \%*\% Xmat + Omega_lam)
-            Y.vec.hat <- (Xmat \%*\% A) \%*\% (t(Xmat) \%*\% Y.vec)
-            diag.mean <- sum(diag(t(Xmat) \%*\% Xmat \%*\% A))/(dim(Xmat)[1])
-            gcv[ii] <- mean((Y.vec - Y.vec.hat)^2)/(1 - diag.mean)^2
-        }
-        ind = which(gcv == min(gcv))
-        lam.list[ind]
-    }
-    lam = tuning_nointer(lower, upper, Omega, Xmat, Y.vec)
-    Omegabylam = matrix(0, nrow = ncol(design_matrix) * nrow(Omega),
-        ncol = ncol(design_matrix) * ncol(Omega))
-    for (i in 1:ncol(design_matrix)) {
-        Omegabylam[((1 + (i - 1) * dim(Omega)[1]):(i * dim(Omega)[1])),
-            ((1 + (i - 1) * dim(Omega)[2]):(i * dim(Omega)[2]))] = Omega *
-            lam
-    }
-    bhat = solve(t(Xmat) \%*\% Xmat + Omegabylam) \%*\% t(Xmat) \%*\%
-        Y.vec
-    S = solve(t(Xmat) \%*\% Xmat + Omegabylam) \%*\% t(Xmat)
-    BS = eval.basis(tt, basis, d0)
-    m = length(tt)
-    para = matrix(0, nrow = m, ncol = ncol(design_matrix))
-    for (i in 1:ncol(design_matrix)) {
-        para[, i] = BS \%*\% bhat[((i - 1) * K + 1):((i - 1) *
-            K + K)]
-    }
-    return(list(est_fun = para, lambda = lam, bhat = bhat, S = S,
-        Phi = Xmat, order = order, K = K, total.time = total.time,
-        tps = tt, X = X, Y_na = Y.na.mat, formula = formula,
-        d0 = d0, d1 = d1, d2 = d2))
-  }
+fit = fanova_mean(Y.na.mat = Y, X = X,
+                  tt = seq(from = 0, to = 44, by = 2),
+                  formula = toString("~ X[,1]+X[,2]"),
+                  K.int = 6, order = 4,
+                  d0 = 0, d1 = 2, d2 = 2, lower = -10, upper = 15)
+para = fit$est_fun
+mu.hat.t = para[,1]
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
