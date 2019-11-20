@@ -24,7 +24,7 @@ Largest_Connection(A,thred)
 \value{
 \item{image}{the plot of the matrix with different components}
 \item{matrix}{the original outcome of the matrix (without filtering) in which pixel elements are represented by different integers. Each number represent a component. }
-\item{matrix_filtered}{the outcome of the matrix (after filtering) in which pixel elements are represented by different integers. Each number represent a component. }
+\item{filtered_matrix}{the outcome of the matrix (after filtering) in which pixel elements are represented by different integers. Each number represent a component. }
 %% ...
 }
 \references{
@@ -46,7 +46,3 @@ Largest_Connection(A,thred)
 img11 = Largest_Connection(A = image,thred = 10)
 img11$filtered_matrix
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ component }% use one of  RShowDoc("KEYWORDS")
-\keyword{ color}% __ONLY ONE__ keyword per line
