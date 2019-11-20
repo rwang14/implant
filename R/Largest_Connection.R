@@ -1,6 +1,6 @@
 #library(SDMTools)
 #library(matlab)
-
+Largest_Connection = function(A,thred){
 flc = function(A,thred){
 
   ccl.mat = ConnCompLabel(A)
@@ -12,11 +12,16 @@ flc = function(A,thred){
 
   segmented = comp_filtered(ccl.mat,thred)
 
-  data.return = list(matrix = ccl.mat, filtered_matrix = segmented )
+  data.return = list("matrix" = ccl.mat,"filtered_matrix" = segmented)
+
   return(data.return)
 }
 
+M = flc(A,thred)$matrix
+M_filtered = flc(A,thred)$filtered_matrix
+
 plot_comp = function(M,thred){
+
   arr1 = array(data = M, dim = c(nrow(M), ncol(M), 3))
   arr2 = arr1/max(arr1)
   ## convert it to a raster, interpolate =F to select only sample of pixels of img
@@ -39,5 +44,9 @@ plot_comp = function(M,thred){
   p = plot(img.r)
   return(p)
 }
+pic = plot_comp(M,thred)
+return(list("plot" = pic, "matrix" = M, "filtered_matrix" = M_filtered))
+}
 
-
+#imgh1 = readPNG("~/Desktop/imageB11.png")
+#img11 = Largest_Connection (A = imgh1,thred = 10)

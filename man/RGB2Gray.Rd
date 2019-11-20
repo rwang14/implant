@@ -1,5 +1,5 @@
-\name{RGBtoGray}
-\alias{RGBtoGray}
+\name{Color2Gray}
+\alias{Color2Gray}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Converting RGB to Grayscale.
 
@@ -21,14 +21,14 @@ numeric vector, in which elements are weights for the Red channel of the image, 
 }
 }
 \details{
-We first standardize the weight by using the following formula:
-sw = weight / sum(weight).
-In default, we convert an RGB image to Grayscale based on the following formula:
-luma = 0.299/sw * R+ 0.587/sw * G+ 0.114/sw * B.
+%We first standardize the weight by using the following formula:
+%sw = weight / sum(weight).
+%In default, we convert an RGB image to Grayscale based on the following formula:
+%luma = 0.299/sw * R+ 0.587/sw * G+ 0.114/sw * B.
 }
 \value{
 \item{image}{
-matrix of pixels of the image converted from RGB to Grayscale.
+A matrix of pixels of the image converted from RGB to Grayscale.
 }
 }
 \references{

@@ -14,7 +14,7 @@ fanova_mean(Y.na.mat, X, tt, formula,
 }
 
 \arguments{
-  \item{Y.na.mat}{ A n by t matrix of response variable (the extracted features), where n is the number of observations (in general, plant ids), and t is the number of observation time points. If a measurement of a plant is missing on a particular date, the value is filled by “NA” in the matrix.
+  \item{Y.na.mat}{ A n by t matrix of response variable (the extracted features), where n is the number of observations (in general, plant ids), and t is the number of observation time points. If a measurement of an observed object is missing on a particular date, the value is filled by “NA” in the matrix.
 }
 
   \item{X}{ A n by r matrix, where n is the number of observations and r is the number of explanatory variables.
@@ -34,10 +34,10 @@ fanova_mean(Y.na.mat, X, tt, formula,
  A non-negative integer. 0 if you want to evaluate the original basis function,
  1 for the first derivative and 2 for the second derivatives of the basis function.
 }
-  \item{d1}{A non-negative integer. For the original function, use 2. For punishing the second derivative, use 4.
+  \item{d1}{A non-negative integer. For the original function, use 2. For the second derivatives, use 4.
 %%     ~~Describe \code{d1} here~~
 }
-  \item{d2}{A non-negative integer. For the original function, use 2. For punishing the second derivative, use 4.
+  \item{d2}{A non-negative integer. For the original function, use 2. For the second derivatives, use 4.
 %%     ~~Describe \code{d2} here~~
 }
   \item{lower}{Lower bound of the possible values of the smoothing parameter, lambda.

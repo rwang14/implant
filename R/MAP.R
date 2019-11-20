@@ -1,9 +1,9 @@
-#setwd("/Users/ronghaowang/Doc/HMRF")
+#setwd("/Users/ronghaowang/implant/R")
 #library(matrixcalc)
 #ij conversion
-#ij = function(index,m){
- # i = (index-1) %% m + 1
-  #j = floor((index-1)/m) + 1
+ #ij = function(index,m){
+  #i = (index-1) %% m + 1
+ #j = floor((index-1)/m) + 1
  #return (c(i,j))
 #}
 ### MAP Estimation ###
