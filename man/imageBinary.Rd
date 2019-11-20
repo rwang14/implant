@@ -1,5 +1,5 @@
-\name{binarization}
-\alias{binarization}
+\name{imageBinary}
+\alias{Binarization}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Segmentation and Binarization
 %%  ~~function to do ... ~~

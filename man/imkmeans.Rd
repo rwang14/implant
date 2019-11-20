@@ -8,7 +8,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-imkmeans(x)
+imkmeans(Y,k)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -16,7 +16,7 @@ imkmeans(x)
 %%     ~~Describe \code{x} here~~
 }
   \item{k}{
-  
+
   }
 }
 \details{

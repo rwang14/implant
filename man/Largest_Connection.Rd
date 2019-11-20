@@ -1,4 +1,4 @@
-\name{Largest Connection}
+\name{Largest_Connection}
 \alias{Largest Connection}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Finding the Largest Connection
@@ -22,7 +22,7 @@ Largest_Connection(A,thred)
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-\item{image}{the plot of the matrix with different components}
+\item{plot}{the plot of the matrix with different components}
 \item{matrix}{the original outcome of the matrix (without filtering) in which pixel elements are represented by different integers. Each number represent a component. }
 \item{filtered_matrix}{the outcome of the matrix (after filtering) in which pixel elements are represented by different integers. Each number represent a component. }
 %% ...

@@ -1,4 +1,4 @@
-\name{Dilation}
+\name{dilation}
 \alias{Dilation}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{

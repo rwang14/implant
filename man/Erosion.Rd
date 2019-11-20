@@ -1,4 +1,4 @@
-\name{Erosion}
+\name{erosion}
 \alias{Erosion}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Morphological Erosion

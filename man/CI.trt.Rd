@@ -56,7 +56,7 @@ A t by 1 vector which indicates the upper bound of the (1-alpha) confidence band
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-fit = fanova_mean(Y.na.mat = Y, X = X,
+fit = fanova_mean(Y.na.mat = Y.na.mat, X = X,
                   tt = seq(from = 0, to = 44, by = 2),
                   formula = toString("~ X[,1]+X[,2]"),
                   K.int = 6, order = 4,
@@ -69,5 +69,3 @@ lines(tt,ci1$ub, col = "blue")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

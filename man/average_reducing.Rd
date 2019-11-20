@@ -1,4 +1,4 @@
-\name{Average Reducing}
+\name{average_reducing}
 \alias{Average Reducing}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{

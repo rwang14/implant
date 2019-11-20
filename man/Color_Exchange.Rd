@@ -1,4 +1,4 @@
-\name{Background_Exchange}
+\name{Color_Exchange}
 \alias{Background Exchange}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Exchanging the color of the background and the foreground.
