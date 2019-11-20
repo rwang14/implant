@@ -18,6 +18,8 @@ Depends: fda,
          MASS,
          matlab,
          SDMTools
+Suggests: R.rsp
+VignetteBuilder: R.rsp
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
