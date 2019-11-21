@@ -1,5 +1,5 @@
 # implant
-download the package: 
+Download the package: 
 library(devtools)
 devtools::install_github("rwang14/implant")
 library(implant)
