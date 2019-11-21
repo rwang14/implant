@@ -1,0 +1,9 @@
+%\VignetteIndexEntry{<implant:A High-throughput Phenotyping Pipeline for Image Processing and Functional Growth Curve Analysis >}
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+
+
+\end{document}

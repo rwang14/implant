@@ -8,7 +8,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-HMRF_EM(X,Y,Z,mu,sigma,k,em_iter,map_iter, beta = 2, 
+HMRF_EM(X,Y,Z,mu,sigma,k,em_iter,map_iter, beta = 2,
         epsilon_em = 0.00001, epsilon_map = 0.00001)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -55,7 +55,7 @@ Z = cannEdges(Y,...)
 \author{
 %%  ~~who you are~~
 }
-\note{
+\note{This function is modified based on the matlab code written by Quan Wang (see reference).
 %%  ~~further notes~~
 }
 
@@ -80,7 +80,7 @@ X = imkmeans(Y,k)$X
 mu = imkmeans(Y,k)$mu
 sigma = imkmeans(Y,k)$sigma
 output = matrix(as.numeric(X),nrow = nrow(X), ncol = ncol(X))-1
-img = HMRF_EM(X,Y,Z,mu,sigma,k,em_iter,map_iter,beta = 2, 
+img = HMRF_EM(X,Y,Z,mu,sigma,k,em_iter,map_iter,beta = 2,
               epsilon_em = 0.00001, epsilon_map = 0.00001)
 image = img$image_matrix
 }
