@@ -1,5 +1,5 @@
 \name{sample}
-\alias{}
+\alias{sample}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Reducing size of an image
 %%  ~~function to do ... ~~
