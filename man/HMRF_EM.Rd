@@ -71,18 +71,18 @@ orig = resize(orig1, size_x = 500, size_y = 500, size_z = 1, size_c = 3)
 #Define the response as relative green.
 I = orig[,,1,2]/(orig[,,1,1]+orig[,,1,2]+orig[,,1,3])
 Y = t(I)
-k = 2
-map_iter = 20
-em_iter = 20
 Z = cannyEdges(orig)
 Z = Z[,,1,1]
 Z = t(Z)
-X = imkmeans(Y,k)$X
-mu = imkmeans(Y,k)$mu
-sigma = imkmeans(Y,k)$sigma
+#Take the initial label of EM algorithm using K-means
+X = imkmeans(Y,k = 2)$X
+mu = imkmeans(Y,k = 2)$mu
+sigma = imkmeans(Y,k = 2)$sigma
 output = matrix(as.numeric(X),nrow = nrow(X), ncol = ncol(X))-1
-img = HMRF_EM(X,Y,Z,mu,sigma,k,em_iter,map_iter,beta = 2,
+#Run the HMRF Model
+img = HMRF_EM(X,Y,Z,mu,sigma,k = 2,em_iter = 20,map_iter = 20,beta = 2,
               epsilon_em = 0.00001, epsilon_map = 0.00001)
+#Obtain the matrix of the segmented image
 image = img$image_matrix
 }
 
