@@ -84,5 +84,10 @@ img = HMRF_EM(X,Y,Z,mu,sigma,k = 2,em_iter = 20,map_iter = 20,beta = 2,
               epsilon_em = 0.00001, epsilon_map = 0.00001)
 #Obtain the matrix of the segmented image
 image = img$image_matrix
+#Morphological Operations
+imageD = dilation(image)
+imageDE = erosion(imageD)
+imageDEE = erosion(imageDE)
+imageDEED = dilation(imageDEE)
 }
 
