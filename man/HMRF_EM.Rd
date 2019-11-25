@@ -32,7 +32,7 @@ Z = cannEdges(Y,...)
 }
 \item{map_iter}{ A positive integer, which is the number of iteration steps of MAP.
 }
-\item{beta}{The clique potential parameter, in default, beta = 2. See more in
+\item{beta}{The clique potential parameter, in default, beta = 2. See more in the supplementary file of HMRF Model.
 }
 \item{epsilon_em}{A small positive number, which is the convergence criterion of EM Alogrithm.
 }
@@ -65,7 +65,8 @@ Z = cannEdges(Y,...)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-orig1 = load.image("~/Desktop/Visible/image_original.png")
+orig1 = load.image(system.file("extdata", "image1.png",
+                                      package = "implant", mustWork = TRUE))
 orig = resize(orig1, size_x = 500, size_y = 500, size_z = 1, size_c = 3)
 #Define the response as relative green.
 I = orig[,,1,2]/(orig[,,1,1]+orig[,,1,2]+orig[,,1,3])
