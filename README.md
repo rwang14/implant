@@ -7,5 +7,5 @@ Find example data: data.csv and example images: image1.png, image2.png and image
 Find demo from the folder: data-raw
 Find functions from the folder: R
 Find help documentation from the folder: man.
-Find user's guide from the folder: vignettes.
-Find manual from the  folder: vignettes.
+Find user's guide from the folder: vignettes or visit:
+Find manual from the  folder: vignettes or visit: https://github.com/rwang14/implant/blob/master/vignettes/implant_0.1.0.pdf
