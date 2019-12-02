@@ -1,4 +1,4 @@
-# implant:  A high-throughput phenotyping pipeline for image processing and funcitonal growth curve analysis
+# implant: An R Package for the High-throughput Phenotyping Pipeline for Image Processing and Funcitonal Growth Curve Analysis
 Download the R package: 
 devtools::install_github("rwang14/implant")
 
