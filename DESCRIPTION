@@ -13,7 +13,7 @@ Depends: fda,
          matrixcalc,
          MASS,
          matlab,
-Imports: SDMTools
+         SDMTools
 Suggests: R.rsp
 VignetteBuilder: R.rsp
 License: GPL (>= 2)
