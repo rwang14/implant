@@ -12,10 +12,7 @@ Depends: fda,
          png,
          matrixcalc,
          MASS,
-         matlab,
-         SDMTools,
-         Rcpp,
-	 digest
+         matlab
 Suggests: R.rsp
 VignetteBuilder: R.rsp
 License: GPL (>= 2)
