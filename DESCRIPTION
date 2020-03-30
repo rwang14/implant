@@ -15,8 +15,7 @@ Depends:
          matlab
 Imports:
          imager,
-	 SDMTools,
-	 tibble(>=2.1.3)
+	 SDMTools
 Suggests: R.rsp
 VignetteBuilder: R.rsp
 
