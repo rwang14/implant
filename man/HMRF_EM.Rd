@@ -58,12 +58,7 @@ Z = cannEdges(Y,...)
 \note{This function is modified based on the matlab code written by Quan Wang (see reference).
 %%  ~~further notes~~
 }
-
 %% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
 orig1 = load.image(system.file("extdata", "image1.png",
                                       package = "implant", mustWork = TRUE))
@@ -90,4 +85,3 @@ imageDE = erosion(imageD)
 imageDEE = erosion(imageDE)
 imageDEED = dilation(imageDEE)
 }
-

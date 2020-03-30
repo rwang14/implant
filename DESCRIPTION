@@ -14,9 +14,7 @@ Depends: fda,
          matlab
 Imports:
          imager,
-	 SDMTools,
-         Rcpp,
-	 digest
+	 SDMTools
 Suggests: R.rsp
 VignetteBuilder: R.rsp
 License: GPL (>= 2)
