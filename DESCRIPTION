@@ -15,7 +15,7 @@ Depends: fda,
          matlab,
          SDMTools,
          Rcpp,
-	 digest
+	digest
 Suggests: R.rsp
 VignetteBuilder: R.rsp
 License: GPL (>= 2)
