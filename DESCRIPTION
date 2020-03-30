@@ -12,7 +12,7 @@ Depends: fda,
          matrixcalc,
          MASS,
          matlab
-Import:
+Imports:
          imager,
 	 SDMTools,
          Rcpp,
