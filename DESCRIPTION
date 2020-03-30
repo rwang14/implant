@@ -6,7 +6,6 @@ Author: Ronghao Wang, Yumou Qiu, Yuzhen Zhou, Yuhang Xu, James Schnable
 Maintainer:  Ronghao Wang <rhwang64@gmail.com>
 Description: The package ``implant" is used for both image processing and functional data analysis, which is able to provide statistical inference for the plant traits directly from the input images. For image processing, the package provides methods including thresholding, hidden Markov random field model,etc. For the growth curve analysis, this package can produce nonparametric curve fitting with its confidence region for plant growth. A functional ANOVA model to test for the treatment and genotype effects of the growth curve dynamics is also provided.
 Depends: 
-	 R (>= 2.10.0)
 	 fda,
          dplyr,
          spatstat,
