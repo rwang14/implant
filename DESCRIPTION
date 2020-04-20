@@ -11,8 +11,7 @@ Depends:
          spatstat,
          png,
          matrixcalc,
-         MASS,
-         matlab
+         MASS
 Imports: 
 	 imager
 Suggests: R.rsp

@@ -64,7 +64,7 @@ fit = fanova_mean(Y.na.mat = Y, X = X,
                   K.int = 6, order = 4,
                   d0 = 0, d1 = 2, d2 = 2, lower = -10, upper = 15)
 
-ci_diff = CI.trt(fit = fit,j1 = 5, j2 = 4, alpha = 0.05)
+ci_diff = CI.trt.diff(fit = fit,j1 = 5, j2 = 4, alpha = 0.05)
 plot(tt,ci_diff$trt,type = "l")
 lines(tt,ci_diff$lb, col = "blue")
 lines(tt,ci_diff$ub, col = "blue")
