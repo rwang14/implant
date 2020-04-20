@@ -52,7 +52,8 @@ fanova_mean(Y.na.mat, X, tt, formula,
 }
 \value{
 \item{est_fun}{
-A t by q matrix of the estimates, where t is the number of observation time points, and q is the number of columns of the design matrix. The ijth element represents the estimate of the jth variable of the design matrix at the ith observation time point.(i.e. beta.hat_j(t_i))
+A t by q matrix of the estimates, where t is the number of observation time points, and q is the number of columns of the design matrix. The ijth element represents the estimate of the jth variable of the design matrix at the ith observation time point.(i.e. beta.hat_j(t_i)).
+For example, if your model includes two categorical variables without interaction terms, each categorical variable contains two levels. Your model will be: y(t) = beta0(t)+beta1(t)X1+beta2(t)X2+e(t). In this case, q = 3. This means your output "est_fun"" will be constructed by 3 columns, and the columns repesent beta0hat(t), beta1hat(t) and beta2hat(t), respectively.
 }
 \item{bhat}{
 A q by K numeric vector, in which contains all the estimated parameters (i.e., betahat), where q is the number of columns of the design matrix, and K is the rank of the spline expansion.
