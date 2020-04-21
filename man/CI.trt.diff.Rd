@@ -58,6 +58,7 @@ the 0.95 confidence band, take alpha = 0.05.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+#NOT RUN {
 fit = fanova_mean(Y.na.mat = Y, X = X,
                   tt = seq(from = 0, to = 44, by = 2),
                   formula = toString("~ X[,1]+X[,2]"),
@@ -68,6 +69,7 @@ ci_diff = CI.trt.diff(fit = fit,j1 = 5, j2 = 4, alpha = 0.05)
 plot(tt,ci_diff$trt,type = "l")
 lines(tt,ci_diff$lb, col = "blue")
 lines(tt,ci_diff$ub, col = "blue")
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

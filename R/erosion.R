@@ -1,5 +1,5 @@
-erosion = function(image, mask = matrix(1, 3, 3) ){
-  M=dim(image)
+erosion = function(imagefile, mask = matrix(1, 3, 3) ){
+  M=dim(imagefile)
   image.background = matrix ( 1, M[1] , M[2] )
   mask.shift=( dim(mask)[1] - 1 ) / 2
   for (i in (-mask.shift) : (mask.shift) ){

@@ -8,12 +8,12 @@ Identifying the region of interest & changing color of particular part of an ima
 This function is used to identify the region of interest, and change the color of particular part of an image. Specifically, this function is designed for the plant images taken by the UNL greenhouse system. It helps identify the lower boundary of the region of interest and change the color of the green strip of an empty pot from green to white. See example image:
 }
 \usage{
-ColorG (image, rowThreshold = 0.007, block = 5, Tol = 2, Bthreshold = 60 / 255,
+ColorG (imagefile, rowThreshold = 0.007, block = 5, Tol = 2, Bthreshold = 60 / 255,
 EGThreshold = 0.1, weight = c(-1, 2, -1), changeto = c(1, 1, 1))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{image}{matrix of pixels of the image for processing.
+  \item{imagefile}{matrix of pixels of the image for processing.
 }
 \item{rowThreshold}{positive real number, which is the threshold value of each row.
 
@@ -66,9 +66,9 @@ numeric vector, in which elements refer to the pixel intensities of the colors y
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-ColorG (image, rowThreshold = 0.007, block = 5, Tol = 2, Bthreshold = 60 / 255,
+img = array(matrix(c(1:30000), nrow = 100, ncol = 10000),dim  = c(100,100,3))
+ColorG (imagefile = img, rowThreshold = 0.007, block = 5, Tol = 2, Bthreshold = 60 / 255,
 EGThreshold = 0.1, weight = c(-1, 2, -1), changeto = c(1, 1, 1))
-writePNG(image, "~/Desktop/Visible/imageColorG.png")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

@@ -38,7 +38,7 @@ A pixel matrix with exchanging the color of the background and subject.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-image = color_exchange(image1)
+color_exchange(image1)
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

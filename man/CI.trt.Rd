@@ -56,6 +56,7 @@ A t by 1 vector which indicates the upper bound of the (1-alpha) confidence band
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+# NOT RUN {
 fit = fanova_mean(Y.na.mat = Y, X = X,
                   tt = seq(from = 0, to = 44, by = 2),
                   formula = toString("~ X[,1]+X[,2]"),
@@ -66,6 +67,7 @@ ci1 = CI.trt(fit = fit, L = L1, alpha = 0.05)
 plot(tt,ci1$trt,type = "l")
 lines(tt,ci1$lb, col = "blue")
 lines(tt,ci1$ub, col = "blue")
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

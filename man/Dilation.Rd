@@ -41,7 +41,7 @@ matrix of pixels of the dilated image.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-imageBD = dilation(imageB, mask = matrix(1, 5, 5))
+dilation(imageB, mask = matrix(1, 5, 5))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

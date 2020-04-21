@@ -45,8 +45,8 @@ block_nrow and block_ncol must be divisible by number of rows and columns of the
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-image1 = average_reducing(image1,2,2)
-writePNG(image1,"~/Desktop/Visible/imagereduce.png")
+average_reducing(image1,2,2)
+
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
