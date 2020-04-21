@@ -10,7 +10,8 @@ Depends:
          spatstat,
          png,
          matrixcalc,
-         MASS
+
+Imports: MASS
 	 Suggests: R.rsp
 VignetteBuilder: R.rsp
 License: GPL (>= 2)
