@@ -11,6 +11,7 @@ Depends:
          png,
          matrixcalc,
 	 MASS
+Imports: stats
 Suggests: R.rsp
 VignetteBuilder: R.rsp
 License: GPL (>= 2)
