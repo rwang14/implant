@@ -10,9 +10,8 @@ Depends:
          spatstat,
          png,
          matrixcalc,
-
-Imports: MASS
-	 Suggests: R.rsp
+	 MASS
+Suggests: R.rsp
 VignetteBuilder: R.rsp
 License: GPL (>= 2)
 Encoding: UTF-8
