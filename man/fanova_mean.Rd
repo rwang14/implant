@@ -4,20 +4,21 @@
 \title{Fitting Functional ANOVA Models
 %%  ~~function to do ... ~~
 }
-\description{This function is used for fitting fanova models using B-Spline basis expansion.
+\description{This function is used for fitting fanova models using B-Spline basis expansion. The model performed by this function is constructed by a general functional model plus a penalty term for the second derivative of the spline basis function. The estimated penalty parameter, labmda, can be obtained by GCV (generalized cross validation).
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-fanova_mean(Y.na.mat, X, tt, formula, K.int = 6, order = 4, lower = -10, upper = 15)
+fanova_mean(Y.na.mat, X, tt, formula, K.int = 6,
+            order = 4, lower = -10, upper = 15)
 }
 
 \arguments{
   \item{Y.na.mat}{ A n by t matrix of response variable (the extracted features), where n is the number of observations (for example, in the study of plant growth curve, each plant id would be an observation ), and t is the number of observation time points. In fact, the value of t should match the length of another argument shown below called "tt".
 
-If a measurement of an observed object (e.g., the height of a plant) is missing on a particular date shown in tt, the value should be filled by “NA” in the matrix. In a word, the ith row represents the values of the response varable of the ith observation at different observation time points.
+If a measurement of an observed object (e.g., the height of a plant) is missing on a particular date shown in tt, the value should be filled by “NA” in the Y.na.mat matrix. In a word, the ith row of this matrix represents the values of the response varable of the ith observation at t different observation time points.
 }
 
-  \item{X}{ A n by r matrix, where n is the number of observations and r is the number of explanatory variables.
+  \item{X}{ A n by r matrix of explanatory variables, where n is the number of observations and r is the number of explanatory variables.
 }
   \item{tt}{ A t by 1 vector, in which elements imply the observation days.
 }
@@ -56,7 +57,6 @@ mu(t) = \Sigma_\{j = 1 to K\}beta_\{mu,j\}B_\{u,j\}(t),
 
 where beta_\{mu,j\} is a coefficient and B_\{u,j\}(t) is an order u B-spline basis function. u is defined by the argument "order" in this function. With another argument "K.int" (i.e., the number of interior knots) being defined, we can know the value of K, the rank of spline expansion for mu(t), according to the relationship K = K.int + order.
 
-The model performed by this function is constructed by a general functional model plus a penalty term for the second derivative of the spline basis function. The penalty parameter, labmda, can be obtained by GCV (generalized cross validation).
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
@@ -93,7 +93,9 @@ A q by K numeric vector, in which contains all the estimated parameters (i.e., b
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-fit = fanova_mean(Y.na.mat = Y, X = X, tt = seq(from = 0, to = 44, by = 2), formula = toString("~ X[,1]+X[,2]"), K.int = 6, order = 4, lower = -10, upper = 15)
+fit = fanova_mean(Y.na.mat = Y, X = X, tt = seq(from = 0, to = 44, by = 2),
+                  formula = toString("~ X[,1]+X[,2]"), K.int = 6, order = 4,
+                  lower = -10, upper = 15)
 para = fit$est_fun
 mu.hat.t = para[,1]
 }
