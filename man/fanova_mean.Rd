@@ -8,18 +8,18 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-fanova_mean(Y.na.mat, X, tt, formula,
-            K.int = 6, order = 4,
-            d0 = 0, d1 = 2, d2 = 2, lower = -10, upper = 15)
+fanova_mean(Y.na.mat, X, tt, formula, K.int = 6, order = 4, lower = -10, upper = 15)
 }
 
 \arguments{
-  \item{Y.na.mat}{ A n by t matrix of response variable (the extracted features), where n is the number of observations (in general, plant ids), and t is the number of observation time points. If a measurement of an observed object is missing on a particular date, the value is filled by “NA” in the matrix.
+  \item{Y.na.mat}{ A n by t matrix of response variable (the extracted features), where n is the number of observations (for example, in the study of plant growth curve, each plant id would be an observation ), and t is the number of observation time points. In fact, the value of t should match the length of another argument shown below called "tt".
+
+If a measurement of an observed object (e.g., the height of a plant) is missing on a particular date shown in tt, the value should be filled by “NA” in the matrix. In a word, the ith row represents the values of the response varable of the ith observation at different observation time points.
 }
 
   \item{X}{ A n by r matrix, where n is the number of observations and r is the number of explanatory variables.
 }
-  \item{tt}{ A t by 1 vector, in which elements implie the observation days.
+  \item{tt}{ A t by 1 vector, in which elements imply the observation days.
 }
   \item{formula}{An object of class "formula", which specifies the model to use.
 }
@@ -29,17 +29,17 @@ fanova_mean(Y.na.mat, X, tt, formula,
 %%     ~~Describe \code{order} here~~
 }
 
-  \item{d0}{
+  %\item{d0}{
 %%     ~~Describe \code{d0} here~~
- A non-negative integer. 0 if you want to evaluate the original basis function,
- 1 for the first derivative and 2 for the second derivatives of the basis function.
-}
-  \item{d1}{A non-negative integer. For the original function, use 2. For the second derivatives, use 4.
+ %A non-negative integer. 0 if you want to evaluate the original basis function,
+ %1 for the first derivative and 2 for the second derivatives of the basis function.
+%}
+  %\item{d1}{A non-negative integer. For the original function, use 2. For the second derivatives, use 4.
 %%     ~~Describe \code{d1} here~~
-}
-  \item{d2}{A non-negative integer. For the original function, use 2. For the second derivatives, use 4.
+%}
+  %\item{d2}{A non-negative integer. For the original function, use 2. For the second derivatives, use 4.
 %%     ~~Describe \code{d2} here~~
-}
+%}
   \item{lower}{Lower bound of the possible values of the smoothing parameter, lambda.
 %%
 }
@@ -47,18 +47,28 @@ fanova_mean(Y.na.mat, X, tt, formula,
 %%     ~~Describe \code{upper} here~~
 }
 }
-\details{
+\details{This function can help users perform functional anova models, by assuming that each variable is a continuous function
+( in general, a function of time t). We use B-Spline as the basis function to expand each variable.
+
+For example, the intercept term of a functional anova model, mu(t), will be expanded as
+
+mu(t) = \Sigma_\{j = 1 to K\}beta_\{mu,j\}B_\{u,j\}(t),
+
+where beta_\{mu,j\} is a coefficient and B_\{u,j\}(t) is an order u B-spline basis function. u is defined by the argument "order" in this function. With another argument "K.int" (i.e., the number of interior knots) being defined, we can know the value of K, the rank of spline expansion for mu(t), according to the relationship K = K.int + order.
+
+The model performed by this function is constructed by a general functional model plus a penalty term for the second derivative of the spline basis function. The penalty parameter, labmda, can be obtained by GCV (generalized cross validation).
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
 \item{est_fun}{
-A t by q matrix of the estimates, where t is the number of observation time points, and q is the number of columns of the design matrix. The ijth element represents the estimate of the jth variable of the design matrix at the ith observation time point.(i.e. beta.hat_j(t_i)).
-For example, if your model includes two categorical variables without interaction terms, each categorical variable contains two levels. Your model will be: y(t) = beta0(t)+beta1(t)X1+beta2(t)X2+e(t). In this case, q = 3. This means your output "est_fun"" will be constructed by 3 columns, and the columns repesent beta0hat(t), beta1hat(t) and beta2hat(t), respectively.
+A t by q matrix of the estimates of the functional parameters, where t is the number of observation time points, and q is the number of columns of the design matrix. The ijth element represents the estimated functional parameter of the jth variable of the design matrix at the ith observation time point.(i.e., bhat_j(t_i)).
+
+For example, if your model includes two categorical variables without interaction terms, each categorical variable contains two levels. Your model will be: y(t) = b_0(t)+b_1(t)X1+b_2(t)X2+e(t). In this case, q = 3. This means your output "est_fun" will be constructed by 3 columns, and the columns repesent b_0hat(t), b_1hat(t) and b_2hat(t), respectively.
 }
 \item{bhat}{
 A q by K numeric vector, in which contains all the estimated parameters (i.e., betahat), where q is the number of columns of the design matrix, and K is the rank of the spline expansion.
 }
-\item{lambda}{The estimated smoothing parameter.
+\item{lambda}{The estimated penalty parameter, obatined using GCV.
 }
 
 %%  ~Describe the value returned
@@ -83,11 +93,7 @@ A q by K numeric vector, in which contains all the estimated parameters (i.e., b
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-fit = fanova_mean(Y.na.mat = Y, X = X,
-                  tt = seq(from = 0, to = 44, by = 2),
-                  formula = toString("~ X[,1]+X[,2]"),
-                  K.int = 6, order = 4,
-                  d0 = 0, d1 = 2, d2 = 2, lower = -10, upper = 15)
+fit = fanova_mean(Y.na.mat = Y, X = X, tt = seq(from = 0, to = 44, by = 2), formula = toString("~ X[,1]+X[,2]"), K.int = 6, order = 4, lower = -10, upper = 15)
 para = fit$est_fun
 mu.hat.t = para[,1]
 }
