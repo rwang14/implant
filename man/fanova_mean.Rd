@@ -1,7 +1,7 @@
 \name{fanova_mean}
 \alias{fanova_mean}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Fitting Functional Anova Models
+\title{Fitting Functional ANOVA Models
 %%  ~~function to do ... ~~
 }
 \description{This function is used for fitting fanova models using B-Spline basis expansion.
