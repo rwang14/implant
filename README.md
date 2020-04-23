@@ -2,7 +2,7 @@
 Download the R package: 
 devtools::install_github("rwang14/implant")
 
-Note: If you cannot install the package sucessfully, please install the package "digest" and "Rcpp" (in sequence) manually and retry the installation of "implant."
+Note: You R Version should be >=3.6.3
 
 On Github, you can:
 
