@@ -19,14 +19,14 @@ HMRF_EM(X,Y,Z,mu,sigma,k,em_iter,map_iter, beta = 2,
 \item{Y}{A m by n matrix of the response variable.
 }
 \item{Z}{ A m by n matrix. This is to have a brief edge detection of the response variable. e.g., We can obtain Z using the Canny edge detector:
-Z = cannEdges(Y,...)[,,1,1] from the package: imager.
+Z = cannEdges( )[,,1,1] from the package: imager. See the example for details.
 }
-\item{mu}{A k by 1 matrix. The two rows represent the mean of the pixel intensities of the response variable under k different classes, respectively. This can be obtained using the function "imkmeans" in this package.
+\item{mu}{A k by 1 matrix. The k rows represent the mean of the pixel intensities of the response variable under k different classes, respectively. This can be obtained using the function "imkmeans" in this package. Can be obtained by another function from this package, called imkmeans( ). See the example for details.
 }
 
-\item{sigma}{A k by 1 matrix. The two rows represent the sigma of the pixel intensities of the response variable under k different classes, respectively. This can be obtained using the function "imkmeans" in this package.
+\item{sigma}{A k by 1 matrix. The k rows represent the standard deviation of the pixel intensities of the response variable under k different classes, respectively. This can be obtained using the function "imkmeans" in this package. Can be obtained by another function from this package, called imkmeans( ). See the example for details.
 }
-\item{k}{A positive integer, which infers the nubmer of classes that you want to classify the image into. In default, k = 2.
+\item{k}{A positive integer, which infers the number of classes that you want to classify the image into. In default, k = 2.
 }
 \item{em_iter}{ A positive integer, which is the number of iteration steps of EM Algorithm.
 }
@@ -61,6 +61,7 @@ since this package needs to involve Rcpp and other dependent packages which may 
 }
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 \examples{
+library(imager)
 orig1 = load.image(system.file("extdata", "image1.png",
                                       package = "implant", mustWork = TRUE))
 orig = resize(orig1, size_x = 500, size_y = 500, size_z = 1, size_c = 3)
