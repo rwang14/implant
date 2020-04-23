@@ -7,7 +7,7 @@ erosion = function(imagefile, mask = matrix(1, 3, 3) ){
       if (mask[ (i + mask.shift + 1) , ( j + mask.shift + 1) ] == 1 ) {
         image.background[ ( (1+mask.shift) : (M[1]-mask.shift) ),( (1+mask.shift) : (M[2]-mask.shift) ) ] =
           image.background[ ( (1+mask.shift) : (M[1]-mask.shift) ),( (1+mask.shift) : (M[2]-mask.shift) ) ] &
-          image[ ( (1+mask.shift) : (M[1]-mask.shift) + i),( (1+mask.shift) : (M[2]-mask.shift) +j) ]
+          imagefile[ ( (1+mask.shift) : (M[1]-mask.shift) + i),( (1+mask.shift) : (M[2]-mask.shift) +j) ]
       }
     }
   }

@@ -94,8 +94,8 @@ A q by K numeric vector, in which contains all the estimated parameters (i.e., b
 }
 \examples{
 #load the data
-data_new = read.csv(system.file("extdata", "data.csv",package = "implant", mustWork = TRUE))
-#The first column records the positions of the observations from the original dataset, can be ignored
+data_new = read.csv(system.file("extdata","data.csv",
+                                 package = "implant", mustWork = TRUE))
 Y = data_new[,-c(1:3)]
 #This step is to factorize each factor
 X1 = as.factor(data_new$Genotype)
@@ -103,7 +103,7 @@ X2 = as.factor(data_new$Block)
 X = data.frame(X1,X2)
 formula = "~ X[,1]+X[,2]"
 tt = seq(from = 0, to = 44, by = 2)
-fit = fanova_mean(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 4, lower = -10, upper = 15)
-fit$lambda
+fit = fanova_mean(Y.na.mat = Y, X = X, tt = tt, formula,
+                  K.int = 6, order = 4, lower = -10, upper = 15)
 fit$est_fun
 }
