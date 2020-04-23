@@ -53,7 +53,7 @@ If a measurement of an observed object (e.g., the height of a plant) is missing 
 
 For example, the intercept term of a functional anova model, mu(t), will be expanded as
 
-mu(t) = \Sigma_\{j = 1 to K\}beta_\{mu,j\}B_\{u,j\}(t),
+mu(t) = Sigma_\{j = 1 to K\}beta_\{mu,j\}B_\{u,j\}(t),
 
 where beta_\{mu,j\} is a coefficient and B_\{u,j\}(t) is an order u B-spline basis function. u is defined by the argument "order" in this function. With another argument "K.int" (i.e., the number of interior knots) being defined, we can know the value of K, the rank of spline expansion for mu(t), according to the relationship K = K.int + order.
 
