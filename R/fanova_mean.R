@@ -3,7 +3,10 @@
 #source("~/Desktop/implant/input.list.R")
 fanova_mean = function(Y.na.mat, X, tt, formula, K.int = 6, order = 4,
                        #interact = 0, #p = 2,
-                       d0 = 0, d1 = 2, d2 = 2, lower = -10, upper = 15){
+                      lower = -10, upper = 15){
+  d0 = 0
+  d1 = 2
+  d2 = 2
 
   data.time = rbind(tt,Y.na.mat)
   T_na = Y.na.mat
@@ -137,6 +140,5 @@ fanova_mean = function(Y.na.mat, X, tt, formula, K.int = 6, order = 4,
   }
   #return the matrix of estimated mean functions
   return(list(est_fun = para,lambda = lam, bhat = bhat, S = S, Phi = Xmat,
-              order = order, K = K, total.time = total.time, tps = tt, X = X, Y_na = Y.na.mat, formula = formula,
-              d0 = d0, d1 = d1, d2 = d2 ))
+              order = order, K = K, total.time = total.time, tps = tt, X = X, Y_na = Y.na.mat, formula = formula)
 }
