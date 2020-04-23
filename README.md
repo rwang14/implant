@@ -8,7 +8,7 @@ On Github, you can:
 
 Find example data: data.csv, data_Xu, and example images: image1.png, image2.png and image_pot.png from the folder: inst/extdata
 
-Find the demo from the folder: data-raw
+Find the demos: demo.R and demo_DCT.R from the folder: data-raw
 
 Find functions from the folder: R
 
