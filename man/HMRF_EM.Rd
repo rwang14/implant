@@ -16,7 +16,7 @@ HMRF_EM(X,Y,Z,mu,sigma,k,em_iter,map_iter, beta = 2,
   \item{X}{A matrix of the inital labelled image, which can be obtained using other segmentation methods, such as K-means.
 %%     ~~Describe \code{x} here~~
 }
-\item{Y}{A m by n matrix of the response variable. Note that the dimension of the original image is n by m. Recommended to use load.image{imager} to load the original image.
+\item{Y}{A m by n matrix of the response variable. Note that the dimension of the original image is n by m. Recommended to use load.image( ) from the package \{imager\} to load the original image.
 }
 \item{Z}{ A m by n matrix. This is to have a brief edge detection of the response variable. e.g., We can use Canny edge detector:
 Z = cannEdges(Y,...)
