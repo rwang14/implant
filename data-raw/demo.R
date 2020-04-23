@@ -1,4 +1,4 @@
-load_all()
+library(pkgload)
 data_new = read.csv(system.file("extdata", "data.csv",package = "implant", mustWork = TRUE))
 Y.na.mat = data_new[,-c(1:3)]
 tt = seq(from = 0, to = 44,by = 2)
