@@ -12,8 +12,7 @@ Depends:
          matrixcalc,
 	 MASS
 Imports: stats
-Suggests:imager,
-	 R.rsp，
+Suggests: imager,R.rsp
 VignetteBuilder: R.rsp
 License: GPL (>= 2)
 Encoding: UTF-8
