@@ -140,5 +140,5 @@ fanova_mean = function(Y.na.mat, X, tt, formula, K.int = 6, order = 4,
   }
   #return the matrix of estimated mean functions
   return(list(est_fun = para,lambda = lam, bhat = bhat, S = S, Phi = Xmat,
-              order = order, K = K, total.time = total.time, tps = tt, X = X, Y_na = Y.na.mat, formula = formula)
+              order = order, K = K, total.time = total.time, tps = tt, X = X, Y_na = Y.na.mat, formula = formula))
 }
