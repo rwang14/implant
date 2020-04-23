@@ -28,7 +28,7 @@ imkmeans(Y,k)
 }
 \item{mu}{A k by 1 matrix. The k rows represent the mean of the pixel intensities of the response variable under k different classes, respectively.
 }
-\item{sigma}{A k by 1 matrix. The k rows represent the mean of the pixel intensities of the response variable under k different classes, respectively.
+\item{sigma}{A k by 1 matrix. The k rows represent the standard deviation of the pixel intensities of the response variable under k different classes, respectively.
 }
 }
 \references{
@@ -47,7 +47,10 @@ imkmeans(Y,k)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-orig1 = load.image("~/Desktop/Visible/image_original.png")
+install.packages("imager")
+library(imager)
+orig1 = load.image(system.file("extdata", "image1.png",
+                                      package = "implant", mustWork = TRUE))
 orig = resize(orig1, size_x = 500, size_y = 500, size_z = 1, size_c = 3)
 I = orig[,,1,2]/(orig[,,1,1]+orig[,,1,2]+orig[,,1,3])
 Y = t(I)

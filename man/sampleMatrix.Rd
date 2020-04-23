@@ -4,7 +4,7 @@
 \title{Reducing the Size of a Matrix
 %%  ~~function to do ... ~~
 }
-\description{This function reduces the size of a matrix by picking sample pixels from each row and each column of the original matrix, and use the selected elements to construct a reduced matrix. This function can be used to reduce sizes of binary images in the study of image processing.
+\description{This function reduces the size of a matrix by picking sample elements from each row and each column of the original matrix, and use the selected elements to construct a reduced matrix. This function can be used to reduce sizes of binary images in the study of image processing.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{

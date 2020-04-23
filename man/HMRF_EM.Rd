@@ -16,10 +16,10 @@ HMRF_EM(X,Y,Z,mu,sigma,k,em_iter,map_iter, beta = 2,
   \item{X}{A matrix of the inital labelled image, which can be obtained using other segmentation methods, such as K-means.
 %%     ~~Describe \code{x} here~~
 }
-\item{Y}{A m by n matrix of the response variable. Note that the dimension of the original image is n by m. Recommended to use load.image( ) from the package \{imager\} to load the original image.
+\item{Y}{A m by n matrix of the response variable.
 }
 \item{Z}{ A m by n matrix. This is to have a brief edge detection of the response variable. e.g., We can use Canny edge detector:
-Z = cannEdges(Y,...)
+Z = cannEdges(Y,...) from the package: imager
 }
 \item{mu}{A k by 1 matrix. The two rows represent the mean of the pixel intensities of the response variable under k different classes, respectively. This can be obtained using the function "imkmeans" in this package.
 }
@@ -39,7 +39,8 @@ Z = cannEdges(Y,...)
 \item{epsilon_map}{A small positive number, which is the convergence criterion of MAP.
 }
 }
-\details{
+\details{The arguement Z can be obatined by CannyEdge detector using function cannEdges( ) from the package imager, However,
+since this package needs to to involve Rcpp and other dependent packages which may increase installation complexity of our package implant. Considering not every user needs to use this function HMRF_EM( ), we recommend the users to install the package imager by themselves if they need.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
