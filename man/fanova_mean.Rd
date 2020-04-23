@@ -18,7 +18,7 @@ fanova_mean(Y.na.mat, X, tt, formula, K.int = 6,
 If a measurement of an observed object (e.g., the height of a plant) is missing on a particular date shown in tt, the value should be filled by “NA” in the Y.na.mat matrix. In a word, the ith row of this matrix represents the values of the response varable of the ith observation at t different observation time points.
 }
 
-  \item{X}{ A n by r matrix of explanatory variables, where n is the number of observations and r is the number of explanatory variables.
+  \item{X}{ A n by r dataframe of explanatory variables, where n is the number of observations and r is the number of explanatory variables.
 }
   \item{tt}{ A t by 1 vector, in which elements imply the observation days.
 }
@@ -93,9 +93,17 @@ A q by K numeric vector, in which contains all the estimated parameters (i.e., b
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-fit = fanova_mean(Y.na.mat = Y, X = X, tt = seq(from = 0, to = 44, by = 2),
-                  formula = toString("~ X[,1]+X[,2]"), K.int = 6, order = 4,
-                  lower = -10, upper = 15)
-para = fit$est_fun
-mu.hat.t = para[,1]
+#load the data
+data_new = read.csv(system.file("extdata", "data.csv",package = "implant", mustWork = TRUE))
+#The first column records the positions of the observations from the original dataset, can be ignored
+Y = data_new[,-c(1:3)]
+#This step is to factorize each factor
+X1 = as.factor(data_new$Genotype)
+X2 = as.factor(data_new$Block)
+X = data.frame(X1,X2)
+formula = "~ X[,1]+X[,2]"
+tt = seq(from = 0, to = 44, by = 2)
+fit = fanova_mean(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 4, lower = -10, upper = 15)
+fit$lambda
+fit$est_fun
 }
