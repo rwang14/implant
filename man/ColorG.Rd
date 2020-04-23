@@ -5,7 +5,7 @@
 Identifying the region of interest & changing color of particular part of an image
 }
 \description{
-This function is used to identify the region of interest, and change the color of particular part of an image. Specifically, this function is designed for the plant images taken by the UNL greenhouse system. It helps identify the lower boundary of the region of interest and change the color of the green strip of an empty pot from green to white. See example image:
+This function is used to identify the region of interest, and change the color of particular part of an image. Specifically, this function is designed for the plant images taken by the UNL greenhouse system. It helps identify the lower boundary of the region of interest and change the color of the green strip of an empty pot from green to white.
 }
 \usage{
 ColorG (imagefile, rowThreshold = 0.007, block = 5, Tol = 2, Bthreshold = 60 / 255,
@@ -15,7 +15,7 @@ EGThreshold = 0.1, weight = c(-1, 2, -1), changeto = c(1, 1, 1))
 \arguments{
   \item{imagefile}{matrix of pixels of the image for processing.
 }
-\item{rowThreshold}{positive real number, which is the threshold value of each row.
+\item{rowThreshold}{positive real number, which is the threshold value of each row to filter the black
 
 }
 \item{block}{postive integer, which is the moving average of average pixels of each row of the matrix of the matrix.
@@ -66,9 +66,14 @@ numeric vector, in which elements refer to the pixel intensities of the colors y
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-img = array(matrix(c(1:30000), nrow = 100, ncol = 10000),dim  = c(100,100,3))
-ColorG (imagefile = img, rowThreshold = 0.007, block = 5, Tol = 2, Bthreshold = 60 / 255,
+#read an RGB image
+imageX = readPNG(system.file("extdata", "image_pot.png",
+                             package = "implant",
+                             mustWork = TRUE))[,,c(1:3)]
+tempG = ColorG (imagefile = imageX, rowThreshold = 0.007, block = 5, Tol = 2,Bthreshold = 60 / 255,
 EGThreshold = 0.1, weight = c(-1, 2, -1), changeto = c(1, 1, 1))
+tempG$c
+tempG$lowb
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

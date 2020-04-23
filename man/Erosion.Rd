@@ -7,11 +7,11 @@
 This function is used to perform morphological erosion of an image.
 }
 \usage{
-erosion(image, mask = matrix(1, 3, 3))
+erosion(imagefile, mask = matrix(1, 3, 3))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{image}{
+  \item{imagefile}{
   matrix of pixels of the original image.
 }
 \item{mask}{
@@ -31,6 +31,15 @@ matrix of pixels of the eroded image.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-imageBDE = erosion( imageBD, mask = matrix(1, 5, 5) )
+#read an RGB image
+image = readPNG(system.file("extdata", "image1.png",
+                             package = "implant",
+                             mustWork = TRUE))[,,c(1:3)]
+
+imageB = imageBinary(image, weight = c(-1, 2, -1),
+                     threshold1 = 30 / 255,
+                     threshold2 = 0.075)
+
+imageBE = erosion(imageB, mask = matrix(1, 5, 5))
 }
 

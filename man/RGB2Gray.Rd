@@ -13,11 +13,11 @@ Color2Gray(image, weight = c(0.299,0.587,0.114))
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{image}{
-  array of an RGB image file for processing.
+an array of an RGB image file for processing.
 %%     ~~Describe \code{x} here~~
 }
 \item{weight}{
-numeric vector, in which elements are weights for the Red channel of the image, Green channel of the image, and the Blue channel of the image, respectively.
+a numeric vector, in which elements are weights for the Red channel of the image, Green channel of the image, and the Blue channel of the image, respectively.
 }
 }
 \details{
@@ -47,6 +47,10 @@ A matrix of pixels of the image converted from RGB to Grayscale.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+#read an RGB image
+image = readPNG(system.file("extdata", "image1.png",
+                             package = "implant",
+                             mustWork = TRUE))[,,c(1:3)]
 imageGray = Color2Gray(image)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
