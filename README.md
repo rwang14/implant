@@ -6,7 +6,7 @@ Note: You R Version should be >=3.6.3
 
 On Github, you can:
 
-Find example data: data.csv, data_Xu, and example images: image1.png, image2.png and image_pot.png from the folder: inst/extdata
+Find example data: data.csv, data_Xu.txt, and example images: image1.png, image2.png and image_pot.png from the folder: inst/extdata
 
 Find demos: demo.R and demo_DCT.R from the folder: data-raw
 
