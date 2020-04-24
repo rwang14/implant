@@ -67,6 +67,7 @@ numeric vector, in which elements refer to the pixel intensities of the colors y
 }
 \examples{
 #read an RGB image
+library(png)
 imageX = readPNG(system.file("extdata", "image_pot.png",
                              package = "implant",
                              mustWork = TRUE))[,,c(1:3)]

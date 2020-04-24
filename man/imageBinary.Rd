@@ -46,7 +46,12 @@ A matrix of pixels of the processed image.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-imageB = imageBinary(imageColor,  weight = c(-1, 2, -1),
+#read an RGB image
+library(png)
+image = readPNG(system.file("extdata", "image1.png",
+                             package = "implant",
+                             mustWork = TRUE))[,,c(1:3)]
+imageB = imageBinary(image,  weight = c(-1, 2, -1),
 threshold1 = 30 / 255, threshold2 = 0.05)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

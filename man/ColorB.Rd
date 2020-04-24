@@ -57,6 +57,7 @@ matrix of pixels of the obtained image by applying this function.
 }
 \examples{
 #read an RGB image
+library(png)
 image = readPNG(system.file("extdata", "image1.png",
                              package = "implant",
                              mustWork = TRUE))[,,c(1:3)]
