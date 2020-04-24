@@ -2,8 +2,9 @@
 exportPattern("^[^\\.]")
 importFrom("stats", "as.formula", "complete.cases", "kmeans",
              "model.matrix", "qnorm", "quantile", "sd")
-import(fda)
-import(stats)
+importFrom(fda, create.bspline.basis)
+importFrom(fda, eval.basis)
+importFrom(fda, inprod)
 import(spatstat)
 import(png)
 import(matrixcalc)

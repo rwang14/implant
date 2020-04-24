@@ -37,7 +37,7 @@ sampleMatrix(M, RowSample = 1, ColSample = 1)
 %%  ~~who you are~~
 }
 \note{This function is different from another function in this package called "sample( )". That function is used to
-reduce the size of 3-D arraysm while his function, sampleMatrix( ), is used to reduce the size of matrices.
+reduce the size of 3-D arraysm while this function, sampleMatrix( ), is used to reduce the size of matrices.
 %%  ~~further notes~~
 }
 
