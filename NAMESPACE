@@ -5,7 +5,7 @@ importFrom("stats", "as.formula", "complete.cases", "kmeans",
 importFrom(fda, create.bspline.basis)
 importFrom(fda, eval.basis)
 importFrom(fda, inprod)
-import(spatstat)
 importFrom(png, readPNG)
 importFrom(png, writePNG)
 importFrom(matrixcalc, vec)
+import(spatstat)
