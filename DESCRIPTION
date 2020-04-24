@@ -11,8 +11,8 @@ Imports: stats,
          spatstat,
          png,
          matrixcalc,
-	 imager
-Suggests: MASS,R.rsp
+	 MASS
+Suggests: imager, R.rsp
 VignetteBuilder: R.rsp
 License: GPL (>= 2)
 Encoding: UTF-8
