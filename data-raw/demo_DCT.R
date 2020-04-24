@@ -1,4 +1,5 @@
 library(pkgload)
+library(png)
 #load the image of plant
 imageOriginal = readPNG(system.file("extdata", "image1.png",package = "implant", mustWork = TRUE))[,,1:3]
 #load the image of empty pot
