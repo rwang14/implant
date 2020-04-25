@@ -48,12 +48,17 @@ extract_pheno(processed_image, Xsize = 1, Ysize = 1, a = 1, b = 1)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+#read an RGB image
+library(png)
+imageOriginal = readPNG(system.file("extdata", "image1.png",
+                             package = "implant",
+                             mustWork = TRUE))[,,c(1:3)]
 #reduce the size of an image
-image_reduced = sample(original_image, RowSample = 2, ColSample = 2)
+image_reduced = sample(imageOriginal, RowSample = 2, ColSample = 2)
 #segment the reduced image
-imageBD = imageBinary(image_reduced,  weight = c(-1, 2, -1), threshold1 = 30 / 255, threshold2 = 0.05)
+imageB = imageBinary(image_reduced,  weight = c(-1, 2, -1), threshold1 = 30 / 255, threshold2 = 0.05)
 #obtain the size of the segmented image
-extract_pheno(processed_image = imageBD, Xsize = 1.5, Ysize = 1.5, a = 2, b = 2)$size
+extract_pheno(processed_image = imageB, Xsize = 1.5, Ysize = 1.5, a = 2, b = 2)$size
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

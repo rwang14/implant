@@ -1,10 +1,10 @@
 \name{imkmeans}
 \alias{imkmeans}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Obtain the  Matrix of the Segmented Image using K-means Method.
+\title{Obtain the  Matrix of the Segmented Image using K-means Clustering.
 %%  ~~function to do ... ~~
 }
-\description{This function is to obtain the  Matrix of the Segmented Image using K-means Method, together with the means and standard deviations of the pixel intensities within different classes.
+\description{This function is to obtain the  matrix of the Segmented Image using K-means Method, together with the means and standard deviations of the pixel intensities within different classes.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -12,10 +12,10 @@ imkmeans(Y,k)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{Y}{
+  \item{Y}{A matrix of the response variable.
 %%     ~~Describe \code{x} here~~
 }
-  \item{k}{
+  \item{k}{A positive integer, which refers to the number of classes that you want to classify the image into. In default, k = 2   (the binary image).
 
   }
 }

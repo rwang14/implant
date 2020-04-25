@@ -18,7 +18,7 @@ HMRF_EM(X,Y,Z,mu,sigma,k,em_iter,map_iter, beta = 2,
   \item{X}{A matrix of the inital labelled image, which can be obtained using other segmentation methods, such as K-means.
 %%     ~~Describe \code{x} here~~
 }
-\item{Y}{A m by n matrix of the response variable.
+\item{Y}{A m by n matrix of the response variable. Note that this Y should be the same as the argument Y in the function imkmeans().
 }
 \item{Z}{ A m by n matrix. This is to have a brief edge detection of the response variable. e.g., We can obtain Z using the Canny edge detector:
 Z = cannEdges( )[,,1,1] from the package: imager. See the example for details.
@@ -28,13 +28,13 @@ Z = cannEdges( )[,,1,1] from the package: imager. See the example for details.
 
 \item{sigma}{A k by 1 matrix. The k rows represent the standard deviation of the pixel intensities of the response variable under k different classes, respectively. This can be obtained by another function from this package, called imkmeans( ). See the example for details.
 }
-\item{k}{A positive integer, which infers the number of classes that you want to classify the image into. In default, k = 2.
+\item{k}{A positive integer, which refers the number of classes that you want to classify the image into. In default, k = 2. Note that this Y should be the same as the argument Y in the function imkmeans( ).
 }
 \item{em_iter}{ A positive integer, which is the number of iteration steps of EM Algorithm.
 }
 \item{map_iter}{ A positive integer, which is the number of iteration steps of MAP.
 }
-\item{beta}{The clique potential parameter, in default, beta = 2. See more in the supplementary file of HMRF Model. This beta is equivalent to the Psi in the supplentary file.
+\item{beta}{The clique potential parameter, in default, beta = 2. See more in the supplementary file of HMRF Model. This beta is equivalent to the Psi in the supplentary file (see page 29).
 }
 \item{epsilon_em}{A small positive number, which is the convergence criterion of EM Alogrithm.
 }
