@@ -4,7 +4,7 @@
 \title{Obtain the  Matrix of the Segmented Image using K-means Method.
 %%  ~~function to do ... ~~
 }
-\description{This function is to obtain the  Matrix of the Segmented Image using K-means Method, togehter with the means and variances of the pixel intensities within different classes.
+\description{This function is to obtain the  Matrix of the Segmented Image using K-means Method, together with the means and standard deviations of the pixel intensities within different classes.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{

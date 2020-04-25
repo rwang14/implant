@@ -25,10 +25,11 @@ extract_pheno(processed_image, Xsize = 1, Ysize = 1, a = 1, b = 1)
 \value{
 %%  ~Describe the value returned
 %%  If it is a LIST, use
- \item{plantheight}{The height of the segmented plant by taking the 2.5th\% quantile and 97.56th\% qunatile of the segmented pixels of interest. }
- \item{plantwidth}{The width of the segmented plant by taking the 2.5th\% quantile and 97.56th\% qunatile of the segmented pixels of interest. }
- \item{plantSize}{The size of the segmented plant based on the total number of pixels of the segmented plant of interest.}
- \item{pixelCount}{The total number of pixels of the segmented plant of interest.}
+\item{pixelCount}{The total number of pixels of the segmented plant of interest.}
+\item{plantheight}{The height of the segmented plant by taking the 2.5th\% quantile and 97.56th\% qunatile of the segmented pixels of interest. }
+\item{plantwidth}{The width of the segmented plant by taking the 2.5th\% quantile and 97.56th\% qunatile of the segmented pixels of interest. }
+ \item{plantSize}{The size of the segmented plant based on the total number of pixels of the segmented plant of interest. i.e. Size = pixelCount * Xsize * Ysize.}
+
 %% ...
 }
 \references{
@@ -43,7 +44,7 @@ extract_pheno(processed_image, Xsize = 1, Ysize = 1, a = 1, b = 1)
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{ \code{\link{reducingsize}} for reducing size of an image.
+\seealso{ \code{\link{sample}} for reducing size of an image.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{

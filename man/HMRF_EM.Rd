@@ -65,6 +65,9 @@ https://github.com/rwang14/implant/blob/master/vignettes/HMRF_EM.pdf
 2. This function is modified based on the matlab code written by Quan Wang (see reference).
 %%  ~~further notes~~
 }
+\seealso{
+\code{\link{imkmeans}}
+}
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 \examples{
 library(imager)

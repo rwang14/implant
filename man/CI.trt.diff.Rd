@@ -32,7 +32,7 @@ the 0.95 confidence band, take alpha = 0.05.
 %%     ~~Describe \code{alpha} here~~
 }
 }
-\details{
+\details{For example, you model is constructed by b0(t)+b1(t)X1+b2(t)X2
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
@@ -54,22 +54,30 @@ the 0.95 confidence band, take alpha = 0.05.
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{
+\seealso{{ \code{\link{fanova_mean}}}
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-#NOT RUN {
+#load the data
+data_new = read.csv(system.file("extdata","data.csv",
+                                 package = "implant", mustWork = TRUE))
+Y = data_new[,-c(1:3)]
+#This step is to factorize each factor
+X1 = as.factor(data_new$Genotype)
+X2 = as.factor(data_new$Block)
+X = data.frame(X1,X2)
+formula = "~ X[,1]+X[,2]"
+tt = seq(from = 0, to = 44, by = 2)
 fit = fanova_mean(Y.na.mat = Y, X = X,
                   tt = seq(from = 0, to = 44, by = 2),
                   formula = toString("~ X[,1]+X[,2]"),
                   K.int = 6, order = 4,
-                  d0 = 0, d1 = 2, d2 = 2, lower = -10, upper = 15)
+                  lower = -10, upper = 15)
 
 ci_diff = CI.trt.diff(fit = fit,j1 = 5, j2 = 4, alpha = 0.05)
 plot(tt,ci_diff$trt,type = "l")
 lines(tt,ci_diff$lb, col = "blue")
 lines(tt,ci_diff$ub, col = "blue")
-}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
