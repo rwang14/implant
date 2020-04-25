@@ -18,4 +18,3 @@ Find manual from the  folder: vignettes or visit: https://github.com/rwang14/imp
 
 Find user's guide from the folder: vignettes or visit: https://github.com/rwang14/implant/blob/master/vignettes/Users%20Guide.pdf
 
-Find the corresponding paper: 
