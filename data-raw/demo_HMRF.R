@@ -1,4 +1,5 @@
 library(imager)
+library(dplyr)
 orig1 = load.image(system.file("extdata", "image1.png",
                                package = "implant", mustWork = TRUE))
 orig = resize(orig1, size_x = 500, size_y = 500, size_z = 1, size_c = 3)
