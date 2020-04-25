@@ -21,10 +21,10 @@ HMRF_EM(X,Y,Z,mu,sigma,k,em_iter,map_iter, beta = 2,
 \item{Z}{ A m by n matrix. This is to have a brief edge detection of the response variable. e.g., We can obtain Z using the Canny edge detector:
 Z = cannEdges( )[,,1,1] from the package: imager. See the example for details.
 }
-\item{mu}{A k by 1 matrix. The k rows represent the mean of the pixel intensities of the response variable under k different classes, respectively. This can be obtained using the function "imkmeans" in this package. Can be obtained by another function from this package, called imkmeans( ). See the example for details.
+\item{mu}{A k by 1 matrix. The k rows represent the mean of the pixel intensities of the response variable under k different classes, respectively. This be obtained by another function from this package, called imkmeans( ). See the example for details.
 }
 
-\item{sigma}{A k by 1 matrix. The k rows represent the standard deviation of the pixel intensities of the response variable under k different classes, respectively. This can be obtained using the function "imkmeans" in this package. Can be obtained by another function from this package, called imkmeans( ). See the example for details.
+\item{sigma}{A k by 1 matrix. The k rows represent the standard deviation of the pixel intensities of the response variable under k different classes, respectively. This can be obtained by another function from this package, called imkmeans( ). See the example for details.
 }
 \item{k}{A positive integer, which infers the number of classes that you want to classify the image into. In default, k = 2.
 }
