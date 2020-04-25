@@ -2,7 +2,7 @@
 Download the R package: 
 devtools::install_github("rwang14/implant")
 
-Note: You R Version should be >=3.6.3
+Note: Your R Version should be >=3.6.3
 
 On Github, you can:
 
