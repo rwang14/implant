@@ -5,6 +5,7 @@ imageOriginal = readPNG(system.file("extdata", "image1.png",package = "implant",
 #load the image of empty pot
 imageX = readPNG(system.file("extdata", "image_pot.png",package = "implant", mustWork = TRUE))[,,1:3]
 #Identify the region of interest
+sizeOrignal = dim(imageOriginal)[c(1, 2)]
 tempG = ColorG(imagefile = imageX, rowThreshold = 0.002)
 lowerRowBound = tempG$lowb
 resultColor = ColorB(imageOriginal)
