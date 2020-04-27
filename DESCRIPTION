@@ -9,7 +9,6 @@ Depends:
 Imports: stats,
 	 fda,
          matrixcalc,
-	 MASS,
          png
 Suggests:imager, R.rsp
 VignetteBuilder: R.rsp
