@@ -9,8 +9,9 @@ Depends:
 Imports: stats,
 	 fda,
          matrixcalc,
-	 MASS
-Suggests: png,imager, R.rsp
+	 MASS,
+         png
+Suggests:imager, R.rsp
 VignetteBuilder: R.rsp
 License: GPL (>= 2)
 Encoding: UTF-8
