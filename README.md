@@ -14,13 +14,13 @@ Note:
 
   In summary:
 
-  Step 1. Install Rtools40 
+  Step 1. Install Rtools40.
 
   Step 2. To put the location of the Rtools on the PATH, run the following command in R:
 
     writeLines('PATH="${RTOOLS40_HOME}\\usr\\bin;${PATH}"', con = "~/.Renviron")
 
-  Step 3. Restart R
+  Step 3. Restart R.
 
   Step 4. Run the following command in R:
     
@@ -39,9 +39,9 @@ Note:
 
   In summary:
 
-  Step 1: Install Xcode
+  Step 1: Install Xcode.
 
-  Step 2: Start R
+  Step 2: Start R.
 
   Step 3. Run the following command in R:
     
@@ -58,11 +58,11 @@ Note:
 
 On Github, you can:
 
-Find example data: data.csv, data_Xu.txt, and example images: image1.png, image2.png and image_pot.png from the folder: inst/extdata
+Find example data: data.csv, data_Xu.txt, and example images: image1.png, image2.png and image_pot.png from the folder: inst/extdata.
 
-Find demos: demo.R, demo_DCT.R and demo_HMRF.R from the folder: data-raw
+Find demos: demo.R, demo_DCT.R and demo_HMRF.R from the folder: data-raw.
 
-Find functions from the folder: R
+Find functions from the folder: R.
 
 Find help documentation from the folder: man.
 
