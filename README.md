@@ -9,14 +9,20 @@ Note: Installation:
 
 In summary:
 Step 1. Install Rtools40 
-Step 2.Run: 
+
+Step 2.Put the location of the Rtools make utilities (bash, make, etc) on the PATH. Run the following command in R:
+
 writeLines('PATH="${RTOOLS40_HOME}\\usr\\bin;${PATH}"', con = "~/.Renviron")
-in R
+
 Step 3. Restart R
+
 Step 4. install.packages("devtools")
+
 Step 5. library(devtools)
+
 Step 6. devtools::install_github("rwang14/implant")
-Step 7. library(devtools)
+
+Step 7. library(implant)
 
 
 2. For Mac users, please install Xcode before installing the package. Please download Xcode from: https://developer.apple.com/xcode/resources/
