@@ -8,7 +8,6 @@ Description: The package ``implant" is used for both image processing and functi
 Depends: 
 Imports: stats,
 	 fda,
-         spatstat,
          matrixcalc,
 	 MASS
 Suggests: png,imager, R.rsp
