@@ -67,10 +67,9 @@ X = data.frame(X1,X2)
 formula = "~ X[,1]+X[,2]"
 tt = seq(from = 0, to = 44, by = 2)
 fit = fanova_mean(Y.na.mat = Y, X = X,
-                  tt = seq(from = 0, to = 44, by = 2),
-                  formula = toString("~ X[,1]+X[,2]"),
-                  K.int = 6, order = 4,
-                  lower = -10, upper = 15)
+                  tt = tt,
+                  formula = formula,
+                  K.int = 6, order = 4)
 L1 = c(1,0,0,1/3,1/3)
 ci1 = CI.trt(fit = fit, L = L1, alpha = 0.05)
 plot(tt,ci1$trt,type = "l")

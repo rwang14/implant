@@ -61,6 +61,7 @@ the 0.95 confidence band, take alpha = 0.05.
 #load the data
 data_new = read.csv(system.file("extdata","data.csv",
                                  package = "implant", mustWork = TRUE))
+#The first three columns of data.csv are the original position of the observation, genotype and block
 Y = data_new[,-c(1:3)]
 #This step is to factorize each factor
 X1 = as.factor(data_new$Genotype)
@@ -69,10 +70,9 @@ X = data.frame(X1,X2)
 formula = "~ X[,1]+X[,2]"
 tt = seq(from = 0, to = 44, by = 2)
 fit = fanova_mean(Y.na.mat = Y, X = X,
-                  tt = seq(from = 0, to = 44, by = 2),
-                  formula = toString("~ X[,1]+X[,2]"),
-                  K.int = 6, order = 4,
-                  lower = -10, upper = 15)
+                  tt = tt,
+                  formula = formula,
+                  K.int = 6, order = 4)
 
 ci_diff = CI.trt.diff(fit = fit,j1 = 5, j2 = 4, alpha = 0.05)
 plot(tt,ci_diff$trt,type = "l")

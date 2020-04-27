@@ -45,8 +45,12 @@ block_nrow and block_ncol must be divisible by number of rows and columns of the
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-average_reducing(image1,2,2)
-
+#read an RGB image
+library(png)
+image = readPNG(system.file("extdata", "image1.png",
+                             package = "implant",
+                             mustWork = TRUE))[,,c(1:3)]
+average_reducing(image,2,2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
