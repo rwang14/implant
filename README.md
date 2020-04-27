@@ -1,8 +1,13 @@
 # implant: An R Package for the High-throughput Phenotyping Pipeline for Image Processing and Functional Growth Curve Analysis
+
 Download the R package: 
 devtools::install_github("rwang14/implant")
 
-Note: Your R Version should be >=3.6.3
+Note: Installation: 
+1. For Windows Users, Please install Rtools before installing the package. Please use the following link and follow its instruction to install Rtools and put the location of the Rtools on the PATH. See details by clicking the link: https://cran.r-project.org/bin/windows/Rtools/
+Restart your R and download the package implant.
+
+2. For Mac Users, please install Xcode before installing the package. Please download Xcode from: https://developer.apple.com/xcode/resources/
 
 On Github, you can:
 
