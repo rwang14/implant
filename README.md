@@ -8,6 +8,7 @@ Note: Installation:
 1. For Windows users, Please install Rtools before installing the package. Please use the following link and follow its instruction to install Rtools by clicking the link. Note that you should put the location of the Rtools on the PATH follow the instruction. See details by clicking the link: https://cran.r-project.org/bin/windows/Rtools/
 
 In summary:
+
 Step 1. Install Rtools40 
 
 Step 2.Put the location of the Rtools make utilities (bash, make, etc) on the PATH. Run the following command in R:
