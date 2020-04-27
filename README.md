@@ -4,9 +4,9 @@ Package Installation:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Download the R package: 
+Download the R package in R:
 
-devtools::install_github("rwang14/implant")
+    devtools::install_github("rwang14/implant")
 
 Note: 
 
