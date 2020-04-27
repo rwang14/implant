@@ -5,10 +5,10 @@ Download the R package:
 devtools::install_github("rwang14/implant")
 
 Note: Installation: 
-1. For Windows Users, Please install Rtools before installing the package. Please use the following link and follow its instruction to install Rtools and put the location of the Rtools on the PATH. See details by clicking the link: https://cran.r-project.org/bin/windows/Rtools/
+1. For Windows users, Please install Rtools before installing the package. Please use the following link and follow its instruction to install Rtools and put the location of the Rtools on the PATH. See details by clicking the link: https://cran.r-project.org/bin/windows/Rtools/
 Restart your R and download the package implant.
 
-2. For Mac Users, please install Xcode before installing the package. Please download Xcode from: https://developer.apple.com/xcode/resources/
+2. For Mac users, please install Xcode before installing the package. Please download Xcode from: https://developer.apple.com/xcode/resources/
 
 On Github, you can:
 
