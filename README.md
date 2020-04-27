@@ -11,7 +11,7 @@ In summary:
 
 Step 1. Install Rtools40 
 
-Step 2.Put the location of the Rtools make utilities (bash, make, etc) on the PATH. Run the following command in R:
+Step 2. To put the location of the Rtools on the PATH. Run the following command in R:
 
 writeLines('PATH="${RTOOLS40_HOME}\\usr\\bin;${PATH}"', con = "~/.Renviron")
 
