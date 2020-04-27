@@ -6,6 +6,7 @@ devtools::install_github("rwang14/implant")
 
 Note: Installation: 
 1. For Windows users, Please install Rtools before installing the package. Please use the following link and follow its instruction to install Rtools by clicking the link. Note that you should put the location of the Rtools on the PATH follow the instruction. See details by clicking the link: https://cran.r-project.org/bin/windows/Rtools/
+
 In summary:
 1. Install Rtools40 
 2.Run: 
