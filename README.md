@@ -21,13 +21,17 @@ Note:
 
   Step 3. Restart R
 
-  Step 4. install.packages("devtools")
+  Step 4. run the following command in R:
+    
+    install.packages("devtools");
 
-  Step 5. library(devtools)
+    library(devtools)
 
-  Step 6. devtools::install_github("rwang14/implant")
-
-  Step 7. library(implant)
+  Step 5. run the following command in R:
+  
+     devtools::install_github("rwang14/implant");
+     
+     library(implant)
 
 
 2. For Mac users, please install Xcode before installing the package. Please download Xcode from: https://developer.apple.com/xcode/resources/
@@ -38,14 +42,17 @@ Note:
 
   Step 2: Start R
 
-  Step 3: install.packages("devtools")
+  Step 3. run the following command in R:
+    
+    install.packages("devtools");
 
-  Step 4. library(devtools)
+    library(devtools)
 
-  Step 5. devtools::install_github("rwang14/implant")
-
-  Step 6. library(implant)
-
+  Step 4. run the following command in R:
+  
+     devtools::install_github("rwang14/implant");
+     
+     library(implant)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 On Github, you can:
