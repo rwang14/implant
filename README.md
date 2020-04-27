@@ -9,6 +9,7 @@ Download the R package:
 devtools::install_github("rwang14/implant")
 
 Note: 
+
 1. For Windows users, please install Rtools before installing the package. Please use the following link and follow its instruction to install Rtools by clicking the link. Note that you should put the location of the Rtools on the PATH, following the instruction from the link. See details by clicking the link: https://cran.r-project.org/bin/windows/Rtools/
 
   In summary:
