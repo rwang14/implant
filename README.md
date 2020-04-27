@@ -22,13 +22,13 @@ Note:
 
   Step 3. Restart R
 
-  Step 4. run the following command in R:
+  Step 4. Run the following command in R:
     
     install.packages("devtools");
 
     library(devtools)
 
-  Step 5. run the following command in R:
+  Step 5. Run the following command in R:
   
      devtools::install_github("rwang14/implant");
      
@@ -43,13 +43,13 @@ Note:
 
   Step 2: Start R
 
-  Step 3. run the following command in R:
+  Step 3. Run the following command in R:
     
     install.packages("devtools");
 
     library(devtools)
 
-  Step 4. run the following command in R:
+  Step 4. Run the following command in R:
   
      devtools::install_github("rwang14/implant");
      
