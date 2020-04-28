@@ -1,23 +1,21 @@
 # implant: An R Package for the High-throughput Phenotyping Pipeline for Image Processing and Functional Growth Curve Analysis
 
-Package Installation:
+Package Installation:    
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Download the package in R:
+Install the package in R if "devtools" package is installed:
 
     devtools::install_github("rwang14/implant")
 
-Note: 
+Otherwise, follow the steps below to install "devtools" package first.
 
-1. Your R version is recommended to be >=3.5.3 in order to use devtools.
+Note: Your R version is recommended to be >=3.5.3 in order to use devtools.
 
-2. For Windows users, please install Rtools before installing the package. Please use the following link and follow its instruction to install Rtools by clicking the link. See details by clicking the link: https://cran.r-project.org/bin/windows/Rtools/history.html
+**Windows users:** 
+please install Rtools before installing the package. Use the link https://cran.r-project.org/bin/windows/Rtools/history.html and follow its instruction to install Rtools. Note that the version of Rtools should matach to the version of R.
 
-  In summary:
-
-  Step 1. Install Rtools(You need to install the correct version of Rtools that matches the version of your R).
-  (Don't forget to click: Add rtools to system PATH during your installation)
+  Step 1. Install Rtools (You need to install the correct version of Rtools that matches the version of your R).
 
   Step 2. Restart R.
 
@@ -33,10 +31,7 @@ Note:
      
      library(implant)
 
-
-3. For Mac users, please install Xcode before installing the package. Please download Xcode from: https://developer.apple.com/xcode/resources/
-
-  In summary:
+**Mac users:** please install Xcode before installing the package. Download Xcode from: https://developer.apple.com/xcode/resources/
 
   Step 1: Install Xcode.
 
@@ -53,6 +48,7 @@ Note:
      devtools::install_github("rwang14/implant");
      
      library(implant)
+     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 On Github, you can:
