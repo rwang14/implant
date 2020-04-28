@@ -5,7 +5,7 @@
 %%  ~~function to do ... ~~
 }
 \description{
-This function exchanges the color of the background and the subject for a binary image.
+This function exchanges the color of the background and the foreground for a binary image.
 }
 \usage{
 color_exchange(image1)
@@ -13,15 +13,15 @@ color_exchange(image1)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{image1}{
-A pixel matrix of a binary image
+A binary matrix of a segmented image
 }
 }
 \details{
-The input matrix should be a matrix of 0 and 1 only.
+Exchange 0 and 1 in the input binary matrix.
 }
 \value{
-A pixel matrix with exchanging the color of the background and subject.
-}
+A binary matrix with exchanged background and the foreground.
+
 \references{
 %% ~put references to the literature/web site here ~
 }

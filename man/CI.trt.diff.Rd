@@ -1,14 +1,12 @@
 \name{CI.trt.diff}
 \alias{CI.trt.diff}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Testing the significance of the treatment effects of interest by
-constructing the corresponding confidence regions.
+\title{ Constructing confidence regions for specific treatment effect
 %%  ~~function to do ... ~~
 }
-\description{This function can be used for testing the significance of the treatment effects of interest by
-constructing the corresponding confidence regions. In fact, it is a special case of the function "CI.trt"
-in this package. This function is more efficient and more easy to use when testing the difference between
-two treatments.
+\description{This is a special case of the function "CI.trt"
+in this package. This function is easier to use when studying the difference between
+two specific treatments/genotype, without specifying the linear combination needed in "CI.trt".
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -19,16 +17,15 @@ CI.trt.diff(fit, j1, j2, alpha)
   \item{fit}{An object of output obtained by function "fanova_mean".
 %%     ~~Describe \code{fit} here~~
 }
-  \item{j1}{A positive integer, which indicates the columns of the design matrix
-  corresponding to the treatment of interest.
+  \item{j1}{A positive integer, specifying the columns of the design matrix
+  corresponding to one treatment of interest.
 %%     ~~Describe \code{j1} here~~
 }
-  \item{j2}{A positive integer, which indicates the columns of the design matrix
-  corresponding to the treatment of interest.
+  \item{j2}{A positive integer, specifying the columns of the design matrix
+  corresponding to the other treatment of interest.
 %%     ~~Describe \code{j2} here~~
 }
-  \item{alpha}{A positive small number, which is the probability of making type I error. e.g., if you want to calculate
-the 0.95 confidence band, take alpha = 0.05.
+  \item{alpha}{A positive small number between 0 and 1. 1-alpha gives the confidence level.
 %%     ~~Describe \code{alpha} here~~
 }
 }

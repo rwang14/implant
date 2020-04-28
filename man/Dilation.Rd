@@ -12,10 +12,10 @@ dilation(imagefile, mask = matrix(1, 3, 3))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{imagefile}{array or matrix of pixels of the original image.
+  \item{imagefile}{a binary matrix of the segmented image.
 %%     ~~Describe \code{x} here~~
 }
-\item{mask}{matrix constructed by structuring elements.
+\item{mask}{a matrix constructed by structuring elements.
 
 }
 }
@@ -23,9 +23,9 @@ dilation(imagefile, mask = matrix(1, 3, 3))
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-matrix of pixels of the dilated image.
+a binary matrix of the eroded image.
 }
-\references{
+\references{Image Analysis and Mathematical Morphology by Jean Serra, ISBN 0-12-637240-3 (1982)
 %% ~put references to the literature/web site here ~
 }
 \author{

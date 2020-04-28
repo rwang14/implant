@@ -4,19 +4,20 @@
 \title{ Extract phenotypical features from segmented images
 }
 \description{
-This function extract phenotypical features from segmented images.
+This function extracts phenotypical features from segmented images.
 }
 \usage{
 extract_pheno(processed_image, Xsize = 1, Ysize = 1, a = 1, b = 1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{processed_image}{ a binary matrix contains only 0 and 1. i.e., the segmented image of a plant.
+  \item{processed_image}{ a binary matrix contains only 0 and 1, giving the segmented image of a plant.
 %%     ~~Describe \code{x} here~~
 }
-\item{Xsize, Ysize}{Xsize and Ysize are the actual horizontal and vertical lengths of one pixel, respectively. If users prefer to   calculate in pixel level rather than acutual units, use the default set, i.e. Xsize = 1, Ysize = 1. }
+\item{Xsize, Ysize}{Xsize and Ysize are the actual horizontal and vertical lengths of one pixel, respectively. The default set is Xsize = 1, Ysize = 1 for the non-adjustment for the pixel size.
+}
 
-\item{a,b}{positive integers. To be more specific, a and b are respectively the same as the values of RowSample and ColSample in function: "sample". This is only used when you have used function "sample" to reduce the size of the image in image segmentation.
+\item{a,b}{positive integers, the same as the values of RowSample and ColSample in the function: "sample", respectively. This is only used if the function "sample" was used to reduce the size of the image in image segmentation.
 }
 }
 \details{
@@ -26,8 +27,8 @@ extract_pheno(processed_image, Xsize = 1, Ysize = 1, a = 1, b = 1)
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 \item{pixelCount}{The total number of pixels of the segmented plant of interest.}
-\item{plantheight}{The height of the segmented plant by taking the 2.5th\% quantile and 97.56th\% qunatile of the segmented pixels of interest. }
-\item{plantwidth}{The width of the segmented plant by taking the 2.5th\% quantile and 97.56th\% qunatile of the segmented pixels of interest. }
+\item{plantheight}{The height of the segmented plant. }
+\item{plantwidth}{The width of the segmented plant. }
  \item{plantSize}{The size of the segmented plant based on the total number of pixels of the segmented plant of interest. i.e. Size = pixelCount * Xsize * Ysize.}
 
 %% ...

@@ -12,18 +12,18 @@ erosion(imagefile, mask = matrix(1, 3, 3))
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{imagefile}{
-  matrix of pixels of the original image.
+a binary matrix of the segmented image.
 }
 \item{mask}{
-matrix constructed by structing elements.
+a matrix constructed by structuring elements.
 }
 }
 \details{
 }
 \value{
-matrix of pixels of the eroded image.
+a binary matrix of the eroded image.
 }
-\references{
+\references{Image Analysis and Mathematical Morphology by Jean Serra, ISBN 0-12-637240-3 (1982)
 %% ~put references to the literature/web site here ~
 }
 
