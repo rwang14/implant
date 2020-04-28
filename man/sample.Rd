@@ -1,7 +1,7 @@
 \name{sample}
 \alias{sample}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Reducing size of an  RGB image
+\title{Reducing the size of an  RGB image
 %%  ~~function to do ... ~~
 }
 \description{

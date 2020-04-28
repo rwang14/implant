@@ -1,7 +1,7 @@
 \name{Color2Gray}
 \alias{Color2Gray}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Converting RGB to Grayscale.
+\title{Converting an RGB image to a grayscale image
 
 }
 \description{

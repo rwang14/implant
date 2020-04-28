@@ -2,7 +2,7 @@
 \alias{ColorG}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Identifying the region of interest (lower bound) for a plant
+Identifying the region of interest (lower bound) for a plant image
 }
 \description{This function is specifically designed for processing the plant images taken in the University of Nebraska-Lincoln (UNL) greenhouse Innovation Center. It helps identify the lower boundary of the plant by using images of empty pot with a plastic green bar. See the sample image: image_pot.png.
 }
