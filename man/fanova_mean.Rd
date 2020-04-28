@@ -4,7 +4,7 @@
 \title{Fitting Functional ANOVA Models
 %%  ~~function to do ... ~~
 }
-\description{This function is used for fitting fanova models using B-Spline basis expansion. The model performed by this function is constructed by a general functional model plus a penalty term for the second derivative of the spline basis function. The estimated penalty parameter, labmda, can be obtained by GCV (generalized cross validation).
+\description{This function is to fit fanova models by B-Spline basis expansion with a penalty term on the second derivative of the spline basis function. The penalty parameter, labmda, is chosen by GCV (generalized cross validation).
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -13,20 +13,18 @@ fanova_mean(Y.na.mat, X, tt, formula, K.int = 6,
 }
 
 \arguments{
-  \item{Y.na.mat}{ A n by t matrix of response variable (the extracted features), where n is the number of observations (for example, in the study of plant growth curve, each plant id would be an observation ), and t is the number of observation time points. In fact, the value of t should match the length of another argument shown below called "tt".
-
-If a measurement of an observed object (e.g., the height of a plant) is missing on a particular date shown in tt, the value should be filled by “NA” in the Y.na.mat matrix. In a word, the ith row of this matrix represents the values of the response varable of the ith observation at t different observation time points.
+  \item{Y.na.mat}{an n by t matrix of response variable (the extracted features), where each row contains the time series data of an observation, and each column contains all the observations at a given time. Here n is the number of biological units of the study (for example, in the study of plant growth curve, n is the number of plants and t is the number of observation time points. Any missing observation is filled by "NA" in the matrix. For example, if a measurement of plant is missing for plant i on date j, the (i,j) component in Y.na.mat should be filled by "NA".
 }
 
-  \item{X}{ A n by r dataframe of explanatory variables, where n is the number of observations and r is the number of explanatory variables.
+  \item{X}{an n by r dataframe or matrix of explanatory variables, where n is the number of observations and r is the number of explanatory variables.
 }
-  \item{tt}{ A t by 1 vector, in which elements imply the observation days.
+  \item{tt}{a t by 1 vector, with the same length as the rows in Y.na.mat. Each element implies the observation date.
 }
   \item{formula}{An object of class "formula", which specifies the model to use.
 }
-  \item{K.int}{A positive integer, which refers to the number of interior knots.
+  \item{K.int}{A positive integer, which refers to the number of interior knots of the B-spline.
 }
-  \item{order}{A positive integer, which refers to the order of the polynomial.
+  \item{order}{A positive integer, which refers to the order of the B-spline. In default, order = 4, which implies that we use a cubic polynomial to connect each two adjacent knots.
 %%     ~~Describe \code{order} here~~
 }
 
@@ -41,21 +39,20 @@ If a measurement of an observed object (e.g., the height of a plant) is missing 
   %\item{d2}{A non-negative integer. For the original function, use 2. For the second derivatives, use 4.
 %%     ~~Describe \code{d2} here~~
 %}
-  \item{lower}{Lower bound of the possible values of the smoothing parameter, lambda.
+  \item{lower}{Lower bound for the possible values of the smoothing parameter, lambda, used in GCV.
 %%
 }
-  \item{upper}{Upper bound of the possible values of the smoothing parameter, lambda.
+  \item{upper}{Upper bound for the possible values of the smoothing parameter, lambda, used in GCV.
 %%     ~~Describe \code{upper} here~~
 }
 }
-\details{This function can help users perform functional anova models, by assuming that each variable is a continuous function
-( in general, a function of time t). We use B-Spline as the basis function to expand each variable.
+\details{This function performs functional anova anlaysis. We use B-Spline as the basis function to expand the coefficient of each variable.
 
 For example, the intercept term of a functional anova model, mu(t), will be expanded as
 
-mu(t) = Sigma_\{j = 1 to K\}beta_\{mu,j\}B_\{u,j\}(t),
+mu(t) = sum_\{j = 1 to K\}beta_\{mu,j\}B_\{u,j\}(t),
 
-where beta_\{mu,j\} is a coefficient and B_\{u,j\}(t) is an order u B-spline basis function. u is defined by the argument "order" in this function. With another argument "K.int" (i.e., the number of interior knots) being defined, we can know the value of K, the rank of spline expansion for mu(t), according to the relationship K = K.int + order.
+where beta_\{mu,j\} is the coefficient for B_\{u,j\}(t), and B_\{u,j\}(t) is an order u B-spline basis function. u is given by the argument "order" in this function. With another argument "K.int" (i.e., the number of interior knots) being defined, we can obtain K, the rank of spline expansion for mu(t), according to the relationship K = K.int + order.
 
 %%  ~~ If necessary, more details than the description above ~~
 }

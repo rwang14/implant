@@ -4,7 +4,8 @@
 \title{Reducing the Size of a Matrix
 %%  ~~function to do ... ~~
 }
-\description{This function reduces the size of a matrix by picking sample elements from each row and each column of the original matrix, and use the selected elements to construct a reduced matrix. This function can be used to reduce sizes of binary images in the study of image processing.
+\description{This function reduces the size of a matrix by picking one component from every k1 components in each row and one component from every k2 components in each column of the input matrix, and use the selected elements to construct a reduced matrix, where k1 and k2 are specified by "RowSample" and "ColSampe", respectively.
+%sample elements from each row and each column of the original matrix, and use the selected elements to construct a reduced matrix. This function can be used to reduce sizes of binary images in the study of image processing.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -12,15 +13,19 @@ sampleMatrix(M, RowSample = 1, ColSample = 1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{M}{the original matrix to reduce.
+  \item{M}{the original input matrix.
 %%     ~~Describe \code{x} here~~
 }
-\item{RowSample}{a positive integer. It is the increment of the index of the selected elements. For example, RowSample = 2 means you select the 1st, 3rd, ... element from each row of the original matrix to construct your new matrix.
+\item{RowSample}{a positive integer for the rows. Select one component from every RowSample components.
+%It is the increment of the index of the selected elements.
+For example, RowSample = 2 means you select the 1st, 3rd, ... element from each row of the original matrix to construct your new matrix.
 }
-\item{ColSample}{a positive integer. It is the increment of the index of the selected elements. For example, ColSample = 2 means you select the 1st, 3rd, ... element from each column of the original matrix to construct your new matrix.
+\item{ColSample}{a positive integer for the columns. Select one component from every ColSample components.
+%It is the increment of the index of the selected elements.
+For example, ColSample = 2 means you select the 1st, 3rd, ... element from each column of the original matrix to construct your new matrix.
 }
 }
-\details{This function can be used to reduce the size of a matrix by picking sample elements of the original matrix as the elements of the reduced matrix. For example, "RowSample = 2, and ColSample = 2"" means that we pick the 1st, the 3rd, the 5th,..., element of each row and each column of the original matrix as the element of the reduced matrix.
+\details{This function can be used to reduce the size of a matrix by picking sample elements of the original matrix as the elements of the reduced matrix. For example, "RowSample = 2", and "ColSample = 2" reduce the original size of a matrix to a quarter.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{the reduced matrix.
@@ -37,7 +42,7 @@ sampleMatrix(M, RowSample = 1, ColSample = 1)
 %%  ~~who you are~~
 }
 \note{This function is different from another function in this package called "sample( )". That function is used to
-reduce the size of 3-D arraysm while this function, sampleMatrix( ), is used to reduce the size of matrices.
+reduce the size of 3-D arrays while this function, sampleMatrix( ), is used to reduce the size of matrices.
 %%  ~~further notes~~
 }
 
@@ -48,6 +53,7 @@ reduce the size of 3-D arraysm while this function, sampleMatrix( ), is used to 
 }
 \examples{
 #read the red band of an RGB image
+library(png)
 image = readPNG(system.file("extdata", "image1.png",
                              package = "implant",
                              mustWork = TRUE))[,,1]

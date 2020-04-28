@@ -4,7 +4,7 @@
 \title{Obtain the  Matrix of the Segmented Image using K-means Clustering.
 %%  ~~function to do ... ~~
 }
-\description{This function is to obtain the  matrix of the Segmented Image using K-means Method, together with the means and standard deviations of the pixel intensities within different classes.
+\description{This function is to obtain a segmented plant image using K-means Clustering Method, together with the means and standard deviations of the pixel intensities for different classes.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -12,10 +12,10 @@ imkmeans(Y,k)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{Y}{A matrix of the response variable.
+  \item{Y}{an input matrix. For plant segmentation, we recommend to use the relative green intensity of the image.
 %%     ~~Describe \code{x} here~~
 }
-  \item{k}{A positive integer, which refers to the number of classes that you want to classify the image into. In default, k = 2   (the binary image).
+  \item{k}{a positive integer, which refers to the cluster number. In default, k = 2 to seperate the plant from the background.
 
   }
 }
@@ -23,12 +23,12 @@ imkmeans(Y,k)
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-\item{X}{A matrix of the segmented image, using the K-means method.
+\item{X}{a  matrix of the class label of the segmented image.
 
 }
-\item{mu}{A k by 1 matrix. The k rows represent the mean of the pixel intensities of the response variable under k different classes, respectively.
+\item{mu}{a k by 1 matrix. Each row represents the sample mean of each cluster.
 }
-\item{sigma}{A k by 1 matrix. The k rows represent the standard deviation of the pixel intensities of the response variable under k different classes, respectively.
+\item{sigma}{a k by 1 matrix. Each row represents the sample standard deviation of each cluster.
 }
 }
 \references{
@@ -47,16 +47,18 @@ imkmeans(Y,k)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-install.packages("imager")
-library(imager)
-orig1 = load.image(system.file("extdata", "image1.png",
-                                      package = "implant", mustWork = TRUE))
-orig = resize(orig1, size_x = 500, size_y = 500, size_z = 1, size_c = 3)
-I = orig[,,1,2]/(orig[,,1,1]+orig[,,1,2]+orig[,,1,3])
-Y = t(I)
+%install.packages("imager")
+library(png)
+orig = readPNG(system.file("extdata", "image1.png",
+                            package = "implant", mustWork = TRUE))
+writePNG(orig, "~/Original_Image.png")
+
+Y = orig[, , 2]/(orig[, , 1]+orig[, , 2]+orig[, , 3])
 k = 2
 X = imkmeans(Y,k)$X
 mu = imkmeans(Y,k)$mu
 sigma = imkmeans(Y,k)$sigma
+#convert a matrix of 1&2 to a matrix of 0&1
 output = matrix(as.numeric(X),nrow = nrow(X), ncol = ncol(X))-1
+writePNG(output, "~/kmeans.png")
 }

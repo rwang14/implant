@@ -10,47 +10,41 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 
 \usage{
-HMRF_EM(X,Y,Z,mu,sigma,k,em_iter,map_iter, beta = 2,
+HMRF_EM(X, Y, Z, k, em_iter, map_iter, beta = 2,
         epsilon_em = 0.00001, epsilon_map = 0.00001)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{X}{A matrix of the inital labelled image, which can be obtained using other segmentation methods, such as K-means.
+  \item{X}{an m by n matrix of the inital labels for an image, which can be obtained using initital segmentation methods, such as K-means or thresholding methods.
 %%     ~~Describe \code{x} here~~
 }
-\item{Y}{A m by n matrix of the response variable. Note that this Y should be the same as the argument Y in the function imkmeans().
+\item{Y}{an m by n matrix of pixel intensity. For plant segmentation, we recommend to use relative green. Note that Y should be the same as the argument Y in the function imkmeans().
 }
-\item{Z}{ A m by n matrix. This is to have a brief edge detection of the response variable. e.g., We can obtain Z using the Canny edge detector:
-Z = cannEdges( )[,,1,1] from the package: imager. See the example for details.
-}
-\item{mu}{A k by 1 matrix. The k rows represent the mean of the pixel intensities of the response variable under k different classes, respectively. This can be obtained by another function from this package, called imkmeans( ). See the example for details.
+\item{Z}{ an m by n binary matrix, giving an estimate for the object edges in Y. We can obtain Z using the Canny edge detector:
+Z = cannEdges(Y )[ , , 1, 1] from the package: imager. See the example for details.
 }
 
-\item{sigma}{A k by 1 matrix. The k rows represent the standard deviation of the pixel intensities of the response variable under k different classes, respectively. This can be obtained by another function from this package, called imkmeans( ). See the example for details.
+\item{em_iter}{ A positive integer, which is the number of iteration steps of the EM Algorithm.
 }
-\item{k}{A positive integer, which refers the number of classes that you want to classify the image into. In default, k = 2. Note that this Y should be the same as the argument Y in the function imkmeans( ).
+\item{map_iter}{ A positive integer, which is the number of iteration steps of calculating MAP (the maximum posterior estimate).
 }
-\item{em_iter}{ A positive integer, which is the number of iteration steps of EM Algorithm.
+\item{beta}{The clique potential parameter for neighbourhood dependence. In default, beta = 2. See details in the supplementary file on the HMRF Model. This beta is equivalent to the Psi in the supplentary file (see page 29).
 }
-\item{map_iter}{ A positive integer, which is the number of iteration steps of MAP.
+\item{epsilon_em}{A small positive number, which is the convergence criterion of the EM Alogrithm.
 }
-\item{beta}{The clique potential parameter, in default, beta = 2. See more in the supplementary file of HMRF Model. This beta is equivalent to the Psi in the supplentary file (see page 29).
-}
-\item{epsilon_em}{A small positive number, which is the convergence criterion of EM Alogrithm.
-}
-\item{epsilon_map}{A small positive number, which is the convergence criterion of MAP.
+\item{epsilon_map}{A small positive number, which is the convergence criterion of MAP (maximum posterior estimate).
 }
 }
-\details{The arguement Z can be obatined by CannyEdge detector using function cannEdges( ) from the package: imager. However,
-since this package needs to involve Rcpp and other dependent packages which may increase installation complexity of our package: implant. Considering not every user needs to use this function HMRF_EM( ), we recommend the users to install the package: imager by themselves if they need.
+\details{1. More detailed explanation about this method can be found in the supplymentary file:
+
+https://github.com/rwang14/implant/blob/master/vignettes/HMRF_EM.pdf
+
+2. The arguement Z can be obatined by CannyEdge detector using function cannEdges( ) from the package: imager. However,
+since this package needs to involve Rcpp and other dependent packages which may increase installation complexity of our package, we recommend the users to install the package: imager by themselves if needed.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-\item{image_matrix}{A matrix of the segmented image.
-}
-\item{mu}{Updated mu.
-}
-\item{sigma}{Updated sigma.
+\item{image_matrix}{A matrix giving labels for the segmented image.
 }
 }
 \references{Wang, Quan (2012), “Hmrf-em-image:  implementation  of  the  hidden markov  random  field  model  and  its  expectation-maximization algorithm.”arXivpreprintarXiv:1207.3510
@@ -58,11 +52,7 @@ since this package needs to involve Rcpp and other dependent packages which may 
 \author{
 %%  ~~who you are~~
 }
-\note{1. More detailed explanation about this method can be found in the supplymentary file:
-
-https://github.com/rwang14/implant/blob/master/vignettes/HMRF_EM.pdf
-
-2. This function is modified based on the matlab code written by Quan Wang (see reference).
+\note{ This function is modified based on the matlab code written by Quan Wang (see reference).
 %%  ~~further notes~~
 }
 \seealso{

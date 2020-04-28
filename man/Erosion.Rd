@@ -32,6 +32,7 @@ matrix of pixels of the eroded image.
 }
 \examples{
 #read an RGB image
+library(png)
 image = readPNG(system.file("extdata", "image1.png",
                              package = "implant",
                              mustWork = TRUE))[,,c(1:3)]

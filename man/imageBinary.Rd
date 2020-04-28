@@ -25,10 +25,10 @@ threshold2 = 0.075)
   }
 }
 \details{
-In processing the green plants images taken in the greenhouse system, the two thresholds are to delete the black pixels and to segment the plant green pixels,respectively.
+The plant pixels are classified as the intersection of sum of RGB intensities larger than threshold 1 and green intensities larger than threshold 2.
 }
 \value{
-A matrix of pixels of the processed image.
+A matrix of the processed image.
 }
 \references{
 %% ~put references to the literature/web site here ~
