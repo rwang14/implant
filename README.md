@@ -10,32 +10,31 @@ Download the package in R:
 
 Note: 
 
-1. For Windows users, please install Rtools before installing the package. Please use the following link and follow its instruction to install Rtools by clicking the link. Note that you should put the location of the Rtools on the PATH, following the instruction from the link. See details by clicking the link: https://cran.r-project.org/bin/windows/Rtools/
+1. Your R version is recommended to be >=3.5.3 in order to use devtools.
+
+2. For Windows users, please install Rtools before installing the package. Please use the following link and follow its instruction to install Rtools by clicking the link. See details by clicking the link: https://cran.r-project.org/bin/windows/Rtools/history.html
 
   In summary:
 
-  Step 1. Install Rtools40.
+  Step 1. Install Rtools(You need to install the correct version of Rtools that matches the version of your R).
+  (Don't forget to click: Add rtools to system PATH during your installation)
 
-  Step 2. To put the location of the Rtools on the PATH, run the following command in R:
+  Step 2. Restart R.
 
-    writeLines('PATH="${RTOOLS40_HOME}\\usr\\bin;${PATH}"', con = "~/.Renviron")
-
-  Step 3. Restart R.
-
-  Step 4. Run the following command in R:
+  Step 3. Run the following command in R:
     
     install.packages("devtools");
 
     library(devtools)
 
-  Step 5. Run the following command in R:
+  Step 4. Run the following command in R:
   
      devtools::install_github("rwang14/implant");
      
      library(implant)
 
 
-2. For Mac users, please install Xcode before installing the package. Please download Xcode from: https://developer.apple.com/xcode/resources/
+3. For Mac users, please install Xcode before installing the package. Please download Xcode from: https://developer.apple.com/xcode/resources/
 
   In summary:
 
