@@ -12,7 +12,7 @@ Note:
 
 1. Your R version is recommended to be >=3.5.3 in order to use devtools.
 
-2. For Windows users, please install Rtools before installing the package. Please use the following link and follow its instruction to install Rtools by clicking the link. Note that you should put the location of the Rtools on the PATH, following the instruction from the link. See details by clicking the link: https://cran.r-project.org/bin/windows/Rtools/history.html
+2. For Windows users, please install Rtools before installing the package. Please use the following link and follow its instruction to install Rtools by clicking the link. See details by clicking the link: https://cran.r-project.org/bin/windows/Rtools/history.html
 
   In summary:
 
