@@ -21,7 +21,7 @@ EGThreshold = 0.1, weight = c(-1, 2, -1), changeto = c(1, 1, 1))
 
 %}
 %\item{Tol}{
-small number. Essentially, this argument to add the tolarance when identifying the lower boundary of the region of interest.
+%small number. Essentially, this argument to add the tolarance when identifying the lower boundary of the region of interest.
 
 % }
 \item{Bthreshold}{
