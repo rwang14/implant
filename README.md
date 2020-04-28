@@ -13,7 +13,7 @@ Otherwise, follow the steps below to install "devtools" package first.
 Note: Your R version is recommended to be >=3.5.3 in order to use devtools.
 
 **Windows users:** 
-please install Rtools before installing the package. Use the link https://cran.r-project.org/bin/windows/Rtools/history.html and follow its instruction to install Rtools. Note that the version of Rtools should matach to the version of R.
+please install Rtools before installing the package. Use the link https://cran.r-project.org/bin/windows/Rtools/history.html and follow its instruction to install Rtools. Note that the version of Rtools should match to the version of R.
 
   Step 1. Install Rtools (You need to install the correct version of Rtools that matches the version of your R).
 
