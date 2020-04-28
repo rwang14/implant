@@ -17,7 +17,6 @@ Note:
   In summary:
 
   Step 1. Install Rtools(You need to install the correct version of Rtools that matches the version of your R).
-  (Don't forget to click: Add rtools to system PATH during your installation)
 
   Step 2. Restart R.
 
