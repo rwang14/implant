@@ -3,17 +3,17 @@ data_new = read.csv(system.file("extdata", "data.csv",package = "implant", mustW
 #The first column records the positions of the observations from the original dataset, can be ignored
 Y = data_new[,-c(1:3)]
 #This step is to factorize each factor
-X1 = as.factor(data_new$Genotype)
-X2 = as.factor(data_new$Block)
-X = data.frame(X1,X2)
-formula = "~ X[,1]+X[,2]"
+Genotype = as.factor(data_new$Genotype)
+Block = as.factor(data_new$Block)
+X = data.frame(Genotype,Block)
+formula = "~ Genotype+Block"
 tt = seq(from = 0, to = 44,by = 2)
 fit = fanova_mean(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 4, lower = -10, upper = 15)
 fit$lambda
 fit$est_fun
 
 #demo2
-data_Xu = read.csv(system.file("extdata", "data_Xu.txt",package = "implant", 
+data_Xu = read.csv(system.file("extdata", "data_Xu.txt",package = "implant",
                                mustWork = TRUE), sep = "")
 X1 = as.factor(data_Xu$water)
 X2 = as.factor(data_Xu$genotype)

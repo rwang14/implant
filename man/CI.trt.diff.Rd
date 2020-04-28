@@ -58,19 +58,17 @@ CI.trt.diff(fit, j1, j2, alpha)
 #load the data
 data_new = read.csv(system.file("extdata","data.csv",
                                  package = "implant", mustWork = TRUE))
-#The first three columns of data.csv are the original position of the observation, genotype and block
+#The first three columns of data_new refer to the original position of the observations from the
+#original dataset, genotype and block, respectively
 Y = data_new[,-c(1:3)]
 #This step is to factorize each factor
-X1 = as.factor(data_new$Genotype)
-X2 = as.factor(data_new$Block)
-X = data.frame(X1,X2)
-formula = "~ X[,1]+X[,2]"
-tt = seq(from = 0, to = 44, by = 2)
-fit = fanova_mean(Y.na.mat = Y, X = X,
-                  tt = tt,
-                  formula = formula,
-                  K.int = 6, order = 4)
-
+Genotype = as.factor(data_new$Genotype)
+Block = as.factor(data_new$Block)
+X = data.frame(Genotype,Block)
+formula = "~ Genotype+Block"
+tt = seq(from = 0, to = 44,by = 2)
+#fit anova
+fit = fanova_mean(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 4, lower = -10, upper = 15)
 ci_diff = CI.trt.diff(fit = fit,j1 = 5, j2 = 4, alpha = 0.05)
 plot(tt,ci_diff$trt,type = "l")
 lines(tt,ci_diff$lb, col = "blue")
