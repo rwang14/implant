@@ -18,7 +18,6 @@ ColorB(image, colThreshold = 0.5)
   a positive real number, which is the used to identify the black bars appear in the columns of the image.
   }
 }
-}
 \details{
 }
 \value{

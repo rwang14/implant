@@ -21,7 +21,7 @@ Exchange 0 and 1 in the input binary matrix.
 }
 \value{
 A binary matrix with exchanged background and the foreground.
-
+}
 \references{
 %% ~put references to the literature/web site here ~
 }

@@ -1,25 +1,24 @@
 \name{CI.trt}
 \alias{CI.trt}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ Estimating a linear combination of treatment effects and obtaining its confidence regions
+\title{ Estimating a linear combination of treatment effects and obtaining its confidence regions in FANOVA
 %%  ~~function to do ... ~~
 }
-\description{This function is used for estimating a linear combination of treatment effects and its confidence regions.
-Moreover, it can be used to test the coefficient of the difference between two treatments.
+\description{This function is used for estimating a linear combination of treatment effects and its confidence regions in functional data analysis.
+Moreover, it can be used for testing the difference between two treatments.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-CI.trt(fit,L,alpha)
+CI.trt(fit, L, alpha)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{fit}{An object of output obtained by function "fanova_mean".
+  \item{fit}{an object of output obtained by function "fanova_mean".
 }
-  \item{L}{A numeric contrast vector which specifies the linear combination of the parameters of interest.
+  \item{L}{a numeric contrast vector corresponding to the design matrix in "fanova_mean", which specifies the linear combination of the parameters of interest.
 %%     ~~Describe \code{x} here~~
 }
-\item{alpha}{ A positive small number, which is the probability of making type I error. e.g., if you want to calculate
-the 0.95 confidence band, take alpha = 0.05.
+\item{alpha}{a positive small number between 0 and 1. 1-alpha gives the confidence level.
 }
 }
 \details{
@@ -27,7 +26,7 @@ the 0.95 confidence band, take alpha = 0.05.
 }
 \value{
 \item{trt}{
-A t by 1 vector which includes the estimated mean of the treatment mean at different observation time points.
+a t by 1 vector giving the estimated linear combination of coefficients at t observation time points.
 }
 \item{ub}{
 A t by 1 vector which indicates the upper bound of the (1-alpha) confidence band at different time points.
