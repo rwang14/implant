@@ -1,6 +1,6 @@
 # implant: An R Package for the High-throughput Phenotyping Pipeline for Image Processing and Functional Growth Curve Analysis
 
-Package Installation:
+Package Installation:    
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
