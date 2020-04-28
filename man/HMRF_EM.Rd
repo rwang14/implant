@@ -21,18 +21,18 @@ HMRF_EM(X, Y, Z, k, em_iter, map_iter, beta = 2,
 \item{Y}{an m by n matrix of pixel intensity. For plant segmentation, we recommend to use relative green. Note that Y should be the same as the argument Y in the function imkmeans().
 }
 \item{Z}{ an m by n binary matrix, giving an estimate for the object edges in Y. We can obtain Z using the Canny edge detector:
-Z = cannEdges(Y )[ , , 1, 1] from the package: imager. See the example for details.
+Z = cannEdges (Y) [  ,  , 1, 1] from the package: imager. See the example for details.
 }
 
 \item{em_iter}{ A positive integer, which is the number of iteration steps of the EM Algorithm.
 }
-\item{map_iter}{ A positive integer, which is the number of iteration steps of calculating MAP (the maximum posterior estimate).
+\item{map_iter}{ A positive integer, which is the number of iteration steps of calculating MAP (the maximum a posterior estimation).
 }
 \item{beta}{The clique potential parameter for neighbourhood dependence. In default, beta = 2. See details in the supplementary file on the HMRF Model. This beta is equivalent to the Psi in the supplentary file (see page 29).
 }
 \item{epsilon_em}{A small positive number, which is the convergence criterion of the EM Alogrithm.
 }
-\item{epsilon_map}{A small positive number, which is the convergence criterion of MAP (maximum posterior estimate).
+\item{epsilon_map}{A small positive number, which is the convergence criterion of MAP (maximum a posterior estimation).
 }
 }
 \details{1. More detailed explanation about this method can be found in the supplymentary file:

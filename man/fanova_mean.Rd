@@ -27,10 +27,10 @@ fanova_mean(Y.na.mat, X, tt, formula, K.int = 6,
   \item{order}{a positive integer, which refers to the order of the B-spline. In default, order = 4, which implies that we use a cubic polynomial to connect each two adjacent knots.
 %%     ~~Describe \code{order} here~~
 }
- \item{lower}{lower bound for the possible values of the smoothing parameter, lambda, used in GCV.
+ \item{lower}{lower bound for the possible values of log (smoothing parameter), i.e., log (lambda), used in GCV.
 %%
 }
-  \item{upper}{upper bound for the possible values of the smoothing parameter, lambda, used in GCV.
+  \item{upper}{upper bound for the possible values of log (smoothing parameter), i.e., log (lambda), used in GCV.
 %%     ~~Describe \code{upper} here~~
 }
 
