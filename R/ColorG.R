@@ -1,5 +1,9 @@
-ColorG = function(imagefile, rowThreshold = 0.007, block = 5, Tol = 2, Bthreshold = 60 / 255,
+ColorG = function(imagefile, rowThreshold = 0.007,
+                  #block = 5, Tol = 2,
+                  Bthreshold = 60 / 255,
                   EGThreshold = 0.1, weight = c(-1, 2, -1), changeto = c(1, 1, 1)){
+  block = 5
+  Tol = 2
   weight = weight / sqrt(sum(weight^2))
   imageweight = imagefile[, , 1] * weight[1] + imagefile[, , 2] * weight[2] + imagefile[, , 3] * weight[3]
   imagesum = imagefile[, , 1] + imagefile[, , 2] + imagefile[, , 3]
@@ -27,7 +31,10 @@ ColorG = function(imagefile, rowThreshold = 0.007, block = 5, Tol = 2, Bthreshol
     imageG[flas == 1] = changeto[2]
     imageB[flas == 1] = changeto[3]
     imagefile[, , 1] = imageR; imagefile[, , 2] = imageG; imagefile[, , 3] = imageB
-    res = list(uppb = index[1], lowb = index[2], rowmean = rowMeans(flas), c = imagefile)
+    res = list(#uppb = index[1],
+               lowb = index[2],
+               #rowmean = rowMeans(flas),
+               c = imagefile)
   } else {
     res = list(c = imagefile)
   }

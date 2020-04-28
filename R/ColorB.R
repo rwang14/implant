@@ -1,5 +1,12 @@
-ColorB = function(imagefile, colThreshold = 0.5, colTol = c(5, 5), EGThreshold = 0.075, changefromub = rep(0.1, 3),
-                  changeto = c(1, 1, 1)){
+ColorB = function(imagefile,
+                  colThreshold = 0.5)
+                  #colTol = c(5, 5), EGThreshold = 0.075, changefromub = rep(0.1, 3),
+                  #changeto = c(1, 1, 1)
+                  {
+  colTol = c(5, 5)
+  EGThreshold = 0.075
+  changefromub = rep(0.1, 3)
+  changeto = c(1, 1, 1)
   #Find the main back bars, if flas[,]== TRUE, then transfer into 1 (white) in later steps
   #changefromub is the threshold level of the black bar(each pixel)
   flas = (imagefile[, , 1] < changefromub[1]) & (imagefile[, ,2] < changefromub[2])  & (imagefile[, ,3] < changefromub[3])
