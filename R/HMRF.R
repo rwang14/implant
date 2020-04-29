@@ -2,16 +2,16 @@ HMRF = function(X, Y, Z, em_iter, map_iter, beta = 2, epsilon_em = 0.00001, epsi
   k = 2
   x = vec(X)
   y = vec(Y)
-  if (unique(x) == c(1,2)){
+  if (as.vector(unique(x)) == c(1,2)){
     x = x
   }
   else{
     for ( i in 1:length(x)){
-      if (x[i] == 1){
-        x[i] = 0
+      if (x[i] == 0){
+        x[i] = 1
       }
       else{
-        x[i] = 1
+        x[i] = 2
       }
     }
   }
