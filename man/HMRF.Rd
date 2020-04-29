@@ -64,7 +64,7 @@ library(implant)
 library(png)
 orig = readPNG(system.file("extdata", "reduced.png", package = "implant", mustWork = TRUE))
 #Define the response as relative green.
-Y = orig[ , , 2]/(orig[ , , 1]+orig[ , , 2]+orig[ , , 3])
+Y = orig[ , , 2]/(orig[ , , 1] + orig[ , , 2] + orig[ , , 3])
 #Z is a matrix obtained by CannyEdge detector
 Z = read.csv(system.file("extdata", "Z.csv",
                          package = "implant", mustWork = TRUE))
