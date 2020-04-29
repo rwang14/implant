@@ -60,23 +60,23 @@ since this package needs to involve Rcpp and other dependent packages which may 
 }
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 \examples{
-library(imager)
-orig1 = load.image(system.file("extdata", "image1.png",
-                                      package = "implant", mustWork = TRUE))
-orig = resize(orig1, size_x = 500, size_y = 500, size_z = 1, size_c = 3)
+library(implant)
+orig = readPNG(system.file("extdata", "reduced.png", package = "implant", mustWork = TRUE))
 #Define the response as relative green.
-I = orig[,,1,2]/(orig[,,1,1]+orig[,,1,2]+orig[,,1,3])
-Y = t(I)
-Z = cannyEdges(orig)
-Z = Z[,,1,1]
-Z = t(Z)
+Y = orig[ , , 2]/(orig[ , , 1]+orig[ , , 2]+orig[ , , 3])
+#Z is a matrix obtained by CannyEdge detector
+Z = read.csv(system.file("extdata", "Z.csv",
+                         package = "implant", mustWork = TRUE))
+##Note: Users can obtain Z using the package "imager" and the function
+#CannyEdges( ) for different images
+#Z = t(cannyEdges(orig)[ , , 1, 1])
 #Take the initial label of EM algorithm using K-means
-X = image_kmeans(Y,k = 2)$X
-mu = image_kmeans(Y,k = 2)$mu
-sigma = image_kmeans(Y,k = 2)$sigma
-output = matrix(as.numeric(X),nrow = nrow(X), ncol = ncol(X))-1
-#Run the HMRF Model
-img = HMRF(X,Y,Z,mu,sigma,k = 2,em_iter = 20,map_iter = 20,beta = 2,
+X = image_kmeans(Y, k = 2)$X
+#Obtain the image produced by kmeans clustering
+output = matrix(as.numeric(X), nrow = nrow(X), ncol = ncol(X)) - 1
+writePNG(output,"~/kmeans.png")
+#Run the HMRF Model. Note that it may take a lot of time ...
+img = HMRF(X, Y, Z, em_iter = 20, map_iter = 20, beta = 2,
               epsilon_em = 0.00001, epsilon_map = 0.00001)
 #Obtain the matrix of the segmented image
 image = img$image_matrix
@@ -85,4 +85,4 @@ imageD = dilation(image)
 imageDE = erosion(imageD)
 imageDEE = erosion(imageDE)
 imageDEED = dilation(imageDEE)
-}
+writePNG(imageDEED, "~/HMRF.png")
