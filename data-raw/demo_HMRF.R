@@ -1,4 +1,5 @@
 library(implant)
+library(png)
 orig = readPNG(system.file("extdata", "reduced.png", package = "implant", mustWork = TRUE))
 #Define the response as relative green.
 Y = orig[ , , 2]/(orig[ , , 1]+orig[ , , 2]+orig[ , , 3])
@@ -26,3 +27,4 @@ imageD = dilation(image)
 imageDE = erosion(imageD)
 imageDEE = erosion(imageDE)
 imageDEED = dilation(imageDEE)
+writePNG(imageDEED, "~/HMRF.png")
