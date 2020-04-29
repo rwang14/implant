@@ -61,6 +61,7 @@ since this package needs to involve Rcpp and other dependent packages which may 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 \examples{
 library(implant)
+library(png)
 orig = readPNG(system.file("extdata", "reduced.png", package = "implant", mustWork = TRUE))
 #Define the response as relative green.
 Y = orig[ , , 2]/(orig[ , , 1]+orig[ , , 2]+orig[ , , 3])
