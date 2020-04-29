@@ -24,15 +24,15 @@ HMRF(X, Y, Z, k, em_iter, map_iter, beta = 2,
 Z = cannEdges (Y) [  ,  , 1, 1] from the package: imager. See the example for details.
 }
 
-\item{em_iter}{ A positive integer, which is the number of iteration steps of the EM Algorithm.
+\item{em_iter}{a positive integer, which is the number of iteration steps of the EM Algorithm.
 }
-\item{map_iter}{ A positive integer, which is the number of iteration steps of calculating MAP (the maximum a posterior estimation).
+\item{map_iter}{a positive integer, which is the number of iteration steps of calculating MAP (the maximum a posterior estimation).
 }
 \item{beta}{The clique potential parameter for neighbourhood dependence. In default, beta = 2. See details in the supplementary file on the HMRF Model. This beta is equivalent to the Psi in the supplentary file (see page 29).
 }
-\item{epsilon_em}{A small positive number, which is the convergence criterion of the EM Alogrithm.
+\item{epsilon_em}{a small positive number, which is the convergence criterion of the EM Alogrithm.
 }
-\item{epsilon_map}{A small positive number, which is the convergence criterion of MAP (maximum a posterior estimation).
+\item{epsilon_map}{a small positive number, which is the convergence criterion of MAP (maximum a posterior estimation).
 }
 }
 \details{1. More detailed explanation about this method can be found in the supplymentary file:
