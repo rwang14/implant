@@ -8,9 +8,14 @@ Block = as.factor(data_new$Block)
 X = data.frame(Genotype,Block)
 formula = "~ Genotype+Block"
 tt = seq(from = 0, to = 44,by = 2)
-fit = fanova_mean(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 4, lower = -10, upper = 15)
+fit = fanova(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 4, lower = -10, upper = 15)
 fit$lambda
 fit$est_fun
+ci_diff = CI.contrast(fit = fit, j1 = 4, j2 = 1, alpha = 0.05)
+plot(tt,ci_diff$trt,type = "l", ylim = c(-100000, 80000))
+lines(tt,ci_diff$lb, col = "green")
+lines(tt,ci_diff$ub, col = "blue")
+
 
 #demo2
 data_Xu = read.csv(system.file("extdata", "data_Xu.txt",package = "implant",
@@ -19,7 +24,7 @@ X1 = as.factor(data_Xu$water)
 X2 = as.factor(data_Xu$genotype)
 X = data.frame(X1,X2)
 Y = data_Xu[,c(1:20)]
-fit = fanova_mean(Y.na.mat = Y, X = X,tt = c(0:15,17:20),
+fit = fanova(Y.na.mat = Y, X = X,tt = c(0:15,17:20),
                   formula = "~X[,1]+X[,2]+X[,1]:X[,2]"
                   ,K.int = 6, order = 4,lower = -10, upper = 15)
 fit$est_fun

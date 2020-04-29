@@ -1,0 +1,120 @@
+\name{fanova}
+\alias{fanova}
+%- Also NEED an '\alias' for EACH other topic documented here.
+\title{Fitting Functional ANOVA Models
+%%  ~~function to do ... ~~
+}
+\description{This function is to fit fanova models by B-Spline basis expansion with a penalty term on the second derivative of the spline basis function. The penalty parameter, labmda, is chosen by GCV (generalized cross validation).
+%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+}
+\usage{
+fanova(Y.na.mat, X, tt, formula, K.int = 6,
+            order = 4, lower = -10, upper = 15)
+}
+
+\arguments{
+  \item{Y.na.mat}{an n by t matrix of response variable (the extracted features), where each row contains the time series data of an observation, and each column contains all the observations at a given time. Here n is the number of biological units of the study (for example, in the study of plant growth curve, n is the number of plants and t is the number of observation time points. Any missing observation is filled by "NA" in the matrix. For example, if a measurement of plant is missing for plant i on date j, the (i,j) component in Y.na.mat should be filled by "NA".
+}
+
+  \item{X}{an n by r dataframe or matrix of explanatory variables, where n is the number of observations and r is the number of explanatory variables.
+}
+  \item{tt}{a t by 1 vector, with the same length as the rows in Y.na.mat. Each element implies the observation date.
+}
+  \item{formula}{an object of class "formula", which specifies the model to use.
+}
+  \item{K.int}{a positive integer, which refers to the number of interior knots of the B-spline.
+}
+  \item{order}{a positive integer, which refers to the order of the B-spline. In default, order = 4, which implies that we use a cubic polynomial to connect each two adjacent knots.
+%%     ~~Describe \code{order} here~~
+}
+ \item{lower}{lower bound for the possible values of log (smoothing parameter), i.e., log (lambda), used in GCV.
+%%
+}
+  \item{upper}{upper bound for the possible values of log (smoothing parameter), i.e., log (lambda), used in GCV.
+%%     ~~Describe \code{upper} here~~
+}
+
+  %\item{d0}{
+%%     ~~Describe \code{d0} here~~
+ %A non-negative integer. 0 if you want to evaluate the original basis function,
+ %1 for the first derivative and 2 for the second derivatives of the basis function.
+%}
+  %\item{d1}{A non-negative integer. For the original function, use 2. For the second derivatives, use 4.
+%%     ~~Describe \code{d1} here~~
+%}
+  %\item{d2}{A non-negative integer. For the original function, use 2. For the second derivatives, use 4.
+%%     ~~Describe \code{d2} here~~
+%}
+}
+\details{Assume that the response variable of our model is one of the phenotypical parameters, e.g., the size of a plant. Let \eqn{y_i(t)} be the size of the ith plant measured at time t, where \eqn{i = 1, \ldots, n} with n the number of plants studied. Suppose the mean of the response variable is influenced by q factors. For \eqn{i\in \{1, ..., n\}, \ j \in \{1, \ldots, q\}}, we define \eqn{{A}_{ij} = (A_{ijk})_{k=2}^{l_j}} as the categorical indicator of the jth factor of the ith plant, where \eqn{l_j} is the number of levels that the jth factor has. Specifically,  \eqn{A_{ijk}} is set to one if the jth factor of the ith plant has level ``k"; otherwise, \eqn{A_{ijk}=0}. When all \eqn{A_{ijk}} are zeros, it indicates the jth factor level of the ith plant is ``\eqn{1}".  A functional multi-way ANOVA model with interactions can be written in the following form:
+\deqn{y_i(t) = \mu(t)+ {A}'_{i1}{a}_1(t)+...+{A}'_{iq} {a}_q(t)+ ({A}'_{i1}\otimes {A}'_{i2}){a}_{1,2}(t)+... +({A}'_{1i}\otimes \ldots\otimes {A}'_{iq}){a}_{1,2,...,q}(t)+ \epsilon_i(t),}
+where \eqn{{a}_j(t)} are the treatment effect functions of the jth factor with dimension \eqn{l_j-1}. \eqn{{a}_{j_1, j_2}(t)} are the pairwise interaction effect functions between factor \eqn{j_1} and \eqn{j_2} with dimension \eqn{(\ell_{j_1}-1)(\ell_{j2}-1)}, and \eqn{{a}_{1,2,...,q}(t)} are the interaction effect functions of all factors with dimensions \eqn{\prod_{j=1}^q (l_{j}-1)}, and \eqn{\epsilon_i(t)}s are independent random processes with zero means. The above genearl model provides a full specification of interactions among factors. In real applications, researchers can build up a simpler model with less interaction terms or even without interactions according to the purpose of the study.
+
+With the model, we can estimate the temporal varying coefficient functions.%\eqn{{a}_1(\cdot ),\ ...,\ {a}_q(\cdot ),  {a}_{1,2}(t\cdot ),...,} and \eqn{{a}_{1,2,...,q}(\cdot )}.
+First, we approximate all of the coefficient functions with rank K splines expansions. For example, \eqn{a_{1k}(t) =
+\sum_{l=1}^{K}\beta_{a_{1i},l}B_{u,l}(t)} , where \eqn{B_{u,l}(t)} is an order \eqn{u} B-spline basis function, and \eqn{\beta_{a_{1},l}} is the corresponding coefficient. Then, the problem is reduced to estimate all those coefficients \eqn{\beta}s
+in front of basis functions. We apply the least squares estimation with penalizations on the \eqn{dth} derivatives of the rank \eqn{K} spline expansion functions. We minimize the penalized error sum of squares:
+\deqn{\sum_{i=1}^{n}\sum_{j}^{m}\{y_i(t_j)-B(t_j)'\beta_{\mu} - G_iB(t_j)'\beta_1 - W_i B(t_j)'\beta_w \}^2 + \lambda_1\beta_{\mu}'\Omega\beta_{\mu} + \lambda_2\beta_{g}'\Omega\beta_{g} + \lambda_3\beta_{w}'\Omega\beta_{w},}
+where \eqn{\lambda_l}, \eqn{l = 1, 2, 3} are smoothing parameters, and \eqn{\Omega = \int B^{d1}(t)\{B^{d1}(t)\}'dt} is a penalty matrix. We can obtain the estimators of parameter \eqn{\beta}.
+For simplicity, we use a common smoothing parameter \eqn{\lambda} to regularize the roughness of all coefficient functions, which is often estimated by generalized cross validation (GCV).  By plugging them back to the rank \eqn{K} splines expansions, we get the estimated varying coefficient functions in the model.e.g., \eqn{\hat{\beta}_{\mu}(t) = B(t)'\beta_{\mu}, \ldots}.
+%This function performs functional anova anlaysis. We use B-Spline as the basis function to expand the coefficient of each variable.
+
+%For example, the intercept term of a functional anova model, mu(t), will be expanded as
+
+%mu(t) = sum_\{j = 1 to K\}beta_\{mu,j\}B_\{u,j\}(t),
+
+%where beta_\{mu,j\} is the coefficient for B_\{u,j\}(t), and B_\{u,j\}(t) is an order u B-spline basis function. u is given by the argument "order" in this function. With another argument "K.int" (i.e., the number of interior knots) being defined, we can obtain K, the rank of spline expansion for mu(t), according to the relationship K = K.int + order.
+
+%%  ~~ If necessary, more details than the description above ~~
+}
+\value{
+\item{est_fun}{
+a \eqn{t} by \eqn{q} matrix of the estimated function of coefficients, where \eqn{t} is the number of observation time points, and \eqn{q} is the number of columns of the design matrix. The \eqn{(i,j)} element represents the estimated value of the \eqn{jth} coefficient at the time \eqn{i} (i.e., \eqn{\hat{\beta}_j(t_i)}) in the following example:
+
+For example, if the model includes two categorical variables without interaction terms, each categorical variable contains two levels, the model can be expressed as
+\deqn{y(t) = \beta_0(t) + \beta_1(t) X_1 + \beta_2(t) X_2 + \epsilon(t).}
+In this case, \eqn{q = 3}. This means your output "est_fun" contains 3 columns, and the columns repesent \eqn{\hat{\beta}_0(t)}, \eqn{\hat{\beta}_1(t)} and \eqn{\hat{\beta}_2(t)}, respectively.
+}
+\item{bhat}{ a \eqn{(q \times K) \times 1} numeric vector, containing all the estimated parameters (i.e., \eqn{\hat{\beta}}, where \eqn{q} is the number of columns of the design matrix, and \eqn{K} is the rank of the spline expansion.
+}
+\item{lambda}{The penalty parameter, obatined by GCV.
+}
+
+%%  ~Describe the value returned
+%%  If it is a LIST, use
+%%  \item{comp1 }{Description of 'comp1'}
+%%  \item{comp2 }{Description of 'comp2'}
+%% ...
+}
+\references{
+%% ~put references to the literature/web site here ~
+}
+\author{
+%%  ~~who you are~~
+}
+\note{
+%%  ~~further notes~~
+}
+
+%% ~Make other sections like Warning with \section{Warning }{....} ~
+
+\seealso{
+%% ~~objects to See Also as \code{\link{help}}, ~~~
+}
+\examples{
+#load the data
+data_new = read.csv(system.file("extdata", "data.csv",
+                                 package = "implant", mustWork = TRUE))
+#The first three columns of data_new refer to the original position of
+#the observations from the original dataset, genotype and block, respectively
+Y = data_new[, -c(1:3)]
+#This step is to factorize each factor
+Genotype = as.factor(data_new$Genotype)
+Block = as.factor(data_new$Block)
+X = data.frame(Genotype, Block)
+formula = "~ Genotype + Block"
+tt = seq(from = 0, to = 44, by = 2)
+fit = fanova(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 4, lower = -10, upper = 15)
+fit$lambda
+fit$est_fun
+}

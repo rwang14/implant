@@ -2,7 +2,7 @@
 #source("~/Desktop/implant/Var_bhat.R")
 #source("~/Desktop/implant/Y.hat.matrix_1.R")
 #source("~/Desktop/implant/function_C.R")
-CI.trt.diff = function(fit, j1,j2,alpha){
+CI = function(fit, j1,j2,alpha){
   if (j1 == j2){
     stop('j1 should be different from j2')
   }
