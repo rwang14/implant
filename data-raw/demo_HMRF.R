@@ -7,7 +7,7 @@ library(implant)
 #Define the response as relative green.
 #I = orig[ , , 1, 2]/(orig[ , , 1, 1]+orig[ , , 1, 2]+orig[ , , 1, 3])
 #Y = t(I)
-orig = reaPNG(system.file("extdata", "reduced.png", package = "implant", mustWork = TRUE))
+orig = readPNG(system.file("extdata", "reduced.png", package = "implant", mustWork = TRUE))
 #Define the response as relative green.
 Y = orig[ , , 2]/(orig[ , , 1]+orig[ , , 2]+orig[ , , 3])
 #Z is a matrix obtained by CannyEdge detector
