@@ -10,7 +10,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 
 \usage{
-HMRF(X, Y, Z, k, em_iter, map_iter, beta = 2,
+HMRF(X, Y, Z, em_iter, map_iter, beta = 2,
         epsilon_em = 0.00001, epsilon_map = 0.00001)
 }
 %- maybe also 'usage' for other objects documented here.
