@@ -68,6 +68,7 @@ Y = orig[ , , 2]/(orig[ , , 1]+orig[ , , 2]+orig[ , , 3])
 #Z is a matrix obtained by CannyEdge detector
 Z = read.csv(system.file("extdata", "Z.csv",
                          package = "implant", mustWork = TRUE))
+Z = as.matrix(Z)
 ##Note: Users can obtain Z using the package "imager" and the function
 #CannyEdges( ) for different images
 #Z = t(cannyEdges(orig)[ , , 1, 1])
