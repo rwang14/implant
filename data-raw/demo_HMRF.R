@@ -15,8 +15,8 @@ X = image_kmeans(Y, k = 2)$X
 mu = image_kmeans(Y, k = 2)$mu
 sigma = image_kmeans(Y, k = 2)$sigma
 output = matrix(as.numeric(X), nrow = nrow(X), ncol = ncol(X)) - 1
-#Run the HMRF Model
-img = HMRF(X, Y, Z, mu, sigma, k = 2, em_iter = 20, map_iter = 20, beta = 2,
+#Run the HMRF Model. Note that this may take a lot of time ...
+img = HMRF(X, Y, Z, em_iter = 20, map_iter = 20, beta = 2,
               epsilon_em = 0.00001, epsilon_map = 0.00001)
 #Obtain the matrix of the segmented image
 image = img$image_matrix
@@ -25,3 +25,4 @@ imageD = dilation(image)
 imageDE = erosion(imageD)
 imageDEE = erosion(imageDE)
 imageDEED = dilation(imageDEE)
+writePNG(imageDEED, "~/HMRF.png")
