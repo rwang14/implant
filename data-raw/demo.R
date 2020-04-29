@@ -1,3 +1,4 @@
+library(implant)
 #demo1
 data_new = read.csv(system.file("extdata", "data.csv",package = "implant", mustWork = TRUE))
 #The first column records the positions of the observations from the original dataset, can be ignored
@@ -12,7 +13,7 @@ fit = fanova(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 4, lower 
 fit$lambda
 fit$est_fun
 #find the CI to test the difference between block 2 and block 1
-ci_diff = CI.contrast(fit = fit, j1 = 4, j2 = 1, alpha = 0.05)
+ci_diff = CI_contrast(fit = fit, j1 = 4, j2 = 1, alpha = 0.05)
 plot(tt,ci_diff$trt,type = "l", ylim = c(-100000, 80000))
 lines(tt,ci_diff$lb, col = "green")
 lines(tt,ci_diff$ub, col = "blue")
