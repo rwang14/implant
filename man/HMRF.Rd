@@ -15,7 +15,7 @@ HMRF(X, Y, Z, em_iter, map_iter, beta = 2,
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{X}{an m by n binary matrix of the inital labels for an image, which can be obtained using initital segmentation methods, such as K-means or thresholding methods. Note that X can only be a matrix of 1 and 2, or a matrix of 0 and 1.
+\item{X}{an m by n binary matrix of the inital labels for an image, which can be obtained using initital segmentation methods, such as K-means or thresholding methods. Note that X can only be a matrix of 1 and 2, or a matrix of 0 and 1.
 %%     ~~Describe \code{x} here~~
 }
 \item{Y}{an m by n matrix of pixel intensity. For plant segmentation, we recommend to use relative green. Note that Y should be the same as the argument Y in the function image_kmeans(  ).
@@ -87,3 +87,5 @@ imageD = dilation(image)
 imageDE = erosion(imageD)
 imageDEE = erosion(imageDE)
 imageDEED = dilation(imageDEE)
+writePNG("~/HMRF.png")
+}

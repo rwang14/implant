@@ -2,7 +2,7 @@ HMRF = function(X, Y, Z, em_iter, map_iter, beta = 2, epsilon_em = 0.00001, epsi
   k = 2
   x = vec(X)
   y = vec(Y)
-  if (as.vector(unique(x)) == c(1,2)){
+  if (sum(as.numeric(unique(x) == c(1,2))) == 2){
     x = x
   }
   else{
