@@ -47,18 +47,13 @@ image_kmeans(Y,k)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-%install.packages("imager")
 library(png)
-orig = readPNG(system.file("extdata", "image1.png",
-                            package = "implant", mustWork = TRUE))
-writePNG(orig, "~/Original_Image.png")
-
-Y = orig[, , 2]/(orig[, , 1]+orig[, , 2]+orig[, , 3])
-k = 2
-X = image_kmeans(Y,k)$X
-mu = image_kmeans(Y,k)$mu
-sigma = image_kmeans(Y,k)$sigma
-#convert a matrix of 1&2 to a matrix of 0&1
-output = matrix(as.numeric(X),nrow = nrow(X), ncol = ncol(X))-1
-writePNG(output, "~/kmeans.png")
+orig = readPNG(system.file("extdata", "reduced.png", package = "implant", mustWork = TRUE))
+#Define the response as relative green.
+Y = orig[ , , 2]/(orig[ , , 1]+orig[ , , 2]+orig[ , , 3])
+#Take the initial label of EM algorithm using K-means
+X = image_kmeans(Y, k = 2)$X
+#Obtain the image produced by kmeans clustering
+output = matrix(as.numeric(X), nrow = nrow(X), ncol = ncol(X)) - 1
+writePNG(output,"~/kmeans.png")
 }
