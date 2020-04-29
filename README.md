@@ -57,7 +57,7 @@ Find example data: data.csv, data_Xu.txt, and example images: image1.png, image2
 
 Find demos: demo.R, demo_DCT.R and demo_HMRF.R from the folder: data-raw.
 
-Find functions from the folder: R.
+Find source code from the folder: R.
 
 Find help documentation from the folder: man.
 
