@@ -2,7 +2,7 @@
 #source("~/Desktop/implant/Var_bhat.R")
 #source("~/Desktop/implant/Y.hat.matrix_1.R")
 #source("~/Desktop/implant/function_C.R")
-CI.trt = function(fit,L,alpha){
+CI = function(fit,L,alpha){
   X = fit$X
   Y_na = fit$Y_na
   total.time = fit$total.time

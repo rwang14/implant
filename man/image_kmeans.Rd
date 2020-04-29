@@ -1,5 +1,5 @@
-\name{imkmeans}
-\alias{imkmeans}
+\name{image_kmeans}
+\alias{image_kmeans}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Obtain the  Matrix of the Segmented Image using K-means Clustering.
 %%  ~~function to do ... ~~
@@ -8,7 +8,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-imkmeans(Y,k)
+image_kmeans(Y,k)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -55,9 +55,9 @@ writePNG(orig, "~/Original_Image.png")
 
 Y = orig[, , 2]/(orig[, , 1]+orig[, , 2]+orig[, , 3])
 k = 2
-X = imkmeans(Y,k)$X
-mu = imkmeans(Y,k)$mu
-sigma = imkmeans(Y,k)$sigma
+X = image_kmeans(Y,k)$X
+mu = image_kmeans(Y,k)$mu
+sigma = image_kmeans(Y,k)$sigma
 #convert a matrix of 1&2 to a matrix of 0&1
 output = matrix(as.numeric(X),nrow = nrow(X), ncol = ncol(X))-1
 writePNG(output, "~/kmeans.png")

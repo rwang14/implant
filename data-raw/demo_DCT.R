@@ -14,8 +14,8 @@ RI[, c(1 : ColBound[1])] = 0
 RI[, c(ColBound[2] : sizeOriginal[2])] = 0
 RI[c(lowerRowBound : sizeOriginal[1]), ] = 0
 #reduce size for imageOriginal and imageX
-image1 = sample(imageOriginal, RowSample = 2, ColSample = 2)
-imageX1 = sample(imageX, RowSample = 2, ColSample = 2)
+image1 = downsize(imageOriginal, RowSample = 2, ColSample = 2)
+imageX1 = downsize(imageX, RowSample = 2, ColSample = 2)
 #change the color of the green strip of the empty pot(imageX1) to white
 tempG1 = ColorG(imageX1, rowThreshold = 0.002)
 imageX1G = tempG1$c
@@ -31,7 +31,7 @@ imageBDE = erosion( imageBD, mask = matrix(1, 5, 5) )
 imageBDEE = erosion( imageBDE, mask = matrix(1, 3, 3) )
 imageBDEED = dilation( imageBDEE, mask = matrix(1, 3, 3) )
 #Use the Region of Interest to Get the Final Image
-RI1 = sampleMatrix(RI, RowSample = 2, ColSample = 2)
+RI1 = downsize_matrix(RI, RowSample = 2, ColSample = 2)
 RI1row = sum(rowSums(RI1) > 0)
 RI1col = sum(colSums(RI1) > 0)
 imageBF = matrix(imageBDEED[RI1 == 1], RI1row, RI1col)

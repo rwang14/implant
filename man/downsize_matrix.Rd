@@ -1,5 +1,5 @@
-\name{sampleMatrix}
-\alias{sampleMatrix}
+\name{downsize_matrix}
+\alias{downsize_matrix}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Reducing the Size of a Matrix
 %%  ~~function to do ... ~~
@@ -9,7 +9,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-sampleMatrix(M, RowSample = 1, ColSample = 1)
+downsize_matrix(M, RowSample = 1, ColSample = 1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -41,8 +41,8 @@ For example, ColSample = 2 means you select the 1st, 3rd, ... element from each 
 \author{
 %%  ~~who you are~~
 }
-\note{This function is different from another function in this package called "sample( )". That function is used to
-reduce the size of 3-D arrays while this function, sampleMatrix( ), is used to reduce the size of matrices.
+\note{This function is different from another function in this package called "downsize( )". That function is used to
+reduce the size of 3-D arrays while this function, downsize_matrix(  ), is used to reduce the size of matrices.
 %%  ~~further notes~~
 }
 
@@ -57,7 +57,7 @@ library(png)
 image = readPNG(system.file("extdata", "image1.png",
                              package = "implant",
                              mustWork = TRUE))[,,1]
-sampleMatrix(M = image, RowSample = 2, ColSample = 2)
+downsize_matrix(M = image, RowSample = 2, ColSample = 2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

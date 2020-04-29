@@ -11,6 +11,7 @@ tt = seq(from = 0, to = 44,by = 2)
 fit = fanova(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 4, lower = -10, upper = 15)
 fit$lambda
 fit$est_fun
+#find the CI to test the difference between block 2 and block 1
 ci_diff = CI.contrast(fit = fit, j1 = 4, j2 = 1, alpha = 0.05)
 plot(tt,ci_diff$trt,type = "l", ylim = c(-100000, 80000))
 lines(tt,ci_diff$lb, col = "green")

@@ -1,5 +1,5 @@
-\name{HMRF_EM}
-\alias{HMRF_EM}
+\name{HMRF}
+\alias{HMRF}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Image Segmentation using Hidden Markov Random Field and EM Algorithm Framework
 %%  ~~function to do ... ~~
@@ -10,7 +10,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 
 \usage{
-HMRF_EM(X, Y, Z, k, em_iter, map_iter, beta = 2,
+HMRF(X, Y, Z, k, em_iter, map_iter, beta = 2,
         epsilon_em = 0.00001, epsilon_map = 0.00001)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -18,7 +18,7 @@ HMRF_EM(X, Y, Z, k, em_iter, map_iter, beta = 2,
   \item{X}{an m by n matrix of the inital labels for an image, which can be obtained using initital segmentation methods, such as K-means or thresholding methods.
 %%     ~~Describe \code{x} here~~
 }
-\item{Y}{an m by n matrix of pixel intensity. For plant segmentation, we recommend to use relative green. Note that Y should be the same as the argument Y in the function imkmeans().
+\item{Y}{an m by n matrix of pixel intensity. For plant segmentation, we recommend to use relative green. Note that Y should be the same as the argument Y in the function image_kmeans().
 }
 \item{Z}{ an m by n binary matrix, giving an estimate for the object edges in Y. We can obtain Z using the Canny edge detector:
 Z = cannEdges (Y) [  ,  , 1, 1] from the package: imager. See the example for details.
@@ -56,7 +56,7 @@ since this package needs to involve Rcpp and other dependent packages which may 
 %%  ~~further notes~~
 }
 \seealso{
-\code{\link{imkmeans}}
+\code{\link{image_kmeans}}
 }
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 \examples{
@@ -71,12 +71,12 @@ Z = cannyEdges(orig)
 Z = Z[,,1,1]
 Z = t(Z)
 #Take the initial label of EM algorithm using K-means
-X = imkmeans(Y,k = 2)$X
-mu = imkmeans(Y,k = 2)$mu
-sigma = imkmeans(Y,k = 2)$sigma
+X = image_kmeans(Y,k = 2)$X
+mu = image_kmeans(Y,k = 2)$mu
+sigma = image_kmeans(Y,k = 2)$sigma
 output = matrix(as.numeric(X),nrow = nrow(X), ncol = ncol(X))-1
 #Run the HMRF Model
-img = HMRF_EM(X,Y,Z,mu,sigma,k = 2,em_iter = 20,map_iter = 20,beta = 2,
+img = HMRF(X,Y,Z,mu,sigma,k = 2,em_iter = 20,map_iter = 20,beta = 2,
               epsilon_em = 0.00001, epsilon_map = 0.00001)
 #Obtain the matrix of the segmented image
 image = img$image_matrix

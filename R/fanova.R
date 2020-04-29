@@ -1,7 +1,7 @@
 #library(MASS)
 #library(fda)
 #source("~/Desktop/implant/input.list.R")
-fanova_mean = function(Y.na.mat, X, tt, formula, K.int = 6, order = 4,
+fanova = function(Y.na.mat, X, tt, formula, K.int = 6, order = 4,
                        #interact = 0, #p = 2,
                       lower = -10, upper = 15){
   d0 = 0

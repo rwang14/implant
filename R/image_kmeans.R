@@ -1,6 +1,6 @@
 #setwd("~/Desktop/HMRF")
 #library(matrixcalc)
-imkmeans<-function(Y,k){
+image_kmeans<-function(Y,k){
  set.seed(6007)
  y = vec(t(Y))
  x = kmeans (y, k)$cluster

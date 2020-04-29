@@ -1,5 +1,5 @@
-\name{sample}
-\alias{sample}
+\name{downsize}
+\alias{downsize}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Reducing the size of an  RGB image
 %%  ~~function to do ... ~~
@@ -8,7 +8,7 @@
 This function reduces the size of an image by picking sample pixels from each row and each column of the original image, and use the selected pixels to construct a reduced image.
 }
 \usage{
-sample(image, RowSample = 1, ColSample = 1)
+downsize(image, RowSample = 1, ColSample = 1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -35,8 +35,8 @@ This function can be used to reduce the size of an image by picking sample eleme
 \author{
 %%  ~~who you are~~
 }
-\note{This function is different from another function in this package called "sampleMatrix( )". That function is used to
-reduce the size of matrices while this function, sampleMatrix( ), is used to reduce the size of 3-D arrays.
+\note{This function is different from another function in this package called "downsize_matrix( )". That function is used to
+reduce the size of matrices while this function, downsize( ), is used to reduce the size of 3-D arrays.
 %%  ~~further notes~~
 }
 
@@ -51,5 +51,5 @@ library(png)
 image = readPNG(system.file("extdata", "image1.png",
                              package = "implant",
                              mustWork = TRUE))[,,c(1:3)]
-sample(image, RowSample = 2, ColSample = 2)
+downsize(image, RowSample = 2, ColSample = 2)
 }
