@@ -17,7 +17,7 @@ extract_pheno(processed_image, Xsize = 1, Ysize = 1, a = 1, b = 1)
 \item{Xsize, Ysize}{Xsize and Ysize are the actual horizontal and vertical lengths of one pixel, respectively. The default set is Xsize = 1, Ysize = 1 for the non-adjustment for the pixel size.
 }
 
-\item{a,b}{positive integers, the same as the values of RowSample and ColSample in the function: "sample", respectively. This is only used if the function "sample" was used to reduce the size of the image in image segmentation.
+\item{a,b}{positive integers, the same as the values of RowSample and ColSample in the function: "downsize", respectively. This is only used if the function "downsize" was used to reduce the size of the image in image segmentation.
 }
 }
 \details{
@@ -45,7 +45,7 @@ extract_pheno(processed_image, Xsize = 1, Ysize = 1, a = 1, b = 1)
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{ \code{\link{sample}} for reducing size of an image.
+\seealso{ \code{\link{downsize}} for reducing size of an image.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
@@ -55,7 +55,7 @@ imageOriginal = readPNG(system.file("extdata", "image1.png",
                              package = "implant",
                              mustWork = TRUE))[,,c(1:3)]
 #reduce the size of an image
-image_reduced = sample(imageOriginal, RowSample = 2, ColSample = 2)
+image_reduced = downsize(imageOriginal, RowSample = 2, ColSample = 2)
 #segment the reduced image
 imageB = imageBinary(image_reduced,  weight = c(-1, 2, -1), threshold1 = 30 / 255, threshold2 = 0.05)
 #obtain the size of the segmented image
