@@ -4,7 +4,7 @@
 \title{Fitting Functional ANOVA Models
 %%  ~~function to do ... ~~
 }
-\description{This function is to fit fanova models by B-Spline basis expansion with a penalty term on the second derivative of the spline basis function. The penalty parameter, labmda, is chosen by GCV (generalized cross validation).
+\description{This function is to fit fanova models by B-Spline basis expansion with a penalty term on the second derivative of of the estimated functions for the smoothness of the curves. The penalty parameter, labmda, is chosen by GCV (generalized cross validation).
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
