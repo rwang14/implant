@@ -13,7 +13,7 @@ fanova(Y.na.mat, X, tt, formula, K.int = 6,
 }
 
 \arguments{
-  \item{Y.na.mat}{an n by t matrix of response variable (the extracted features), where each row contains the time series data of an observation, and each column contains all the observations at a given time. Here n is the number of biological units of the study (for example, in the study of plant growth curve, n is the number of plants and t is the number of observation time points. Any missing observation is filled by "NA" in the matrix. For example, if a measurement of plant is missing for plant i on date j, the (i,j) component in Y.na.mat should be filled by "NA".
+  \item{Y.na.mat}{an n by t matrix of response variable (the extracted features), where each row contains the time series data of an observation, and each column contains all the observations at a given time. Here n is the number of biological units of the study (for example, in the study of plant growth curve, n is the number of plants and t is the number of observation time points. Any missing observation is filled by "NA" in the matrix. For example, if a measurement of plant is missing for plant i on date j, the (i, j) component in Y.na.mat should be filled by "NA".
 }
 
   \item{X}{an n by r dataframe or matrix of explanatory variables, where n is the number of observations and r is the number of explanatory variables.
@@ -55,7 +55,7 @@ First, we approximate all of the coefficient functions with rank K splines expan
 \sum_{l=1}^{K}\beta_{a_{1i},l}B_{u,l}(t)} , where \eqn{B_{u,l}(t)} is an order \eqn{u} B-spline basis function, and \eqn{\beta_{a_{1},l}} is the corresponding coefficient. Then, the problem is reduced to estimate all those coefficients \eqn{\beta}s
 in front of basis functions. We apply the least squares estimation with penalizations on the \eqn{dth} derivatives of the rank \eqn{K} spline expansion functions. We minimize the penalized error sum of squares:
 \deqn{\sum_{i=1}^{n}\sum_{j}^{m}\{y_i(t_j)-B(t_j)'\beta_{\mu} - G_iB(t_j)'\beta_1 - W_i B(t_j)'\beta_w \}^2 + \lambda_1\beta_{\mu}'\Omega\beta_{\mu} + \lambda_2\beta_{g}'\Omega\beta_{g} + \lambda_3\beta_{w}'\Omega\beta_{w},}
-where \eqn{\lambda_l}, \eqn{l = 1, 2, 3} are smoothing parameters, and \eqn{\Omega = \int B^{d1}(t)\{B^{d1}(t)\}'dt} is a penalty matrix. We can obtain the estimators of parameter \eqn{\beta}.
+where \eqn{\lambda_l}, \eqn{l = 1, 2, 3} are smoothing parameters, and \eqn{\Omega = \int B^{(d1)}(t)\{B^{(d1)}(t)\}'dt} is a penalty matrix. We can obtain the estimators of parameter \eqn{\beta}, and (d1) is the corresponding derivitives.
 For simplicity, we use a common smoothing parameter \eqn{\lambda} to regularize the roughness of all coefficient functions, which is often estimated by generalized cross validation (GCV).  By plugging them back to the rank \eqn{K} splines expansions, we get the estimated varying coefficient functions in the model.e.g., \eqn{\hat{\beta}_{\mu}(t) = B(t)'\beta_{\mu}, \ldots}.
 %This function performs functional anova anlaysis. We use B-Spline as the basis function to expand the coefficient of each variable.
 
@@ -86,9 +86,11 @@ In this case, \eqn{q = 3}. This means your output "est_fun" contains 3 columns, 
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
 }
-\references{
+\references{Ramsay, James O., and Silverman, Bernard W. (2005), Functional Data Analysis, 2nd ed., Springer, New York.
+
+Ramsay, James O., Hooker, Giles, and Graves, Spencer (2009) Functional Data Analysis in R and
+Matlab, Springer, New York.}
 %% ~put references to the literature/web site here ~
-}
 \author{
 %%  ~~who you are~~
 }

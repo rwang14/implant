@@ -18,19 +18,19 @@ HMRF(X, Y, Z, k, em_iter, map_iter, beta = 2,
   \item{X}{an m by n binary matrix of the inital labels for an image, which can be obtained using initital segmentation methods, such as K-means or thresholding methods. Note that X can only be a matrix of 1 and 2, or a matrix of 0 and 1.
 %%     ~~Describe \code{x} here~~
 }
-\item{Y}{an m by n matrix of pixel intensity. For plant segmentation, we recommend to use relative green. Note that Y should be the same as the argument Y in the function image_kmeans().
+\item{Y}{an m by n matrix of pixel intensity. For plant segmentation, we recommend to use relative green. Note that Y should be the same as the argument Y in the function image_kmeans(  ).
 }
 \item{Z}{ an m by n binary matrix, giving an estimate for the object edges in Y. We can obtain Z using the Canny edge detector:
-Z = cannEdges (Y) [  ,  , 1, 1] from the package: imager. See the example for details.
+Z = t(cannEdges (Y) [  ,  , 1, 1]) from the package: imager. See the example for details.
 }
 
 \item{em_iter}{a positive integer, which is the number of iteration steps of the EM Algorithm.
 }
 \item{map_iter}{a positive integer, which is the number of iteration steps of calculating MAP (the maximum a posterior estimation).
 }
-\item{beta}{The clique potential parameter for neighbourhood dependence. In default, beta = 2. See details in the supplementary file on the HMRF Model. This beta is equivalent to the Psi in the supplentary file (see page 29).
+\item{beta}{The clique potential parameter for neighbourhood dependence. In default, beta = 2. See details in the supplementary file on the HMRF Model. This beta is equivalent to the Psi in the supplentary file (see page 20, 21).
 }
-\item{epsilon_em}{a small positive number, which is the convergence criterion of the EM Alogrithm.
+\item{epsilon_em}{a small positive number, which is the convergence criterion of the EM Algorithm.
 }
 \item{epsilon_map}{a small positive number, which is the convergence criterion of MAP (maximum a posterior estimation).
 }

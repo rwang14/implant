@@ -6,7 +6,7 @@ Y = orig[ , , 2]/(orig[ , , 1]+orig[ , , 2]+orig[ , , 3])
 Z = read.csv(system.file("extdata", "Z.csv",
                          package = "implant", mustWork = TRUE))
 ##Note: Users can obtain Z using the package"imager" and the
-#function CannyEdges( ) for different images
+#function CannyEdges( ) for different images,
 #Z = t(cannyEdges(orig)[ , , 1, 1])
 #Take the initial label of EM algorithm using K-means
 X = image_kmeans(Y, k = 2)$X
