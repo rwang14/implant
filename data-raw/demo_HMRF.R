@@ -4,9 +4,8 @@ orig = readPNG(system.file("extdata", "reduced.png", package = "implant", mustWo
 #Define the response as relative green.
 Y = orig[ , , 2]/(orig[ , , 1]+orig[ , , 2]+orig[ , , 3])
 #Z is a matrix obtained by CannyEdge detector
-Z = read.csv(system.file("extdata", "Z.csv",
-                         package = "implant", mustWork = TRUE))[,-1]
-Z = as.matrix(Z)
+Z = readPNG(system.file("extdata", "Z.png",
+                         package = "implant", mustWork = TRUE))
 ##Note: Users can obtain Z using the package"imager" and the
 #function CannyEdges( ) for different images,
 #Z = t(cannyEdges(orig)[ , , 1, 1])
