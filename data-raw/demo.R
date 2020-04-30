@@ -22,11 +22,14 @@ lines(tt,ci_diff$ub, col = "blue")
 #demo2
 data_Xu = read.csv(system.file("extdata", "data_Xu.txt",package = "implant",
                                mustWork = TRUE), sep = "")
-X1 = as.factor(data_Xu$water)
-X2 = as.factor(data_Xu$genotype)
-X = data.frame(X1,X2)
+water = as.factor(data_Xu$water)
+genotype = as.factor(data_Xu$genotype)
+X = data.frame(water,genotype)
 Y = data_Xu[,c(1:20)]
+formula = "~water+genotype"
 fit = fanova(Y.na.mat = Y, X = X,tt = c(0:15,17:20),
-                  formula = "~X[,1]+X[,2]+X[,1]:X[,2]"
+                  formula = "~water+genotype"
                   ,K.int = 6, order = 4,lower = -10, upper = 15)
 fit$est_fun
+
+
