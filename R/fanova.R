@@ -139,6 +139,6 @@ fanova = function(Y.na.mat, X, tt, formula, K.int = 6, order = 4,
     para[,i] = BS %*% bhat[((i-1)*K+1):((i-1)*K+K)]
   }
   #return the matrix of estimated mean functions
-  return(list(est_fun = para, lambda = lam, bhat = bhat, design_mat = design_matrix, S = S, Phi = Xmat, d0 = d0,
+  return(list(est_fun = para, lambda = lam, bhat = bhat, design_mat = design_matrix, Phi = Xmat, S = S, d0 = d0,
               order = order, K = K, total.time = total.time, tps = tt, X = X, Y_na = Y.na.mat, formula = formula))
 }
