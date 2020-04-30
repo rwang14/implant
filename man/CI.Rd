@@ -15,7 +15,7 @@ CI(fit, L, alpha)
 \arguments{
   \item{fit}{an object of output obtained by function "fanova".
 }
-  \item{L}{a numeric contrast vector corresponding to the design matrix in "fanova", which specifies the linear combination of the parameters of interest.
+  \item{L}{a numeric contrast vector corresponding to the design matrix in "fanova", which specifies the linear combination of the parameters of interest. Users can use the design matrix output by the function fanova, to idenfity the value of L easily. See the example part for details.
 %%     ~~Describe \code{x} here~~
 }
 \item{alpha}{a positive small number between 0 and 1. 1-alpha gives the confidence level.
@@ -89,6 +89,20 @@ formula = "~ Genotype+Block"
 tt = seq(from = 0, to = 44,by = 2)
 #fit the model
 fit = fanova(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 4, lower = -10, upper = 15)
+> fit$design_mat
+  (Intercept) Genotype85 Genotype129 Block2 Block3
+1           1          0           1      0      0
+2           1          0           0      0      0
+3           1          1           0      0      0
+4           1          1           0      1      0
+5           1          0           1      1      0
+6           1          0           0      1      0
+7           1          0           1      0      1
+8           1          1           0      0      1
+9           1          0           0      0      1
+#We want to estimate the growth curve of genotype 1 averaging over three blocks,
+#that is, we are interested in the 1st, the 4th and the 5th column of the design matrix.
+#Therefore, we can define:
 L1 = c(1, 0, 0, 1/3, 1/3)
 ci1 = CI(fit = fit, L = L1, alpha = 0.05)
 plot(tt,ci1$trt,type = "l")

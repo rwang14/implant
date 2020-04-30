@@ -77,6 +77,8 @@ In this case, \eqn{q = 3}. This means your output "est_fun" contains 3 columns, 
 }
 \item{bhat}{ a \eqn{(q \times K) \times 1} numeric vector, containing all the estimated parameters (i.e., \eqn{\hat{\beta}}, where \eqn{q} is the number of columns of the design matrix, and \eqn{K} is the rank of the spline expansion.
 }
+\item{design_mat}{The design matrix under the model specified in the function. It can be used as reference to help users identify the contrast vector L in the function CI(  ), and the values of j1 and j2 in the function CI_contrast(  ).
+}
 \item{lambda}{The penalty parameter, obatined by GCV.
 }
 
