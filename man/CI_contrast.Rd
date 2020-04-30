@@ -18,11 +18,11 @@ CI_contrast(fit, j1, j2, alpha)
 %%     ~~Describe \code{fit} here~~
 }
   \item{j1}{A positive integer, specifying the columns of the design matrix
-  corresponding to one treatment of interest.
+  corresponding to one treatment of interest. Users can use the design matrix output by the function fanova( ), to idenfity the value of j1 easily. See the example part for details.
 %%     ~~Describe \code{j1} here~~
 }
   \item{j2}{A positive integer, specifying the columns of the design matrix
-  corresponding to the other treatment of interest.
+  corresponding to the other treatment of interest. Users can use the design matrix output by the function fanova( ), to idenfity the value of j2 easily. See the example part for details.
 %%     ~~Describe \code{j2} here~~
 }
   \item{alpha}{A positive small number between 0 and 1. 1-alpha gives the confidence level.
@@ -87,10 +87,25 @@ Y = data_new[,-c(1:3)]
 Genotype = as.factor(data_new$Genotype)
 Block = as.factor(data_new$Block)
 X = data.frame(Genotype,Block)
-formula = "~ Genotype+Block"
+formula = "~ Genotype + Block"
 tt = seq(from = 0, to = 44,by = 2)
 #fit anova
 fit = fanova(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 4, lower = -10, upper = 15)
+fit$design_mat
+> fit$design_mat
+       (Intercept) Genotype2  Genotype  Block2  Block3
+1           1          0           1      0      0
+2           1          0           0      0      0
+3           1          1           0      0      0
+4           1          1           0      1      0
+5           1          0           1      1      0
+6           1          0           0      1      0
+7           1          0           1      0      1
+8           1          1           0      0      1
+9           1          0           0      0      1
+#We want to test the significance between block 2 and block1,
+#that is, we are interested in the 1st, the 4th column of the design matrix.
+#Therefore, we can define:
 ci_diff = CI_contrast(fit = fit,j1 = 4, j2 = 1, alpha = 0.05)
 plot(tt,ci_diff$trt,type = "l")
 lines(tt,ci_diff$lb, col = "blue")

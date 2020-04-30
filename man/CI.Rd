@@ -15,7 +15,7 @@ CI(fit, L, alpha)
 \arguments{
   \item{fit}{an object of output obtained by function "fanova".
 }
-  \item{L}{a numeric contrast vector corresponding to the design matrix in "fanova", which specifies the linear combination of the parameters of interest. Users can use the design matrix output by the function fanova, to idenfity the value of L easily. See the example part for details.
+  \item{L}{a numeric contrast vector corresponding to the design matrix in "fanova", which specifies the linear combination of the parameters of interest. Users can use the design matrix output by the function fanova( ), to idenfity the value of L easily. See the example part for details.
 %%     ~~Describe \code{x} here~~
 }
 \item{alpha}{a positive small number between 0 and 1. 1-alpha gives the confidence level.
@@ -85,12 +85,13 @@ Y = data_new[,-c(1:3)]
 Genotype = as.factor(data_new$Genotype)
 Block = as.factor(data_new$Block)
 X = data.frame(Genotype,Block)
-formula = "~ Genotype+Block"
+formula = "~ Genotype + Block"
 tt = seq(from = 0, to = 44,by = 2)
 #fit the model
 fit = fanova(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 4, lower = -10, upper = 15)
+fit$design_mat
 > fit$design_mat
-  (Intercept) Genotype85 Genotype129 Block2 Block3
+       (Intercept) Genotype2  Genotype  Block2  Block3
 1           1          0           1      0      0
 2           1          0           0      0      0
 3           1          1           0      0      0
