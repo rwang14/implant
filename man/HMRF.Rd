@@ -15,10 +15,10 @@ HMRF(X, Y, Z, em_iter, map_iter, beta = 2,
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-\item{X}{an m by n binary matrix of the inital labels for an image, which can be obtained using initital segmentation methods, such as K-means or thresholding methods. Note that X can only be a matrix of 1 and 2, or a matrix of 0 and 1.
+\item{X}{an m by n binary matrix of the inital labels for an image, which can be obtained using initital segmentation methods, such as K-means or thresholding methods. Note that X could be any binary matrix, say its element could be 0 & 1, or 1 & 2, or 2 & 3 ,..., etc.
 %%     ~~Describe \code{x} here~~
 }
-\item{Y}{an m by n matrix of pixel intensity. For plant segmentation, we recommend to use relative green. Note that Y should be the same as the argument Y in the function image_kmeans(  ).
+\item{Y}{an m by n matrix of pixel intensity. For plant segmentation, we recommend to use relative green.
 }
 \item{Z}{ an m by n binary matrix, giving an estimate for the object edges in Y. We can obtain Z using the Canny edge detector:
 Z = t(cannEdges (Y) [  ,  , 1, 1]) from the package: imager. See the example for details.
@@ -66,9 +66,8 @@ orig = readPNG(system.file("extdata", "reduced.png", package = "implant", mustWo
 #Define the response as relative green.
 Y = orig[ , , 2]/(orig[ , , 1] + orig[ , , 2] + orig[ , , 3])
 #Z is a matrix obtained by CannyEdge detector
-Z = read.csv(system.file("extdata", "Z.csv",
+Z = readPNG(system.file("extdata", "Z.png",
                          package = "implant", mustWork = TRUE))
-Z = as.matrix(Z)
 ##Note: Users can obtain Z using the package "imager" and the function
 #CannyEdges( ) for different images
 #Z = t(cannyEdges(orig)[ , , 1, 1])
