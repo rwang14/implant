@@ -15,7 +15,6 @@ HMRF = function(X, Y, Z, em_iter, map_iter, beta = 2, epsilon_em = 0.00001, epsi
       }
     }
   }
-
   mu = matrix (0, nrow = k, ncol = 1)
   sigma = matrix(0, nrow = k, ncol = 1)
   for ( i in 1:k ){

@@ -15,7 +15,7 @@ X = image_kmeans(Y, k = 2)$X
 output = matrix(as.numeric(X), nrow = nrow(X), ncol = ncol(X)) - 1
 writePNG(output,"~/kmeans.png")
 system.time({
-#Run the HMRF Model. Note that this may take a lot of time ...
+#Run the HMRF Model. Note that this may take some time...
 img = HMRF(X, Y, Z, em_iter = 20, map_iter = 20, beta = 2,
               epsilon_em = 0.00001, epsilon_map = 0.00001)
 })
