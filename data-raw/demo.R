@@ -9,7 +9,7 @@ Block = as.factor(data_new$Block)
 X = data.frame(Genotype,Block)
 formula = "~ Genotype+Block"
 tt = seq(from = 0, to = 44,by = 2)
-fit = fanova(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 4, lower = -10, upper = 15)
+fit = fanova(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 5, d1 = 3, lower = -10, upper = 15)
 fit$lambda
 fit$est_fun
 #find the CI to test the difference between block 2 and block 1

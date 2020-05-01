@@ -27,6 +27,9 @@ fanova(Y.na.mat, X, tt, formula, K.int = 6,
   \item{order}{a positive integer, which refers to the order of the B-spline. In default, order = 4, which implies that we use a cubic polynomial to connect each two adjacent knots.
 %%     ~~Describe \code{order} here~~
 }
+ \item{d1}{a non-negative integer, which indicates the derivatives of the basis expansion function in your penalty matrix, \eqn{\Omega}. See details in the "detail"" part. In default, d1 = 2. Note that d1 should be smaller than the order of the basis function.
+%%     ~~Describe \code{order} here~~
+}
  \item{lower}{lower bound for the possible values of log (smoothing parameter), i.e., \eqn{log (\lambda)}, used in GCV.
 %%
 }
@@ -52,19 +55,9 @@ Denote by \eqn{\otimes} the Kronecker product of matrices. A functional ANOVA mo
 %Assume that the response variable of our model is one of the phenotypical parameters, e.g., the size of a plant. Let \eqn{y_i(t)} be the size of the ith plant measured at time t, where \eqn{i = 1, \ldots, n} with n the number of plants studied. Suppose the mean of the response variable is influenced by q factors. For \eqn{i\in \{1, ..., n\}, \ j \in \{1, \ldots, q\}}, we define \eqn{{A}_{ij} = (A_{ijk})_{k=2}^{l_j}} as the categorical indicator of the jth factor of the ith plant, where \eqn{l_j} is the number of levels that the jth factor has. Specifically,  \eqn{A_{ijk}} is set to one if the jth factor of the ith plant has level ``k"; otherwise, \eqn{A_{ijk}=0}. When all \eqn{A_{ijk}} are zeros, it indicates the jth factor level of the ith plant is ``\eqn{1}".  A functional multi-way ANOVA model with interactions can be written in the following form:
 \deqn{y_i(t) = \mu(t)+ X'_{i1}a_1(t) + X'_{i2}a_2(t) + (X'_{i1}\otimes X'_{i2})a_{1,2}(t) + \epsilon_i(t),}
 where \eqn{a_j(t) = (a_{j2}(t), \ldots, a_{jl_j}(t))'} are the treatment effect functions of the jth factor with dimension \eqn{l_j-1}, \eqn{a_{j_1, j_2}(t)} are the pairwise interaction effect functions between factor \eqn{j_1} and \eqn{j_2} with dimension \eqn{(l_{j_1}-1)(l_{j_2}-1)}, and \eqn{\epsilon_i(t)}s are temporal dependent random processes with zero means. We have implemented this multi-factor model (\eqn{q\geq 2}) in our package such that researchers can specify the main and interactions effects as needed.
-
-
-
-
-
-
-
-where \eqn{{a}_j(t)} are the treatment effect functions of the jth factor with dimension \eqn{l_j-1}. \eqn{{a}_{j_1, j_2}(t)} are the pairwise interaction effect functions between factor \eqn{j_1} and \eqn{j_2} with dimension \eqn{(\ell_{j_1}-1)(\ell_{j2}-1)}, and \eqn{{a}_{1,2,...,q}(t)} are the interaction effect functions of all factors with dimensions \eqn{\prod_{j=1}^q (l_{j}-1)}, and \eqn{\epsilon_i(t)}s are independent random processes with zero means. The above genearl model provides a full specification of interactions among factors. In real applications, researchers can build up a simpler model with less interaction terms or even without interactions according to the purpose of the study.
-
+%where \eqn{{a}_j(t)} are the treatment effect functions of the jth factor with dimension \eqn{l_j-1}. \eqn{{a}_{j_1, j_2}(t)} are the pairwise interaction effect functions between factor \eqn{j_1} and \eqn{j_2} with dimension \eqn{(\ell_{j_1}-1)(\ell_{j2}-1)}, and \eqn{{a}_{1,2,...,q}(t)} are the interaction effect functions of all factors with dimensions \eqn{\prod_{j=1}^q (l_{j}-1)}, and \eqn{\epsilon_i(t)}s are independent random processes with zero means. The above genearl model provides a full specification of interactions among factors. In real applications, researchers can build up a simpler model with less interaction terms or even without interactions according to the purpose of the study.
 With the model, we can estimate the temporal varying coefficient functions.%\eqn{{a}_1(\cdot ),\ ...,\ {a}_q(\cdot ),  {a}_{1,2}(t\cdot ),...,} and \eqn{{a}_{1,2,...,q}(\cdot )}.
-First, we approximate all of the coefficient functions with rank K splines expansions. For example, \eqn{a_{1k}(t) =
-\sum_{l=1}^{K}\beta_{a_{1i},l}B_{u,l}(t)} , where \eqn{B_{u,l}(t)} is an order \eqn{u} B-spline basis function, and \eqn{\beta_{a_{1},l}} is the corresponding coefficient. Then, the problem is reduced to estimate all those coefficients \eqn{\beta}s
-in front of basis functions. We apply the least squares estimation with penalizations on the \eqn{dth} derivatives of the rank \eqn{K} spline expansion functions. We minimize the penalized error sum of squares:
+First, we approximate all of the coefficient functions with rank K splines expansions. For example, \eqn{a_{1k}(t) = \sum_{v=1}^{K}\beta_{a_{jk},v}B_{d,v}(t)} , where \eqn{B_{d,v}(t)} is an order \eqn{d} B-spline basis function, and \eqn{\beta_{a_{1},l}} is the corresponding coefficient. Then, the problem is reduced to estimate all those coefficients \eqn{\beta}s in front of basis functions. We apply the least squares estimation with penalizations on the \eqn{dth} derivatives of the rank \eqn{K} spline expansion functions to get rid of the overfitting problem. We minimize the penalized error sum of squares:
 \deqn{\sum_{i=1}^{n}\sum_{j}^{m}\{y_i(t_j)-B(t_j)'\beta_{\mu} - G_iB(t_j)'\beta_1 - W_i B(t_j)'\beta_w \}^2 + \lambda_1\beta_{\mu}'\Omega\beta_{\mu} + \lambda_2\beta_{g}'\Omega\beta_{g} + \lambda_3\beta_{w}'\Omega\beta_{w},}
 where \eqn{\lambda_l}, \eqn{l = 1, 2, 3} are smoothing parameters, and \eqn{\Omega = \int B^{(d1)}(t)\{B^{(d1)}(t)\}'dt} is a penalty matrix. We can obtain the estimators of parameter \eqn{\beta}, and (d1) is the corresponding derivitives.
 For simplicity, we use a common smoothing parameter \eqn{\lambda} to regularize the roughness of all coefficient functions, which is often estimated by generalized cross validation (GCV).  By plugging them back to the rank \eqn{K} splines expansions, we get the estimated varying coefficient functions in the model.e.g., \eqn{\hat{\beta}_{\mu}(t) = B(t)'\beta_{\mu}, \ldots}.

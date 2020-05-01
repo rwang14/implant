@@ -18,14 +18,14 @@ CI_contrast(fit, j1, j2, alpha)
 %%     ~~Describe \code{fit} here~~
 }
   \item{j1}{A positive integer, specifying the columns of the design matrix
-  corresponding to one treatment of interest. Users can use the design matrix output by the function fanova( ), to idenfity the value of j1 easily. See the example part for details.
+  corresponding to one treatment of interest. Users can use the design matrix output by the function fanova( ), to idenfity the value of j1. See the example part for details.
 %%     ~~Describe \code{j1} here~~
 }
   \item{j2}{A positive integer, specifying the columns of the design matrix
-  corresponding to the other treatment of interest. Users can use the design matrix output by the function fanova( ), to idenfity the value of j2 easily. See the example part for details.
+  corresponding to the other treatment of interest. Users can use the design matrix output by the function fanova( ), to idenfity the value of j2. See the example part for details.
 %%     ~~Describe \code{j2} here~~
 }
-  \item{alpha}{A positive small number between 0 and 1. 1-alpha gives the confidence level.
+  \item{alpha}{A positive small number between 0 and 1. 1-alpha gives the confidence level. In default, alpha = 0.05.
 %%     ~~Describe \code{alpha} here~~
 }
 }

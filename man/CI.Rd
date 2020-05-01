@@ -15,10 +15,10 @@ CI(fit, L, alpha)
 \arguments{
   \item{fit}{an object of output obtained by function "fanova".
 }
-  \item{L}{a numeric contrast vector corresponding to the design matrix in "fanova", which specifies the linear combination of the parameters of interest. Users can use the design matrix output by the function fanova( ), to idenfity the value of L easily. See the example part for details.
+  \item{L}{a numeric contrast vector corresponding to the design matrix in "fanova", which specifies the linear combination of the parameters of interest. Users can use the design matrix output by the function fanova( ), to idenfity the value of L. See the example part for details.
 %%     ~~Describe \code{x} here~~
 }
-\item{alpha}{a positive small number between 0 and 1. 1-alpha gives the confidence level.
+\item{alpha}{a positive small number between 0 and 1. 1-alpha gives the confidence level. In default, alpha = 0.05.
 }
 }
 \details{We can estimate a linear combination of treatment effects and its confidence regions with the function \eqn{``CI (fit, L \ldots)}", where \eqn{fit} is the output from "\eqn{fanova (\ldots)}", and \eqn{L} is a contrast vector under your fanova model specifying the linear combination of the parameters of interest.

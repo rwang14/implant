@@ -2,7 +2,7 @@
 #source("~/Desktop/implant/Var_bhat.R")
 #source("~/Desktop/implant/Y.hat.matrix_1.R")
 #source("~/Desktop/implant/function_C.R")
-CI_contrast = function(fit, j1,j2,alpha){
+CI_contrast = function(fit, j1,j2,alpha = 0.05){
   if (j1 == j2){
     stop('j1 should be different from j2')
   }
