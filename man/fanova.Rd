@@ -4,7 +4,7 @@
 \title{Fitting Functional ANOVA Models
 %%  ~~function to do ... ~~
 }
-\description{This function is to fit fanova models by B-Spline basis expansion with a penalty term on the second derivative of of the estimated functions for the smoothness of the curves. The penalty parameter, labmda, is chosen by GCV (generalized cross validation).
+\description{This function is to fit fanova models by B-Spline basis expansion with a penalty term on the second derivative of of the estimated functions for the smoothness of the curves. The penalty parameter, \eqn{\lambda}, is chosen by GCV (generalized cross validation).
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -27,10 +27,10 @@ fanova(Y.na.mat, X, tt, formula, K.int = 6,
   \item{order}{a positive integer, which refers to the order of the B-spline. In default, order = 4, which implies that we use a cubic polynomial to connect each two adjacent knots.
 %%     ~~Describe \code{order} here~~
 }
- \item{lower}{lower bound for the possible values of log (smoothing parameter), i.e., log (lambda), used in GCV.
+ \item{lower}{lower bound for the possible values of log (smoothing parameter), i.e., \eqn{log (\lambda)}, used in GCV.
 %%
 }
-  \item{upper}{upper bound for the possible values of log (smoothing parameter), i.e., log (lambda), used in GCV.
+  \item{upper}{upper bound for the possible values of log (smoothing parameter), i.e., \eqn{log (\lambda)}, used in GCV.
 %%     ~~Describe \code{upper} here~~
 }
 
@@ -46,8 +46,19 @@ fanova(Y.na.mat, X, tt, formula, K.int = 6,
 %%     ~~Describe \code{d2} here~~
 %}
 }
-\details{Assume that the response variable of our model is one of the phenotypical parameters, e.g., the size of a plant. Let \eqn{y_i(t)} be the size of the ith plant measured at time t, where \eqn{i = 1, \ldots, n} with n the number of plants studied. Suppose the mean of the response variable is influenced by q factors. For \eqn{i\in \{1, ..., n\}, \ j \in \{1, \ldots, q\}}, we define \eqn{{A}_{ij} = (A_{ijk})_{k=2}^{l_j}} as the categorical indicator of the jth factor of the ith plant, where \eqn{l_j} is the number of levels that the jth factor has. Specifically,  \eqn{A_{ijk}} is set to one if the jth factor of the ith plant has level ``k"; otherwise, \eqn{A_{ijk}=0}. When all \eqn{A_{ijk}} are zeros, it indicates the jth factor level of the ith plant is ``\eqn{1}".  A functional multi-way ANOVA model with interactions can be written in the following form:
-\deqn{y_i(t) = \mu(t)+ {A}'_{i1}{a}_1(t)+...+{A}'_{iq} {a}_q(t)+ ({A}'_{i1}\otimes {A}'_{i2}){a}_{1,2}(t)+... +({A}'_{1i}\otimes \ldots\otimes {A}'_{iq}){a}_{1,2,...,q}(t)+ \epsilon_i(t),}
+\details{Suppose the trait is potentially affected by \eqn{q} factors. For short, let \eqn{q = 2} in the help documentation. Denote by \eqn{l_j}  the number of levels of the jth factor. We define \eqn{X_{ij} = (x_{ij2}, \ldots, x_{ijl_j})'} as the categorical indicators of the \eqn{j^{th}} factor of the ith plant. Specifically,  \eqn{x_{ijk}} is set to one if the jth factor of the ith plant has level ``k"; otherwise, \eqn{x_{ijk} = 0}.
+%When $x_{ijk}$ are zeros for any $k$, it indicates the $j$th factor level of the $i$th plant is ``$1$".
+Denote by \eqn{\otimes} the Kronecker product of matrices. A functional ANOVA model with interactions can be written in the following form:
+%Assume that the response variable of our model is one of the phenotypical parameters, e.g., the size of a plant. Let \eqn{y_i(t)} be the size of the ith plant measured at time t, where \eqn{i = 1, \ldots, n} with n the number of plants studied. Suppose the mean of the response variable is influenced by q factors. For \eqn{i\in \{1, ..., n\}, \ j \in \{1, \ldots, q\}}, we define \eqn{{A}_{ij} = (A_{ijk})_{k=2}^{l_j}} as the categorical indicator of the jth factor of the ith plant, where \eqn{l_j} is the number of levels that the jth factor has. Specifically,  \eqn{A_{ijk}} is set to one if the jth factor of the ith plant has level ``k"; otherwise, \eqn{A_{ijk}=0}. When all \eqn{A_{ijk}} are zeros, it indicates the jth factor level of the ith plant is ``\eqn{1}".  A functional multi-way ANOVA model with interactions can be written in the following form:
+\deqn{y_i(t) = \mu(t)+ X'_{i1}a_1(t) + X'_{i2}a_2(t) + (X'_{i1}\otimes X'_{i2})a_{1,2}(t) + \epsilon_i(t),}
+where \eqn{a_j(t) = (a_{j2}(t), \ldots, a_{jl_j}(t))'} are the treatment effect functions of the jth factor with dimension \eqn{l_j-1}, \eqn{a_{j_1, j_2}(t)} are the pairwise interaction effect functions between factor \eqn{j_1} and \eqn{j_2} with dimension \eqn{(l_{j_1}-1)(l_{j_2}-1)}, and \eqn{\epsilon_i(t)}s are temporal dependent random processes with zero means. We have implemented this multi-factor model (\eqn{q\geq 2}) in our package such that researchers can specify the main and interactions effects as needed.
+
+
+
+
+
+
+
 where \eqn{{a}_j(t)} are the treatment effect functions of the jth factor with dimension \eqn{l_j-1}. \eqn{{a}_{j_1, j_2}(t)} are the pairwise interaction effect functions between factor \eqn{j_1} and \eqn{j_2} with dimension \eqn{(\ell_{j_1}-1)(\ell_{j2}-1)}, and \eqn{{a}_{1,2,...,q}(t)} are the interaction effect functions of all factors with dimensions \eqn{\prod_{j=1}^q (l_{j}-1)}, and \eqn{\epsilon_i(t)}s are independent random processes with zero means. The above genearl model provides a full specification of interactions among factors. In real applications, researchers can build up a simpler model with less interaction terms or even without interactions according to the purpose of the study.
 
 With the model, we can estimate the temporal varying coefficient functions.%\eqn{{a}_1(\cdot ),\ ...,\ {a}_q(\cdot ),  {a}_{1,2}(t\cdot ),...,} and \eqn{{a}_{1,2,...,q}(\cdot )}.
