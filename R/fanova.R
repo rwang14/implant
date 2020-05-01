@@ -5,9 +5,9 @@ fanova = function(Y.na.mat, X, tt, formula, K.int = 6, order = 4, d1 = 2
                        #interact = 0, #p = 2,
                       lower = -10, upper = 15){
   d0 = 0
-  d1 = 2
-  d2 = 2
-
+  #d1 = 2
+  #d2 = 2
+  d2 = d1
   data.time = rbind(tt,Y.na.mat)
   T_na = Y.na.mat
   for ( i in 1:dim(Y.na.mat)[1]){
