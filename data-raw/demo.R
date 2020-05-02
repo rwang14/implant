@@ -7,20 +7,20 @@ Y = data_new[,-c(1:3)]
 Genotype = as.factor(data_new$Genotype)
 Block = as.factor(data_new$Block)
 X = data.frame(Genotype,Block)
-formula = "~ Genotype+Block"
+formula = "~ Genotype + Block"
 tt = seq(from = 0, to = 44,by = 2)
 #fit = fanova(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 5, d1 = 4, lower = -10, upper = 15)
 fit = fanova(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 4, d1 = 2, lower = -10, upper = 15)
 #fit$lambda
 #fit$est_fun
 fit$design_mat
-#find the CI to test the difference between block 2 and block 1
-ci_diff = CI_contrast(fit = fit, j1 = 4, j2 = 1, alpha = 0.05)
+#find the CI to test the difference between  genotype2 and genotype 3
+ci_diff = CI_contrast(fit = fit, j1 = 2, j2 = 3, alpha = 0.05)
 plot(tt,ci_diff$trt,type = "l", ylim = c(-100000, 80000))
 lines(tt,ci_diff$lb, col = "green")
 lines(tt,ci_diff$ub, col = "blue")
 #estimate the growth curve of gentoype 1 averaging over three blocks
-ci = CI(fit,L = c(1,0,0,1/3,1/3),alpha = 0.05)
+ci = CI(fit,L ,alpha = 0.05)
 plot(tt,ci$trt, type = "l")
 lines(tt,ci$ub, col = "red")
 lines(tt, ci$lb, col = "blue")
@@ -34,6 +34,6 @@ X = data.frame(water,genotype)
 Y = data_Xu[,c(1:20)]
 formula = "~water+genotype"
 fit = fanova(Y.na.mat = Y, X = X,tt = c(0:15,17:20),
-                  formula = "~water+genotype"
+                  formula = "~water + genotype"
                   ,K.int = 6, order = 4,lower = -10, upper = 15)
 #fit$est_fun
