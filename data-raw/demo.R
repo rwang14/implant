@@ -21,7 +21,7 @@ lines(tt,ci_diff$lb, col = "green")
 lines(tt,ci_diff$ub, col = "blue")
 #estimate the growth curve of gentoype 1 averaging over three blocks
 ci = CI(fit,L = c(1,0,0,1/3,1/3),alpha = 0.05)
-plot(tt,ci$trt, type = "l", ylim = c(-100000, 80000))
+plot(tt,ci$trt, type = "l")
 lines(tt,ci$ub, col = "red")
 lines(tt, ci$lb, col = "blue")
 
