@@ -75,13 +75,13 @@ For simplicity, we use a common smoothing parameter \eqn{\lambda} to regularize 
 }
 \value{
 \item{est_fun}{
-a \eqn{t} by \eqn{q} matrix of the estimated function of coefficients, where \eqn{t} is the number of observation time points, and \eqn{q} is the number of columns of the design matrix. The \eqn{(z,j_k)} element represents the estimated value of the \eqn{j_kth} coefficient at the time \eqn{z} (i.e., \eqn{\hat{a}_{j_k}(t_z)}) in the following example:
+a \eqn{t} by \eqn{u} matrix of the estimated function of coefficients, where \eqn{t} is the number of observation time points, and \eqn{u} is the number of columns of the design matrix. The \eqn{(z,j_l)} element represents the estimated value of the \eqn{j_lth} coefficient at the time \eqn{z} (i.e., \eqn{\hat{a}_{j_l}(t_z)}) in the following example:
 
 For example, if the model includes two categorical variables without interaction terms, each categorical variable contains two levels, the model can be expressed as
 \deqn{y(t) = \beta_0(t) + \beta_1(t) X_1 + \beta_2(t) X_2 + \epsilon(t).}
-In this case, \eqn{q = 3}. This means your output "est_fun" contains 3 columns, and the columns repesent \eqn{\hat{\beta}_0(t)}, \eqn{\hat{\beta}_1(t)} and \eqn{\hat{\beta}_2(t)}, respectively.
+In this case, \eqn{u = 3}. This means your output "est_fun" contains 3 columns, and the columns repesent \eqn{\hat{\beta}_0(t)}, \eqn{\hat{\beta}_1(t)} and \eqn{\hat{\beta}_2(t)}, respectively.
 }
-\item{bhat}{ a \eqn{(q \times K) \times 1} numeric vector, containing all the estimated parameters (i.e., \eqn{\hat{\beta}}, where \eqn{q} is the number of columns of the design matrix, and \eqn{K} is the rank of the spline expansion.
+\item{bhat}{ a \eqn{(u \times K) \times 1} numeric vector, containing all the estimated parameters (i.e., \eqn{\hat{\beta}}, where \eqn{u} is the number of columns of the design matrix, and \eqn{K} is the rank of the spline expansion.
 }
 \item{design_mat}{The design matrix under the model specified in the function. It can be used as reference to help users identify the contrast vector L in the function CI(  ), and the values of j1 and j2 in the function CI_contrast(  ).
 }
