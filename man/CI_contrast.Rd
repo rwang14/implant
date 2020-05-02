@@ -32,25 +32,25 @@ CI_contrast(fit, j1, j2, alpha)
 \details{
 We can test the significance of the treatment effects of interest by constructing the corresponding confidence regions with the function \eqn{``CI\_contrast (fit, j1, j2, \ldots)}", where \eqn{fit} is the output from "\eqn{fanova (\ldots)}", and \eqn{j1} and \eqn{j2} specify the columns of the design matrix corresponding to the treatment of interest.
 
-For example, we'd like to study the relationship between the plant sizes and treatments using functional data models. Let \eqn{y_i(t)} be the size of the ith plant measured at time \eqn{t}, where \eqn{i = 1,\ldots,9}. We treat genotype and block as fixed effects. There are 3 different genotypes \eqn{(A,B,C)} and 3 blocks \eqn{(1,2,3)} in this study. We can use \eqn{Gi= (G_{ik})_{k=2}^{3}} as the categorical indicator of the ith plant genotype. Specifically, \eqn{G_{ik}} is set to one if the plant has the kth genotype; otherwise, \eqn{G_{ik}=0}. For example, if the ith plant has the 2nd genotype, then  \eqn{Gi = (0, 1, 0)}. And \eqn{Gi}s being zeros represents the \eqn{1st} genotype, which is treated as the baseline. Similarly, \eqn{Pi = (P_{ik})_{k=2}^3} is defined to indicate the block that the ith plant belongs to, and the first block is set as the baseline. The model can be written as:
+%For example, we'd like to study the relationship between the plant sizes and treatments using functional data models. Let \eqn{y_i(t)} be the size of the ith plant measured at time \eqn{t}, where \eqn{i = 1,\ldots,9}. We treat genotype and block as fixed effects. There are 3 different genotypes \eqn{(A,B,C)} and 3 blocks \eqn{(1,2,3)} in this study. We can use \eqn{Gi= (G_{ik})_{k=2}^{3}} as the categorical indicator of the ith plant genotype. Specifically, \eqn{G_{ik}} is set to one if the plant has the kth genotype; otherwise, \eqn{G_{ik}=0}. For example, if the ith plant has the 2nd genotype, then  \eqn{Gi = (0, 1, 0)}. And \eqn{Gi}s being zeros represents the \eqn{1st} genotype, which is treated as the baseline. Similarly, \eqn{Pi = (P_{ik})_{k=2}^3} is defined to indicate the block that the ith plant belongs to, and the first block is set as the baseline. The model can be written as:
 
-\deqn{y_i(t_{ij}) = \mu(t_{ij})+ \sum_{k=2}^{3} G_{ik} g_k(t_{ij})+\sum_{k=2}^3 P_{ik}p_k(t_{ij}) +\epsilon_i(t_{ij}),}
-where \eqn{\mu(t)} is the growth function of the plant with the 1st genotype (Genotype A) from the 1st block, \eqn{g_k(t)}s are the genotype effect functions, \eqn{p_k(t)}s are the fixed block effect functions, and the residuals \eqn{\epsilon_i(t)}s are modeled by independent random processes with mean zeros.
+%\deqn{y_i(t_{ij}) = \mu(t_{ij})+ \sum_{k=2}^{3} G_{ik} g_k(t_{ij})+\sum_{k=2}^3 P_{ik}p_k(t_{ij}) +\epsilon_i(t_{ij}),}
+%where \eqn{\mu(t)} is the growth function of the plant with the 1st genotype (Genotype A) from the 1st block, \eqn{g_k(t)}s are the genotype effect functions, \eqn{p_k(t)}s are the fixed block effect functions, and the residuals \eqn{\epsilon_i(t)}s are modeled by independent random processes with mean zeros.
 %where \eqn{t_{i,j}} refers the observation time j for ith observation. y is the plant size, \eqn{G (\cdot)} is the indicator variable for genotype and \eqn{P (\cdot)} is the indicator variable for block. \eqn{\epsilon} is a random process with mean being zero. We use \eqn{\mu(t), g(t)} and \eqn{p(t)} to denote the baseline growth function, the genotype effect function, and the block effect function, respectively.
 
-The parameter estimation is implemented by the function "\eqn{fanova ( \ldots)}" in our package. The confidence region of the block effect function \eqn{p_2(t)} infers whether there is significant difference in plant size between block 1 and block 2, given the same plant genotype. Let C be a \eqn{K\times (p\times K)} coefficient matrix of the \eqn{jth} dummy variable, where \eqn{K = 10} (the rank of spline basis function, see function ``\eqn{fanova( )}".) and \eqn{p = 5}. Those \eqn{1}s in the \eqn{ith} row locates in the \eqn{((j-1) \times K+i)}th column. Since we are interested in the effect of the second block, i.e., \eqn{j = 4}. Hence, \eqn{\hat{\beta}_{p_2} = C\hat{\beta}}. The variance of \eqn{\hat{P}_{2}(t) = B'(t)\hat{\beta}_{p_2} = B'(t)CSy(t)} is:
-\deqn{
-Var({\hat{P}_{2}(t)}) = {B'(t)CS\Sigma_eS'C'B(t)},
-}
-where \eqn{\Sigma_e} is the covariance matrix of \eqn{\epsilon}, and \eqn{S} is the hat matrix of \eqn{y(t)}, that is: \eqn{\hat{y}(t) = Sy(t)}. With the variance, we can construct the confidence bands of \eqn{P_{2}(t)} using Z distribution. Notice that the design matrix has 5 columns, and we use the following code to get the confidence region:
+%The parameter estimation is implemented by the function "\eqn{fanova ( \ldots)}" in our package. The confidence region of the block effect function \eqn{p_2(t)} infers whether there is significant difference in plant size between block 1 and block 2, given the same plant genotype. Let C be a \eqn{K\times (p\times K)} coefficient matrix of the \eqn{jth} dummy variable, where \eqn{K = 10} (the rank of spline basis function, see function ``\eqn{fanova( )}".) and \eqn{p = 5}. Those \eqn{1}s in the \eqn{ith} row locates in the \eqn{((j-1) \times K+i)}th column. Since we are interested in the effect of the second block, i.e., \eqn{j = 4}. Hence, \eqn{\hat{\beta}_{p_2} = C\hat{\beta}}. The variance of \eqn{\hat{P}_{2}(t) = B'(t)\hat{\beta}_{p_2} = B'(t)CSy(t)} is:
+%\deqn{
+%Var({\hat{P}_{2}(t)}) = {B'(t)CS\Sigma_eS'C'B(t)},
+%}
+%where \eqn{\Sigma_e} is the covariance matrix of \eqn{\epsilon}, and \eqn{S} is the hat matrix of \eqn{y(t)}, that is: \eqn{\hat{y}(t) = Sy(t)}. With the variance, we can construct the confidence bands of \eqn{P_{2}(t)} using Z distribution. Notice that the design matrix has 5 columns, and we use the following code to get the confidence region:
 
-ci_diff = CI_contrast (fit = fit, j1 = 4 , j2 = 1, alpha = 0.05)
+%ci_diff = CI_contrast (fit = fit, j1 = 4 , j2 = 1, alpha = 0.05)
 
-lowerbound = ci_diff$lb
+%lowerbound = ci_diff$lb
 
-upperbound = ci_diff$lb
+%upperbound = ci_diff$lb
 
-For more detailed code, see the example below.
+%For more detailed code, see the example below.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
@@ -103,10 +103,10 @@ fit$design_mat
 7           1          0           1      0      1
 8           1          1           0      0      1
 9           1          0           0      0      1
-#We want to test the significance between block 2 and block1,
-#that is, we are interested in the 1st, the 4th column of the design matrix.
+#We want to test the significance between genotype 2 and genotype 3,
+#that is, we are interested in the 2nd, the 3rd column of the design matrix.
 #Therefore, we can define:
-ci_diff = CI_contrast(fit = fit,j1 = 4, j2 = 1, alpha = 0.05)
+ci_diff = CI_contrast(fit = fit,j1 = 2, j2 = 3, alpha = 0.05)
 plot(tt,ci_diff$trt,type = "l")
 lines(tt,ci_diff$lb, col = "blue")
 lines(tt,ci_diff$ub, col = "blue")

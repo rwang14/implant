@@ -21,27 +21,16 @@ CI(fit, L, alpha)
 \item{alpha}{a positive small number between 0 and 1. 1-alpha gives the confidence level. In default, alpha = 0.05.
 }
 }
-\details{We can estimate a linear combination of treatment effects and its confidence regions with the function \eqn{``CI (fit, L \ldots)}", where \eqn{fit} is the output from "\eqn{fanova (\ldots)}", and \eqn{L} is a contrast vector under your fanova model specifying the linear combination of the parameters of interest.
+\details{We can estimate a linear combination of treatment effects and its confidence regions with the function \eqn{``CI (fit, L \ldots)}", where \eqn{fit} is the output from "\eqn{fanova (\ldots)}", and \eqn{L} is a contrast vector under your fanova model specifying the linear combination of the parameters of interest. The parameter estimation \eqn{\hat{\beta}} is implemented by the function "\eqn{fanova ( \ldots)}" in our package. By specifying the linear vector \eqn{L}, the estimation of interest at time \eqn{t} is:
+\deqn{\hat{\tau}(t) = L\otimes B'(t) \hat{\beta},}
+where ``\eqn{\otimes}" is the Kronecker product, and \eqn{B(t) = (B_{d,1}, B_{d,2}, \ldots, B_{d,K})'.} Here d is the order of the B-spline basis function and K is the rank of the B-spline basis function. More details can be found in the help documentation of function ``fanova".
 
-For example, we'd like to study the relationship between the plant sizes and treatments using functional data models. Let \eqn{y_i(t)} be the size of the ith plant measured at time \eqn{t}, where \eqn{i = 1,\ldots,9}. We treat genotype and block as fixed effects. There are 3 different genotypes \eqn{(A,B,C)} and 3 blocks \eqn{(1,2,3)} in this study. We can use \eqn{Gi= (G_{ik})_{k=2}^{3}} as the categorical indicator of the ith plant genotype. Specifically, \eqn{G_{ik}} is set to one if the plant has the kth genotype; otherwise, \eqn{G_{ik}=0}. For example, if the ith plant has the 2nd genotype, then  \eqn{Gi = (0, 1, 0)}. And \eqn{Gi}s being zeros represents the \eqn{1st} genotype, which is treated as the baseline. Similarly, \eqn{Pi = (P_{ik})_{k=2}^3} is defined to indicate the block that the ith plant belongs to, and the first block is set as the baseline. The model can be written as:
+In the example part, we study the relationship between the plant sizes and treatments using functional data models. Let \eqn{y_i(t)} be the size of the ith plant measured at time \eqn{t}, where \eqn{i = 1,\ldots,9}. We treat genotype and block as fixed effects. There are 3 different genotypes \eqn{(1,2,3)} and 3 blocks \eqn{(1,2,3)} in this study. We can use \eqn{Gi= (G_{ik})_{k=2}^{3}} as the categorical indicator of the ith plant genotype. Specifically, \eqn{G_{ik}} is set to one if the plant has the kth genotype; otherwise, \eqn{G_{ik}=0}. For example, if the ith plant has the 2nd genotype, then  \eqn{Gi = (0, 1, 0)}. And \eqn{Gi}s being zeros represents the \eqn{1st} genotype, which is treated as the baseline. Similarly, \eqn{Pi = (P_{ik})_{k=2}^3} is defined to indicate the block that the ith plant belongs to, and the first block is set as the baseline. The model can be written as:
 
 \deqn{y_i(t_{ij}) = \mu(t_{ij})+ \sum_{k=2}^{3} G_{ik} g_k(t_{ij})+\sum_{k=2}^3 P_{ik}p_k(t_{ij}) +\epsilon_i(t_{ij}),}
-where \eqn{\mu(t)} is the growth function of the plant with the 1st genotype (Genotype A) from the 1st block, \eqn{g_k(t)}s are the genotype effect functions, \eqn{p_k(t)}s are the fixed block effect functions, and the residuals \eqn{\epsilon_i(t)}s are modeled by independent random processes with mean zeros.
-%where \eqn{t_{i,j}} refers the observation time j for ith observation. y is the plant size, \eqn{G (\cdot)} is the indicator variable for genotype and \eqn{P (\cdot)} is the indicator variable for block. \eqn{\epsilon} is a random process with mean being zero. We use \eqn{\mu(t), g(t)} and \eqn{p(t)} to denote the baseline growth function, the genotype effect function, and the block effect function, respectively.
-
-The parameter estimation is implemented by the function "\eqn{fanova ( \ldots)}" in our package. We can estimate the average growth curve of a particular genotype over all the blocks using the function \eqn{CI (\ldots)}. e.g., we can estimate the average growth curve of Genotype A over three blocks using the following code:
-
-ci = CI(fit = fit, L = c(1, 0, 0, 1/3, 1/3), alpha = 0.05)
-
-est = ci$trt
-
-We can also obtain its \eqn{95\%} confidence bands using:
-
-lower_bound = ci$lb
-
-upper_bound = ci$ub
-
-For more detailed code, see the example below.
+where \eqn{\mu(t)} is the growth function of the plant with the 1st genotype (Genotype 1) from the 1st block, \eqn{g_k(t)}s are the genotype effect functions, \eqn{p_k(t)}s are the fixed block effect functions, and the residuals \eqn{\epsilon_i(t)}s are modeled by independent random processes with mean zeros.
+%where \eqn{t_{i,j}} refers the observation time j for ith observation. y is the plant size, \eqn{G (\cdot)} is the indicator variable for genotype and \eqn{P (\cdot)} is the indicator variable for block. \eqn{\epsilon} is a random process with mean being zero. We use \eqn{\mu(t), g(t)} and \eqn{p(t)} to denote the baseline growth function, the genotype effect function, and the block effect function, respectively. %The parameter estimation is implemented by the function "\eqn{fanova ( \ldots)}" in our package.
+Using the function \eqn{CI (\ldots)}, we can estimate a linear combination of treatment effects, including estimating the average growth curve of a particular genotype over all the blocks. In the example part, we use this function to estimate the average growth curve of Genotype 1 over three blocks.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{

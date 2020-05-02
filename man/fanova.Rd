@@ -27,7 +27,7 @@ fanova(Y.na.mat, X, tt, formula, K.int = 6,
   \item{order}{a positive integer, which refers to the order of the B-spline. In default, order = 4, which implies that we use a cubic polynomial to connect each two adjacent knots.
 %%     ~~Describe \code{order} here~~
 }
- \item{d1}{a non-negative integer, which indicates the derivatives of the basis expansion function in your penalty matrix, \eqn{\Omega}. See details in the "detail"" part. In default, d1 = 2. Note that d1 should be smaller than the order of the basis function.
+ \item{d1}{a non-negative integer, which indicates the derivatives of the basis expansion function in the penalty matrix, \eqn{\Omega}. See details in the "detail"" part. In default, d1 = 2. Note that d1 should be smaller than the order of the basis function.
 %%     ~~Describe \code{order} here~~
 }
  \item{lower}{lower bound for the possible values of log (smoothing parameter), i.e., \eqn{log (\lambda)}, used in GCV.
@@ -57,12 +57,11 @@ Denote by \eqn{\otimes} the Kronecker product of matrices. A functional ANOVA mo
 where \eqn{a_j(t) = (a_{j2}(t), \ldots, a_{jl_j}(t))'} are the treatment effect functions of the jth factor with dimension \eqn{l_j-1}, \eqn{a_{j_1, j_2}(t)} are the pairwise interaction effect functions between factor \eqn{j_1} and \eqn{j_2} with dimension \eqn{(l_{j_1}-1)(l_{j_2}-1)}, and \eqn{\epsilon_i(t)}s are temporal dependent random processes with zero means. We have implemented this multi-factor model (\eqn{q\geq 2}) in our package such that researchers can specify the main and interactions effects as needed.
 %where \eqn{{a}_j(t)} are the treatment effect functions of the jth factor with dimension \eqn{l_j-1}. \eqn{{a}_{j_1, j_2}(t)} are the pairwise interaction effect functions between factor \eqn{j_1} and \eqn{j_2} with dimension \eqn{(\ell_{j_1}-1)(\ell_{j2}-1)}, and \eqn{{a}_{1,2,...,q}(t)} are the interaction effect functions of all factors with dimensions \eqn{\prod_{j=1}^q (l_{j}-1)}, and \eqn{\epsilon_i(t)}s are independent random processes with zero means. The above genearl model provides a full specification of interactions among factors. In real applications, researchers can build up a simpler model with less interaction terms or even without interactions according to the purpose of the study.
 With the model, we can estimate the temporal varying coefficient functions.%\eqn{{a}_1(\cdot ),\ ...,\ {a}_q(\cdot ),  {a}_{1,2}(t\cdot ),...,} and \eqn{{a}_{1,2,...,q}(\cdot )}.
-First, we approximate all of the coefficient functions with rank K splines expansions. For example, \eqn{a_{1k}(t) = \sum_{v=1}^{K}\beta_{a_{jk},v}B_{d,v}(t)} , where \eqn{B_{d,v}(t)} is an order \eqn{d} B-spline basis function, and \eqn{\beta_{a_{1},l}} is the corresponding coefficient. Then, the problem is reduced to estimate all those coefficients \eqn{\beta}s in front of basis functions. We apply the least squares estimation with penalizations on the \eqn{dth} derivatives of the rank \eqn{K} spline expansion functions to get rid of the overfitting problem. Denoting \eqn{y_i(t_{i,z})} as the measurement for the ith (\eqn{i = 1,...,n}) plant being observed at the zth (\eqn{z = 1,...,m}) time point, we minimize the penalized error sum of squares:
-\deqn{\sum_{i=1}^{n}\sum_{z = 1}^{m}\{y_i(t_{i,z})-\mu(t_{i,z})-X'_{i,1}a_1(t_{i,z})-X'_{i,2}a_2(t_{i,z})-(X'_{i1}\otimes X'_{i2})a_{1,2}(t_{i,z})\}^2}
-\deqn{+\lambda_1\beta_{\mu}'\Omega\beta_{\mu} +\lambda_2\beta_{a_1}'\Omega\beta_{a_1} +\lambda_3\beta_{a_2}'\Omega\beta_{a_2}+\lambda_4\beta_{a_{1,2}}'\Omega\beta_{a_{1,2}}}
+First, we approximate all of the coefficient functions with rank K splines expansions. For example, \eqn{a_{1k}(t) = \sum_{v=1}^{K}\beta_{a_{jk},v}B_{d,v}(t)} , where \eqn{B_{d,v}(t)} is an order \eqn{d} B-spline basis function, and \eqn{\beta_{a_{1},l}} is the corresponding coefficient. Then, the problem is reduced to estimate all those coefficients \eqn{\beta}s in front of basis functions. We apply the least squares estimation with penalizations on the \eqn{d1th} derivatives of the rank \eqn{K} spline expansion functions to get rid of the overfitting problem. Denoting \eqn{y_i(t_{i,z})} as the measurement for the ith (\eqn{i = 1,...,n}) plant being observed at the zth (\eqn{z = 1,...,m}) time point, we minimize the penalized error sum of squares:
+\deqn{\sum_{i=1}^{n}\sum_{z = 1}^{m}\{y_i(t_{i,z})-B(t_{i,z})'\beta_{\mu}-X'_{i,1}B(t_{i,z})'\beta_{1}-X'_{i,2}B(t_{i,z})'\beta_2)-(X'_{i1}\otimes X'_{i2})B(t_{i,z})'\beta_{1,2})\}^2}
+\deqn{+\lambda\beta_{\mu}'\Omega\beta_{\mu} +\lambda\beta_{1}'\Omega\beta_{1} +\lambda\beta_{2}'\Omega\beta_{2}+\lambda\beta_{1,2}'\Omega\beta_{1,2}}
 %B(t_j)'\beta_{\mu} - G_iB(t_j)'\beta_1 - W_i B(t_j)'\beta_w \}^2 + \lambda_1\beta_{\mu}'\Omega\beta_{\mu} + \lambda_2\beta_{g}'\Omega\beta_{g} + \lambda_3\beta_{w}'\Omega\beta_{w},}
-where \eqn{\lambda_l}, \eqn{l = 1, 2, 3, 4} are smoothing parameters, and \eqn{\Omega = \int B^{(d1)}(t)\{B^{(d1)}(t)\}'dt} is a penalty matrix. Here \eqn{B(t) = (B_{d,1}(t), \ldots, B_{d,K})'(t)}. We can obtain the estimators of parameter \eqn{\beta_{a_{\cdot}}}, and (d1) is the corresponding derivitives.
-For simplicity, we use a common smoothing parameter \eqn{\lambda} to regularize the roughness of all coefficient functions, which is often estimated by generalized cross validation (GCV).  By plugging them back to the rank \eqn{K} splines expansions, we get the estimated varying coefficient functions in the model. e.g., \eqn{\hat{\beta}_{\mu}(t) = B(t)'\beta_{\mu}, \hat{a}_1(t) = B(t)'\beta_{a_1}, \ldots}.
+where \eqn{\lambda} is the smoothing parameter, and \eqn{\Omega = \int B^{(d1)}(t)\{B^{(d1)}(t)\}'dt} is a penalty matrix. Here \eqn{B(t) = (B_{d,1}(t), \ldots, B_{d,K}(t))'}, and d1 is the corresponding derivitives. The smoothing parameter \eqn{\lambda} is estimated by generalized cross validation (GCV). By plugging it back to the rank \eqn{K} splines expansions, we get the estimated varying coefficient functions in the model. e.g., \eqn{\hat{\beta}_{\mu}(t) = B(t)'\hat{\beta}_{\mu}, \hat{a}_1(t) = B(t)'\hat{\beta}_{1}, \ldots}.
 %This function performs functional anova anlaysis. We use B-Spline as the basis function to expand the coefficient of each variable.
 
 %For example, the intercept term of a functional anova model, mu(t), will be expanded as
@@ -102,7 +101,7 @@ Matlab, Springer, New York.}
 \author{
 %%  ~~who you are~~
 }
-\note{The rank of B-spline basis functions, K, is equal to the order (degree+1) of the spline plus the number of interior knots. To avoid over-fitting, we choose the rank less than half of the number of observation time points, m.
+\note{The rank of the B-spline basis functions, K, is equal to the order (degree+1) of the spline plus the number of interior knots. To avoid over-fitting, we choose the rank less than half of the number of observation time points, m.
 %%  ~~further notes~~
 }
 
