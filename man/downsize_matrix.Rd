@@ -56,7 +56,7 @@ reduce the size of 3-D arrays while this function, downsize_matrix(  ), is used 
 library(png)
 image = readPNG(system.file("extdata", "image1.png",
                              package = "implant",
-                             mustWork = TRUE))[,,1]
+                             mustWork = TRUE))[ , ,1]
 downsize_matrix(M = image, RowSample = 2, ColSample = 2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

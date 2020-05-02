@@ -8,7 +8,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-image_kmeans(Y,k)
+image_kmeans(Y, k)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

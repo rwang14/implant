@@ -1,11 +1,10 @@
 \name{CI}
 \alias{CI}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ Estimating a linear combination of treatment effects and obtaining its confidence regions in FANOVA
+\title{ Estimating a linear combination of treatment effects and obtaining its confidence regions in functional data analysis
 %%  ~~function to do ... ~~
 }
-\description{This function is used for estimating a linear combination of treatment effects and its confidence regions in functional data analysis.
-Moreover, it can be used for testing the difference between two treatments.
+\description{This function is used for estimating a linear combination of treatment effects and its confidence regions in functional data analysis.It can be used for testing for the significance of the linear comination of effects.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -15,17 +14,19 @@ CI(fit, L, alpha)
 \arguments{
   \item{fit}{an object of output obtained by function "fanova".
 }
-  \item{L}{a numeric contrast vector corresponding to the design matrix in "fanova", which specifies the linear combination of the parameters of interest. Users can use the design matrix output by the function fanova( ), to idenfity the value of L. See the example part for details.
+  \item{L}{a numeric contrast vector corresponding to the design matrix in "fanova", which specifies the linear combination of the parameters of interest. Users can use the design matrix output from the function fanova( ), to idenfity the value of L. See the example part for details.
 %%     ~~Describe \code{x} here~~
 }
 \item{alpha}{a positive small number between 0 and 1. 1-alpha gives the confidence level. In default, alpha = 0.05.
 }
 }
-\details{We can estimate a linear combination of treatment effects and its confidence regions with the function \eqn{``CI (fit, L \ldots)}", where \eqn{fit} is the output from "\eqn{fanova (\ldots)}", and \eqn{L} is a contrast vector under your fanova model specifying the linear combination of the parameters of interest. The parameter estimation \eqn{\hat{\beta}} is implemented by the function "\eqn{fanova ( \ldots)}" in our package. By specifying the linear vector \eqn{L}, the estimation of interest at time \eqn{t} is:
+\details{We can estimate a linear combination of treatment effects and its confidence regions with the function \eqn{``CI (fit, L \ldots)}", where \eqn{fit} is the output from "\eqn{fanova (\ldots)}", and \eqn{L} is a contrast vector under the Fanova model specifying the linear combination of the parameters of interest. The parameter estimation \eqn{\hat{\beta}} is implemented by the function "\eqn{fanova ( \ldots)}" in our package. By specifying the linear vector \eqn{L}, the estimated linear combination of effects at time \eqn{t} is:
 \deqn{\hat{\tau}(t) = L\otimes B'(t) \hat{\beta},}
-where ``\eqn{\otimes}" is the Kronecker product, and \eqn{B(t) = (B_{d,1}, B_{d,2}, \ldots, B_{d,K})'.} Here d is the order of the B-spline basis function and K is the rank of the B-spline basis function. More details can be found in the help documentation of function ``fanova".
+where ``\eqn{\otimes}" is the Kronecker product, and \eqn{B(t) = (B_{d,1}(t), B_{d,2}(t), \ldots, B_{d,K}(t))'.} Here d is the order of the B-spline basis function and K is the rank of the B-spline basis function. More details can be found in the help documentation for function ``fanova".
 
-In the example part, we study the relationship between the plant sizes and treatments using functional data models. Let \eqn{y_i(t)} be the size of the ith plant measured at time \eqn{t}, where \eqn{i = 1,\ldots,9}. We treat genotype and block as fixed effects. There are 3 different genotypes \eqn{(1,2,3)} and 3 blocks \eqn{(1,2,3)} in this study. We can use \eqn{Gi= (G_{ik})_{k=2}^{3}} as the categorical indicator of the ith plant genotype. Specifically, \eqn{G_{ik}} is set to one if the plant has the kth genotype; otherwise, \eqn{G_{ik}=0}. For example, if the ith plant has the 2nd genotype, then  \eqn{Gi = (0, 1, 0)}. And \eqn{Gi}s being zeros represents the \eqn{1st} genotype, which is treated as the baseline. Similarly, \eqn{Pi = (P_{ik})_{k=2}^3} is defined to indicate the block that the ith plant belongs to, and the first block is set as the baseline. The model can be written as:
+In the example part, we study the relationship between the plant sizes and treatments using functional data models. Let \eqn{y_i(t)} be the size of the ith plant measured at time \eqn{t}, where \eqn{i = 1,\ldots,9}. We treat genotype and block as fixed effects. There are 3 different genotypes \eqn{(1,2,3)} and 3 blocks \eqn{(1,2,3)} in this study. We can use \eqn{G_i= (G_{ik})_{k=2}^{3}} as the categorical indicator of the ith plant genotype. Specifically, \eqn{G_{ik}} is set to one if the plant has the kth genotype; otherwise, \eqn{G_{ik}=0}.
+%For example, if the ith plant has the 2nd genotype, then  \eqn{G_i = (0, 1, 0)}. And \eqn{Gi}s being zeros represents the \eqn{1st} genotype, which is treated as the baseline.
+Similarly, \eqn{Pi = (P_{ik})_{k=2}^3} is defined to represent the block that the ith plant belongs to, and the first block is set as the baseline. The model can be written as:
 
 \deqn{y_i(t_{ij}) = \mu(t_{ij})+ \sum_{k=2}^{3} G_{ik} g_k(t_{ij})+\sum_{k=2}^3 P_{ik}p_k(t_{ij}) +\epsilon_i(t_{ij}),}
 where \eqn{\mu(t)} is the growth function of the plant with the 1st genotype (Genotype 1) from the 1st block, \eqn{g_k(t)}s are the genotype effect functions, \eqn{p_k(t)}s are the fixed block effect functions, and the residuals \eqn{\epsilon_i(t)}s are modeled by independent random processes with mean zeros.

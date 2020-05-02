@@ -1,9 +1,9 @@
 \name{ColorB}
 \alias{ColorB}
 \title{
-Identifying the region of interest of a plant
+Identifying the region of interest (left and right boundaries) for a plant image
 }
-\description{This function is specifically designed for processing the plant images taken in the University of Nebraska-Lincoln (UNL) greenhouse Innovation Center. It helps identify the left and right boundaries of the plant by removing the parts of the image that contains the black bars, but keep the black part of the pot. In a word, to help users identify the region of interest. This is based on locating the position of the black bars in the background. See the image1.png in the example data.
+\description{This function is specifically designed for processing the plant images taken in the University of Nebraska-Lincoln (UNL) greenhouse Innovation Center. It identifies the left and right boundaries of the black bars of the background and help users identify the region of interest for the plants. See image1.png in the example data.
 
 %This function is used to identify the region of interest of an image. Specifically, this function is designed to identify the region of interest of the plant image taken from the UNL greenhouse system, by removing the parts of the image that contains the black bars, but keep the black part of the pot. In a word, to help users identify the region of interest.
 }
@@ -22,10 +22,10 @@ ColorB(image, colThreshold = 0.5)
 }
 \value{
 \item{lb}{
-left bound of the part of the region of interest.
+left bound for the region of interest.
 }
 \item{rb}{
-right bound of the part of the region of the interest.
+right bound for the region of the interest.
 }
 \item{c}{
 A modified image replacing all the area outside the region of interest by white color.

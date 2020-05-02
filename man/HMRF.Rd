@@ -1,10 +1,10 @@
 \name{HMRF}
 \alias{HMRF}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Image Segmentation using Hidden Markov Random Field and EM Algorithm Framework
+\title{Image Segmentation using Hidden Markov Random Field with EM Algorithm
 %%  ~~function to do ... ~~
 }
-\description{This function can be used to obtain the segmented image using HMRF-EM.
+\description{This function can be used to obtain the segmented image using HMRF-EM Algorithm.
 }
 
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
@@ -15,7 +15,7 @@ HMRF(X, Y, Z, em_iter, map_iter, beta = 2,
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-\item{X}{an m by n binary matrix of the inital labels for an image, which can be obtained using initital segmentation methods, such as K-means or thresholding methods. Note that X could be any binary matrix, say its element could be 0 & 1, or 1 & 2, or 2 & 3 ,..., etc.
+\item{X}{an m by n binary matrix of the inital labels for an image, which can be obtained using initital segmentation methods, such as K-means or thresholding methods. Note that X could be any binary matrix, for example, its element could be 0 & 1, or 1 & 2, or 2 & 3, ..., etc.
 %%     ~~Describe \code{x} here~~
 }
 \item{Y}{an m by n matrix of pixel intensity. For plant segmentation, we recommend to use relative green.
@@ -40,7 +40,7 @@ Z = t(cannEdges (Y) [  ,  , 1, 1]) from the package: imager. See the example for
 https://github.com/rwang14/implant/blob/master/vignettes/HMRF_EM.pdf
 
 2. The arguement Z can be obatined by CannyEdge detector using function cannEdges( ) from the package: imager. However,
-since this package needs to involve Rcpp and other dependent packages which may increase installation complexity of our package, we recommend the users to install the package: imager by themselves if needed.
+since this package needs to involve Rcpp and other dependent packages which may increase installation complexity of our package, we recommend the users to install the package ``imager" by themselves if needed.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{

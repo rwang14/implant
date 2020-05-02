@@ -1,7 +1,7 @@
 \name{CI_contrast}
 \alias{CI_contrast}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ Constructing confidence regions for specific treatment effect in FANOVA
+\title{ Constructing confidence regions for specific treatment effect in functional data analysis
 %%  ~~function to do ... ~~
 }
 \description{This is a special case of the function "CI"
@@ -18,11 +18,11 @@ CI_contrast(fit, j1, j2, alpha)
 %%     ~~Describe \code{fit} here~~
 }
   \item{j1}{A positive integer, specifying the columns of the design matrix
-  corresponding to one treatment of interest. Users can use the design matrix output by the function fanova( ), to idenfity the value of j1. See the example part for details.
+  corresponding to one treatment of interest. Users can use the design matrix output from the function fanova( ), to idenfity the value of j1. See the example part for details.
 %%     ~~Describe \code{j1} here~~
 }
   \item{j2}{A positive integer, specifying the columns of the design matrix
-  corresponding to the other treatment of interest. Users can use the design matrix output by the function fanova( ), to idenfity the value of j2. See the example part for details.
+  corresponding to the other treatment of interest. Users can use the design matrix output from the function fanova( ), to idenfity the value of j2. See the example part for details.
 %%     ~~Describe \code{j2} here~~
 }
   \item{alpha}{A positive small number between 0 and 1. 1-alpha gives the confidence level. In default, alpha = 0.05.
@@ -30,7 +30,7 @@ CI_contrast(fit, j1, j2, alpha)
 }
 }
 \details{
-We can test the significance of the treatment effects of interest by constructing the corresponding confidence regions with the function \eqn{``CI\_contrast (fit, j1, j2, \ldots)}", where \eqn{fit} is the output from "\eqn{fanova (\ldots)}", and \eqn{j1} and \eqn{j2} specify the columns of the design matrix corresponding to the treatment of interest.
+We can test the significance of the treatment effects of interest by constructing the corresponding confidence regions with the function \eqn{``CI\_contrast (fit, j1, j2, \ldots)}", where \eqn{fit} is the output from "\eqn{fanova (\ldots)}", and \eqn{j1} and \eqn{j2} specify the columns of the design matrix corresponding to the treatments of interest.This is the simplified version of ```\eqn{CI\_contrast}" by setting the j1th and j2th elements of L being 1, and all other elements beign 0.
 
 %For example, we'd like to study the relationship between the plant sizes and treatments using functional data models. Let \eqn{y_i(t)} be the size of the ith plant measured at time \eqn{t}, where \eqn{i = 1,\ldots,9}. We treat genotype and block as fixed effects. There are 3 different genotypes \eqn{(A,B,C)} and 3 blocks \eqn{(1,2,3)} in this study. We can use \eqn{Gi= (G_{ik})_{k=2}^{3}} as the categorical indicator of the ith plant genotype. Specifically, \eqn{G_{ik}} is set to one if the plant has the kth genotype; otherwise, \eqn{G_{ik}=0}. For example, if the ith plant has the 2nd genotype, then  \eqn{Gi = (0, 1, 0)}. And \eqn{Gi}s being zeros represents the \eqn{1st} genotype, which is treated as the baseline. Similarly, \eqn{Pi = (P_{ik})_{k=2}^3} is defined to indicate the block that the ith plant belongs to, and the first block is set as the baseline. The model can be written as:
 
@@ -56,7 +56,7 @@ We can test the significance of the treatment effects of interest by constructin
 \value{
 %%  ~Describe the value returned
 %%  If it is a LIST, use
-\item{trt}{a t by 1 vector, which refers to the estimated coefficients, where t is the number of observation time points specified in the argument tt in the function fanova( ).}
+\item{trt}{a t by 1 vector, which refers to the estimated treatment effect, where t is the number of observation time points specified in the argument tt in the function fanova( ).}
 \item{lb}{a t by 1 vector, which refers to the lower bound of the (1-alpha) confidence band, where t is the number of observation time points specified in the argument tt in the function fanova( ).}
 \item{ub}{a t by 1 vector, which refers to the the upper bound of the (1-alpha) confidence band, where t is the number of observation time points specified in the argument tt in the function fanova( ).}
 %% ...

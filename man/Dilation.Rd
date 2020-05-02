@@ -23,7 +23,7 @@ dilation(imagefile, mask = matrix(1, 3, 3))
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-a binary matrix of the eroded image.
+a binary matrix of the dilated image.
 }
 \references{Image Analysis and Mathematical Morphology by Jean Serra, ISBN 0-12-637240-3 (1982)
 %% ~put references to the literature/web site here ~

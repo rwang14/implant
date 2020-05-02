@@ -8,7 +8,7 @@
 This function is used to convert an RGB image to Grayscale.
 }
 \usage{
-Color2Gray(image, weight = c(0.299,0.587,0.114))
+Color2Gray(image, weight = c(0.299, 0.587, 0.114))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -17,7 +17,7 @@ an array of an RGB image file for processing.
 %%     ~~Describe \code{x} here~~
 }
 \item{weight}{
-a numeric vector, in which elements are weights for the Red channel of the image, Green channel of the image, and the Blue channel of the image, respectively.
+a numeric vector, giving weights for the Red, the Green and the Blue channels of the image, respectively.
 }
 }
 \details{

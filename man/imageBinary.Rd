@@ -17,7 +17,7 @@ threshold2 = 0.075)
   an array of pixels of the image for processing.
 %%     ~~Describe \code{x} here~~
 }
-  \item{weight}{a 3 by 1 vector. The three elements indicate the weight of the pixel intensities of R,G,B, respectively. In default, it takes the value of c(-1,2,-1), which helps to construct a relative green ratio.
+  \item{weight}{a 3 by 1 vector. The three elements indicate the weight of the pixel intensities of R,G,B, respectively. In default, it takes the value of c(-1, 2, -1), which helps to construct a relative green ratio.
 
   }
   \item{threshold1,threshold2}{

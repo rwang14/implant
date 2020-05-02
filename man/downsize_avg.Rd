@@ -16,10 +16,14 @@ downsize_avg(image, block_nrow = 2, block_ncol = 2)
  a pixel matrix or an array of the image for processing.
 }
 \item{block_nrow}{
-an integer number, which is the number of rows to select to construct your new array. For example, if block_nrow = 2 means you select every two rows of the input image as a block. Note that this number needed to be divisible by number of rows of the array of the input image.
+an integer number, which is the number of rows from a block. The reduced matrix is the average value within each block.
+%to select to construct your new array.
+For example, if block_nrow = 2 means you select every two rows of the input image as a block. Note that this number needed to be divisible by number of rows of the array of the input image.
 }
 \item{block_ncol}{
-an integer number, which is the number of columns to select to construct your new array. For example, if block_ncol = 2 means you select every two columns of the input image as a block. Note that this number needed to be divisible by number of columns of the array of the input image.
+an integer number, which is the number of columns from a block. The reduced matrix is the average value within each block.
+%select to construct your new array.
+For example, if block_ncol = 2 means you select every two columns of the input image as a block. Note that this number needed to be divisible by number of columns of the array of the input image.
 
 }
 }
@@ -49,7 +53,7 @@ block_nrow and block_ncol must be divisible by number of rows and columns of the
 library(png)
 image = readPNG(system.file("extdata", "image1.png",
                              package = "implant",
-                             mustWork = TRUE))[,,c(1:3)]
+                             mustWork = TRUE))[ , ,c(1:3)]
 downsize_avg(image,2,2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
