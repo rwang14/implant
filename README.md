@@ -61,7 +61,7 @@ Find source code from the folder: R.
 
 Find help documentation from the folder: man.
 
-Find manual from the  folder: vignettes or visit: https://github.com/rwang14/implant/blob/master/vignettes/implant_0.1.0.pdf
+Find manual from the  folder: vignettes or visit: https://github.com/rwang14/implant/blob/master/vignettes/implant.pdf
 
 Find user's guide from the folder: vignettes or visit: https://github.com/rwang14/implant/blob/master/vignettes/Users%20Guide.pdf
 
