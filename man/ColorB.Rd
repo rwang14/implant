@@ -51,7 +51,7 @@ A modified image replacing all the area outside the region of interest by white 
 library(png)
 image = readPNG(system.file("extdata", "image1.png",
                              package = "implant",
-                             mustWork = TRUE))[,,c(1:3)]
+                             mustWork = TRUE))[ , ,c(1:3)]
 writePNG(image,"~/imageOriginal.png")
 resultColor = ColorB(image)
 bound = c(resultColor$lb, resultColor$rb)

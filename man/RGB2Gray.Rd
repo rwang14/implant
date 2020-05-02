@@ -51,7 +51,7 @@ A matrix of pixels of the image converted from RGB to Grayscale.
 library(png)
 image = readPNG(system.file("extdata", "image1.png",
                              package = "implant",
-                             mustWork = TRUE))[,,c(1:3)]
+                             mustWork = TRUE))[ , ,c(1:3)]
 imageGray = Color2Gray(image)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

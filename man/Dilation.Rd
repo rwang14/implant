@@ -45,7 +45,7 @@ a binary matrix of the dilated image.
 library(png)
 image = readPNG(system.file("extdata", "image1.png",
                              package = "implant",
-                             mustWork = TRUE))[,,c(1:3)]
+                             mustWork = TRUE))[ , ,c(1:3)]
 
 imageB = imageBinary(image, weight = c(-1, 2, -1),
                      threshold1 = 30 / 255,

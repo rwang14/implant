@@ -42,7 +42,7 @@ A binary matrix with exchanged background and the foreground.
 library(png)
 image = readPNG(system.file("extdata", "image1.png",
                              package = "implant",
-                             mustWork = TRUE))[,,c(1:3)]
+                             mustWork = TRUE))[ , ,c(1:3)]
 imageB = imageBinary(image,  weight = c(-1, 2, -1),
 threshold1 = 30 / 255, threshold2 = 0.05)
 color_exchange(imageB)

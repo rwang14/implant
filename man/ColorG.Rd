@@ -69,7 +69,7 @@ a numeric vector, with values between 0 and 1, giving the color intensity to cha
 library(png)
 imageX = readPNG(system.file("extdata", "image_pot.png",
                              package = "implant",
-                             mustWork = TRUE))[,,c(1:3)]
+                             mustWork = TRUE))[ , ,c(1:3)]
 writePNG(imageX,"~/imageX.png")
 tempG = ColorG (imagefile = imageX, rowThreshold = 0.007, Bthreshold = 60 / 255,
 EGThreshold = 0.1, weight = c(-1, 2, -1), changeto = c(1, 1, 1))

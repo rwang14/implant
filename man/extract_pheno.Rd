@@ -53,7 +53,7 @@ extract_pheno(processed_image, Xsize = 1, Ysize = 1, a = 1, b = 1)
 library(png)
 imageOriginal = readPNG(system.file("extdata", "image1.png",
                              package = "implant",
-                             mustWork = TRUE))[,,c(1:3)]
+                             mustWork = TRUE))[ , ,c(1:3)]
 #reduce the size of an image
 image_reduced = downsize(imageOriginal, RowSample = 2, ColSample = 2)
 #segment the reduced image

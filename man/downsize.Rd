@@ -50,6 +50,6 @@ reduce the size of matrices while this function, downsize( ), is used to reduce 
 library(png)
 image = readPNG(system.file("extdata", "image1.png",
                              package = "implant",
-                             mustWork = TRUE))[,,c(1:3)]
+                             mustWork = TRUE))[ , ,c(1:3)]
 downsize(image, RowSample = 2, ColSample = 2)
 }
