@@ -19,9 +19,9 @@ ci_diff = CI_contrast(fit = fit, j1 = 2, j2 = 3, alpha = 0.05)
 plot(tt,ci_diff$trt,type = "l", ylim = c(-100000, 80000))
 lines(tt,ci_diff$lb, col = "green")
 lines(tt,ci_diff$ub, col = "blue")
-#estimate the growth curve of gentoype 1 averaging over three blocks
-ci = CI(fit,L ,alpha = 0.05)
-plot(tt,ci$trt, type = "l")
+#find the CI to test the difference between  genotype2 and genotype 3
+ci = CI(fit,L = c(0, 1, -1, 0, 0), alpha = 0.05)
+plot(tt,ci$trt, type = "l",ylim = c(-100000, 80000))
 lines(tt,ci$ub, col = "red")
 lines(tt, ci$lb, col = "blue")
 
