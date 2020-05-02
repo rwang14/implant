@@ -102,7 +102,7 @@ Matlab, Springer, New York.}
 \author{
 %%  ~~who you are~~
 }
-\note{
+\note{The rank of B-spline basis functions, K, is equal to the order (degree+1) of the spline plus the number of interior knots. To avoid over-fitting, we choose the rank less than half of the number of observation time points, m.
 %%  ~~further notes~~
 }
 
