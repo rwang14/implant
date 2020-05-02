@@ -86,6 +86,10 @@ In this case, \eqn{u = 3}. This means your output "est_fun" contains 3 columns, 
 }
 \item{lambda}{The penalty parameter, obatined by GCV.
 }
+\item{K}{ The rank of the B-spline basis function. K = number of interior knots + order of the B-spline basis function.
+}
+\item{...}{Other ouputs are for writing other functions. Users can ignore them.
+}
 
 %%  ~Describe the value returned
 %%  If it is a LIST, use
