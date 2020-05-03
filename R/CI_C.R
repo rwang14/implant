@@ -39,7 +39,7 @@ CI_C = function(fit,L,alpha = 0.05){
   }
   Y.hat.matrix = Y.hat.matrix_1(Y_na, Phi, beta.hat)
   Cov = Sigma_epsilon(Y_na,Y.hat.matrix,n)
-  Var = Var_bhat(X,tps, total.time, K, order, d0, C,S, Cov)
+  Var = Var_bhat(X,tps, total.time, K, order, d0, Cmat,S, Cov)
   c.i.me = qnorm(alpha/2)*sqrt(Var)
   ci.up = trt - c.i.me
   ci.lw = trt + c.i.me
