@@ -25,8 +25,8 @@ lines(tt,ci_diff$ub, col = "blue")
 #way 2
 ci = CI(fit, L = c(0, 0, 0, 0, 1), alpha = 0.05)
 plot(tt,ci$trt, type = "l",ylim = c(-100000, 80000))
-lines(tt,ci$ub, col = "green")
-lines(tt, ci$lb, col = "blue")
+lines(tt,ci$ub, col = "yellow")
+lines(tt, ci$lb, col = "orange")
 
 #demo2
 data_Xu = read.csv(system.file("extdata", "data_Xu.txt",package = "implant",
@@ -45,12 +45,12 @@ fit$design_mat
 #test the interaction term
 #way 1
 ci = CI(fit, L = c(0, 0, 0, 1), alpha = 0.05)
-plot(tt,ci$trt, type = "l",ylim = c(-100000, 80000))
+plot(tt,ci$trt, type = "l", ylim = c(-20000,20000))
 lines(tt,ci$ub, col = "red")
 lines(tt, ci$lb, col = "blue")
 #way two
 ci = CI_contrast(fit, j1 = 4, j2 = 1, alpha = 0.05)
-plot(tt,ci$trt, type = "l",ylim = c(-100000, 80000))
+plot(tt,ci$trt, type = "l",ylim = c(-20000, 20000))
 lines(tt,ci$ub, col = "red")
 lines(tt, ci$lb, col = "blue")
 
