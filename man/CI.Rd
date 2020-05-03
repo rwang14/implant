@@ -4,7 +4,7 @@
 \title{ Estimating a linear combination of treatment effects and obtaining its confidence regions in functional data analysis
 %%  ~~function to do ... ~~
 }
-\description{This function is used for estimating a linear combination of treatment effects and its confidence regions in functional data analysis.It can be used for testing for the significance of the linear comination of effects.
+\description{This function is used for estimating a linear combination of treatment effects and its confidence regions in functional data analysis. It can be used for testing for the significance of the linear comination of effects.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
