@@ -34,7 +34,7 @@ CI_C = function(fit,L,alpha = 0.05){
   if(length(cols)>=2){
   for ( i in 2:length(cols)){
     trt_temp = L[cols[i]]*est_fun[,cols[i]]
-    trt = trt+temp
+    trt = trt+trt_temp
   }
   }
   Y.hat.matrix = Y.hat.matrix_1(Y_na, Phi, beta.hat)
