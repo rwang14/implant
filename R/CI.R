@@ -1,8 +1,8 @@
-#source("~/Desktop/implant/Sigma_epsilon.R")
-#source("~/Desktop/implant/Var_bhat.R")
-#source("~/Desktop/implant/Y.hat.matrix_1.R")
-#source("~/Desktop/implant/function_C.R")
-CI = function(fit,L,alpha = 0.05){
+# source("~/Desktop/implant/Sigma_epsilon.R")
+# source("~/Desktop/implant/Var_bhat.R")
+# source("~/Desktop/implant/Y.hat.matrix_1.R")
+# source("~/Desktop/implant/function_C.R")
+CI_C = function(fit,L,alpha = 0.05){
   X = fit$X
   Y_na = fit$Y_na
   total.time = fit$total.time
@@ -19,29 +19,27 @@ CI = function(fit,L,alpha = 0.05){
   cols = which(L[]!=0)
   ###C###
   for ( i in 1:1){
-    C_temp= L[cols[i]]*C(K,nf,cols[i])
+    Cmat= L[cols[i]]*C(K,nf,cols[i])
   }
+  if (length(cols)>=2){
   for ( i in 2:length(cols)){
-  C_i_mat = L[cols[i]]*C(K,nf,cols[i])
-      C_temp = rbind(C_temp,C_i_mat)
+    C_temp = L[cols[i]]*C(K,nf,cols[i])
+    Cmat = Cmat + C_temp
   }
-  C_array = array(0,dim = c(K,nf*K,length(cols)))
-  for ( i in 1:length(cols)){
-    C_array[,,i] = C_temp[((i-1)*K+1):(i*K),]
   }
-  C = apply(C_array, MARGIN=c(1, 2), sum)
-###trt###
+  ###trt###
   for ( i in 1:1){
-    trt_temp= L[cols[i]]*fit$est_fun[,cols[i]]
+    trt= L[cols[i]]*fit$est_fun[,cols[i]]
   }
+  if(length(cols)>=2){
   for ( i in 2:length(cols)){
-    trt_i = L[cols[i]]*est_fun[,cols[i]]
-    trt_temp = rbind(trt_temp,trt_i)
+    trt_temp = L[cols[i]]*est_fun[,cols[i]]
+    trt = trt+trt_temp
   }
-  trt = apply(trt_temp, MARGIN = 2, sum)
+  }
   Y.hat.matrix = Y.hat.matrix_1(Y_na, Phi, beta.hat)
   Cov = Sigma_epsilon(Y_na,Y.hat.matrix,n)
-  Var = Var_bhat(X,tps, total.time, K, order, d0, C,S, Cov)
+  Var = Var_bhat(X,tps, total.time, K, order, d0, C = Cmat,S, Cov)
   c.i.me = qnorm(alpha/2)*sqrt(Var)
   ci.up = trt - c.i.me
   ci.lw = trt + c.i.me
