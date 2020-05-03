@@ -4,7 +4,7 @@
 \title{Reducing the Size of a Matrix
 %%  ~~function to do ... ~~
 }
-\description{This function reduces the size of a matrix by picking one component from every k1 components in each row and one component from every k2 components in each column of the input matrix, and use the selected elements to construct a reduced matrix, where k1 and k2 are specified by "RowSample" and "ColSampe", respectively.
+\description{This function reduces the size of a matrix by picking one component from every k1 components in each row and one component from every k2 components in each column of the input matrix, and use the selected elements to construct a reduced matrix, where k1 and k2 are specified by "RowSample" and "ColSample", respectively.
 %sample elements from each row and each column of the original matrix, and use the selected elements to construct a reduced matrix. This function can be used to reduce sizes of binary images in the study of image processing.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }

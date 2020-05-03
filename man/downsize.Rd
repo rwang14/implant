@@ -5,7 +5,7 @@
 %%  ~~function to do ... ~~
 }
 \description{
-This function reduces the size of each matrix of an RGB image (3-D array) by picking one component from every k1 components in each row and one component from every k2 components in each column of the input image, and use the selected elements to construct a reduced image, where k1 and k2 are specified by "RowSample" and "ColSampe", respectively.
+This function reduces the size of each matrix of an RGB image (3-D array) by picking one component from every k1 components in each row and one component from every k2 components in each column of the input image, and use the selected elements to construct a reduced image, where k1 and k2 are specified by "RowSample" and "ColSample", respectively.
 }
 \usage{
 downsize(image, RowSample = 1, ColSample = 1)
