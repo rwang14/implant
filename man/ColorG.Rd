@@ -8,7 +8,7 @@ Identifying the region of interest (lower bound) for a plant image
 }
 \usage{
 ColorG (imagefile, rowThreshold = 0.007, Bthreshold = 60 / 255,
-EGThreshold = 0.1, weight = c(-1, 2, -1), changeto = c(1, 1, 1))
+EGThreshold = 0.1, weight = c(-1, 2, -1))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -33,9 +33,6 @@ a value between 0 and 1. It is applied to the contrast intensity by the specifie
 }
 \item{weight}{
 a 3 by 1 numeric vector. The three elements indicate the weight of the pixel intensities of R, G, B, respectively. In default, it takes weight c(-1,2,-1), for contrast intensity.
-}
-\item{changeto}{
-a numeric vector, with values between 0 and 1, giving the color intensity to change the green trip in the empty pot.
 }
 }
 \details{In the example part, this function identifies the green strip in an empty pot, which can be considered as the lower boundary of a plant, and change the color of the green strip from green to white.
@@ -72,7 +69,7 @@ imageX = readPNG(system.file("extdata", "image_pot.png",
                              mustWork = TRUE))[ , ,c(1:3)]
 writePNG(imageX,"~/imageX.png")
 tempG = ColorG (imagefile = imageX, rowThreshold = 0.007, Bthreshold = 60 / 255,
-EGThreshold = 0.1, weight = c(-1, 2, -1), changeto = c(1, 1, 1))
+EGThreshold = 0.1, weight = c(-1, 2, -1))
 tempG$c
 tempG$lowb
 }

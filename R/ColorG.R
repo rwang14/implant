@@ -1,9 +1,11 @@
 ColorG = function(imagefile, rowThreshold = 0.007,
                   #block = 5, Tol = 2,
                   Bthreshold = 60 / 255,
-                  EGThreshold = 0.1, weight = c(-1, 2, -1), changeto = c(1, 1, 1)){
+                  EGThreshold = 0.1, weight = c(-1, 2, -1)){
+
   block = 5
   Tol = 2
+  changeto = c(1, 1, 1)
   weight = weight / sqrt(sum(weight^2))
   imageweight = imagefile[, , 1] * weight[1] + imagefile[, , 2] * weight[2] + imagefile[, , 3] * weight[3]
   imagesum = imagefile[, , 1] + imagefile[, , 2] + imagefile[, , 3]
