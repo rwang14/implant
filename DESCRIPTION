@@ -1,7 +1,6 @@
 Package: implant
 Type: Package
-Title:  
-A High-throughput Phenotyping Pipeline for Image Processing and Functional Growth Curve Analysis
+Title: A High-throughput Phenotyping Pipeline for Image Processing and Functional Growth Curve Analysis
 Version: 0.1.0
 Author: Ronghao Wang, Yumou Qiu, Yuzhen Zhou, Yuhang Xu, James Schnable
 Maintainer:  Ronghao Wang <rhwang64@gmail.com>
