@@ -1,9 +1,9 @@
 library(implant)
 library(png)
 #load the image of plant
-imageOriginal = readPNG(system.file("extdata", "image1.png",package = "implant", mustWork = TRUE))[,,1:3]
+imageOriginal = readPNG(system.file("extdata", "image1.png",package = "implant", mustWork = TRUE))[ , ,1:3]
 #load the image of empty pot
-imageX = readPNG(system.file("extdata", "image_pot.png",package = "implant", mustWork = TRUE))[,,1:3]
+imageX = readPNG(system.file("extdata", "image_pot.png",package = "implant", mustWork = TRUE))[ , ,1:3]
 #Identify the region of interest
 sizeOriginal = dim(imageOriginal)[c(1, 2)]
 tempG = ColorG(imagefile = imageX, rowThreshold = 0.002)
