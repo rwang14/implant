@@ -2,7 +2,7 @@
 #source("~/Desktop/implant/Var_bhat.R")
 #source("~/Desktop/implant/Y.hat.matrix_1.R")
 #source("~/Desktop/implant/function_C.R")
-CI = function(fit,L,alpha = 0.05){
+CIX = function(fit,L,alpha = 0.05){
   X = fit$X
   Y_na = fit$Y_na
   total.time = fit$total.time
