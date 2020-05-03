@@ -1,5 +1,6 @@
 library(implant)
 #demo1
+devtools::install_github("rwang14/implant")
 data_new = read.csv(system.file("extdata", "data.csv",package = "implant", mustWork = TRUE))
 #The first column records the positions of the observations from the original dataset, can be ignored
 Y = data_new[,-c(1:3)]
@@ -20,10 +21,13 @@ plot(tt,ci_diff$trt,type = "l", ylim = c(-100000, 80000))
 lines(tt,ci_diff$lb, col = "green")
 lines(tt,ci_diff$ub, col = "blue")
 #find the CI to test the difference between  genotype2 and genotype 3
-ci = CI(fit,L = c(0, 1, -1, 0, 0), alpha = 0.05)
+ci = CI(fit, L = c(0, 0, 0, 0, 1), alpha = 0.05)
 plot(tt,ci$trt, type = "l",ylim = c(-100000, 80000))
 lines(tt,ci$ub, col = "red")
 lines(tt, ci$lb, col = "blue")
+
+L = c(0,0,0,0,1)
+alpha = 0.05
 
 ci = CI(fit,L = c(0, 0, 0, 0, 1), alpha = 0.05)
 plot(tt,ci$trt, type = "l",ylim = c(-100000, 80000))
