@@ -48,7 +48,16 @@ please install Rtools before installing the package. Use the link https://cran.r
      devtools::install_github("rwang14/implant");
      
      library(implant)
-     
+ **Local Installation:** If you cannot install it online, you can download the package to your local computer and install it locally. 
+ 
+ Step 1. Download the package: https://github.com/rwang14/implant/blob/master/implant_0.1.0.tar.gz
+ 
+ Step 2. Run the following command in R:
+ 
+    install.packages("~/your path/implant_0.1.0.tar.gz", repos = NULL, type = "source")
+ 
+    library(implant)
+ 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 On Github, you can:
