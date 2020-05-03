@@ -1,7 +1,7 @@
-source("~/Desktop/implant/Sigma_epsilon.R")
-source("~/Desktop/implant/Var_bhat.R")
-source("~/Desktop/implant/Y.hat.matrix_1.R")
-source("~/Desktop/implant/function_C.R")
+# source("~/Desktop/implant/Sigma_epsilon.R")
+# source("~/Desktop/implant/Var_bhat.R")
+# source("~/Desktop/implant/Y.hat.matrix_1.R")
+# source("~/Desktop/implant/function_C.R")
 CI_C = function(fit,L,alpha = 0.05){
   X = fit$X
   Y_na = fit$Y_na
