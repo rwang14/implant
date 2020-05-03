@@ -54,7 +54,7 @@ library(png)
 image = readPNG(system.file("extdata", "image1.png",
                              package = "implant",
                              mustWork = TRUE))[ , ,c(1:3)]
-downsize_avg(image,2,2)
+downsize_avg(image, 2, 2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
