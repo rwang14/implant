@@ -1,7 +1,7 @@
-#source("~/Desktop/implant/Sigma_epsilon.R")
-#source("~/Desktop/implant/Var_bhat.R")
-#source("~/Desktop/implant/Y.hat.matrix_1.R")
-#source("~/Desktop/implant/function_C.R")
+source("~/Desktop/implant/Sigma_epsilon.R")
+source("~/Desktop/implant/Var_bhat.R")
+source("~/Desktop/implant/Y.hat.matrix_1.R")
+source("~/Desktop/implant/function_C.R")
 CI_C = function(fit,L,alpha = 0.05){
   X = fit$X
   Y_na = fit$Y_na
@@ -39,7 +39,7 @@ CI_C = function(fit,L,alpha = 0.05){
   }
   Y.hat.matrix = Y.hat.matrix_1(Y_na, Phi, beta.hat)
   Cov = Sigma_epsilon(Y_na,Y.hat.matrix,n)
-  Var = Var_bhat(X,tps, total.time, K, order, d0, Cmat,S, Cov)
+  Var = Var_bhat(X,tps, total.time, K, order, d0, C = Cmat,S, Cov)
   c.i.me = qnorm(alpha/2)*sqrt(Var)
   ci.up = trt - c.i.me
   ci.lw = trt + c.i.me
