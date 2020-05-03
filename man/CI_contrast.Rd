@@ -22,7 +22,7 @@ CI_contrast(fit, j1, j2, alpha)
 %%     ~~Describe \code{j1} here~~
 }
   \item{j2}{A positive integer, specifying the columns of the design matrix
-  corresponding to the other treatment of interest. Users can use the design matrix output from the function fanova( ), to idenfity the value of j2. See the example part for details. Note that, if we want to test the difference between the baseline level and other level, we should always use j2 to specify the baseline level,i.e., let j2 = 1.
+  corresponding to the other treatment of interest. Users can use the design matrix output from the function fanova( ), to idenfity the value of j2. See the example part for details. Note that if we want to test the difference between the baseline level and another level, we should always use j2 to specify the baseline level, i.e., let j2 = 1.
 %%     ~~Describe \code{j2} here~~
 }
   \item{alpha}{A positive small number between 0 and 1. 1-alpha gives the confidence level. In default, alpha = 0.05.
