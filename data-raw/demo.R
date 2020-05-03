@@ -15,7 +15,7 @@ fit = fanova(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 4, d1 = 2
 #fit$est_fun
 fit$design_mat
 #find the CI to test the difference between  genotype2 and genotype 3
-ci_diff = CI_contrast(fit = fit, j1 = 2, j2 = 3, alpha = 0.05)
+ci_diff = CI_contrast(fit = fit, j1 = 5, j2 = 1, alpha = 0.05)
 plot(tt,ci_diff$trt,type = "l", ylim = c(-100000, 80000))
 lines(tt,ci_diff$lb, col = "green")
 lines(tt,ci_diff$ub, col = "blue")
@@ -24,6 +24,11 @@ ci = CI(fit,L = c(0, 1, -1, 0, 0), alpha = 0.05)
 plot(tt,ci$trt, type = "l",ylim = c(-100000, 80000))
 lines(tt,ci$ub, col = "red")
 lines(tt, ci$lb, col = "blue")
+
+ci = CI(fit,L = c(0, 0, 0, 0, 1), alpha = 0.05)
+plot(tt,ci$trt, type = "l",ylim = c(-100000, 80000))
+lines(tt,ci$ub, col = "blue")
+lines(tt, ci$lb, col = "red")
 
 #demo2
 data_Xu = read.csv(system.file("extdata", "data_Xu.txt",package = "implant",
