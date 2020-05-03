@@ -55,9 +55,10 @@ please install Rtools before installing the package. Use the link https://cran.r
  
  Step 2. Run the following command in R:
  
- install.packages("~/your path/implant_0.1.0.tar.gz", repos = NULL, type = "source")
+    install.packages("~/your path/implant_0.1.0.tar.gz", repos = NULL, type = "source")
  
- library(implant)
+    library(implant)
+ 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 On Github, you can:
