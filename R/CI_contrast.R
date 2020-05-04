@@ -22,21 +22,18 @@ CI_contrast = function(fit, j1, j2, alpha = 0.05){
   n = dim(fit$Y_na)[1]
   if(j1 == 1){
     C1 = 0
-    trt = fit$est_fun[,j2]
-    print(sum(trt))
+    trt = -1*fit$est_fun[,j2]
     C2 = C(K,nf,j2)
   }
   if (j2 == 1){
     C2 = 0
     trt = fit$est_fun[,j1]
     C1 = C(K,nf,j1)
-    print(sum(trt))
   }
   if(j1 != 1 & j2 !=1) {
     C1 = C(K,nf,j1)
     C2 = C(K,nf,j2)
     trt = fit$est_fun[,j1] - fit$est_fun[,j2]
-    print(sum(trt))
   }
   C = C1-C2
   }
