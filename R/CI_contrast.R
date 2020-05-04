@@ -2,7 +2,7 @@
 #source("~/Desktop/implant/Var_bhat.R")
 #source("~/Desktop/implant/Y.hat.matrix_1.R")
 #source("~/Desktop/implant/function_C.R")
-CI_contrast = function(fit, j1,j2,alpha = 0.05){
+CI_contrast = function(fit, j1, j2, alpha = 0.05){
   if (j1 == j2){
     stop('j1 should be different from j2')
   }
@@ -20,12 +20,16 @@ CI_contrast = function(fit, j1,j2,alpha = 0.05){
   tps = fit$tps
   nf = ncol(Phi)/K
   n = dim(fit$Y_na)[1]
-  C1 = C(K,nf,j1)
+  if(j1 == 1){
+    C1 = 0
+    trt = fit$est_fun[,j2]
+  }
   if (j2 == 1){
     C2 = 0
     trt = fit$est_fun[,j1]
   }
   else{
+    C1 = C(K,nf,j1)
     C2 = C(K,nf,j2)
     trt = fit$est_fun[,j1]-fit$est_fun[,j2]
   }
