@@ -72,6 +72,5 @@ Find help documentation from the folder: man.
 
 Find manual from the  folder: vignettes or visit: https://github.com/rwang14/implant/blob/master/vignettes/implant.pdf
 
-Find user's guide from the folder: vignettes or visit: https://github.com/rwang14/implant/blob/master/vignettes/Users%20Guide.pdf
-
+Find user guide from the folder: vignettes or visit: https://github.com/rwang14/implant/blob/master/vignettes/User%20Guide.pdf
 A supplymentary documentation about HMRF_EM framework in this study can be found: https://github.com/rwang14/implant/blob/master/vignettes/HMRF_EM.pdf
