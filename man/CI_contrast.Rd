@@ -21,8 +21,8 @@ CI_contrast(fit, j1, j2, alpha)
   corresponding to one treatment of interest. Users can use the design matrix output from the function fanova( ), to idenfity the value of j1. See the example part for details.
 %%     ~~Describe \code{j1} here~~
 }
-  \item{j2}{A positive integer, specifying the columns of the design matrix
-  corresponding to the other treatment of interest. Users can use the design matrix output from the function fanova( ), to idenfity the value of j2. See the example part for details. Note that if we want to test the difference between the baseline level and another level, we should always use j2 to specify the baseline level, i.e., let j2 = 1.
+  \item{j2}{A positive integer different from j1. It specifies the columns of the design matrix
+  corresponding to the other treatment of interest. Users can use the design matrix output from the function fanova( ), to idenfity the value of j2. See the example part for details.
 %%     ~~Describe \code{j2} here~~
 }
   \item{alpha}{A positive small number between 0 and 1. 1-alpha gives the confidence level. In default, alpha = 0.05.
@@ -103,10 +103,10 @@ fit$design_mat
 7           1          0           1      0      1
 8           1          1           0      0      1
 9           1          0           0      0      1
-#We want to test the significance between genotype 2 and genotype 3,
-#that is, we are interested in the 2nd, the 3rd column of the design matrix.
+#We want to test the significance between block 2 and block 1,
+#that is, we are interested in the 1st, the 4th column of the design matrix.
 #Therefore, we can define:
-ci_diff = CI_contrast(fit = fit,j1 = 2, j2 = 3, alpha = 0.05)
+ci_diff = CI_contrast(fit = fit, j1 = 4, j2 = 1, alpha = 0.05)
 plot(tt,ci_diff$trt,type = "l")
 lines(tt,ci_diff$lb, col = "blue")
 lines(tt,ci_diff$ub, col = "blue")
