@@ -21,9 +21,6 @@ CI_contrast = function(fit, j1,j2,alpha = 0.05){
   nf = ncol(Phi)/K
   n = dim(fit$Y_na)[1]
   C1 = C(K,nf,j1)
-  if(j1 == 1){
-    C1 = 0
-  }
   if (j2 == 1){
     C2 = 0
     trt = fit$est_fun[,j1]

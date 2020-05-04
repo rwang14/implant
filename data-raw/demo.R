@@ -16,14 +16,14 @@ fit = fanova(Y.na.mat = Y, X = X, tt = tt, formula, K.int = 6, order = 4, d1 = 2
 #fit$est_fun
 fit$design_mat
 #find the CI to test the difference between  block 2 and block 1
-#way 1
-ci_diff = CI_contrast(fit = fit, j1 = 5, j2 = 1, alpha = 0.05)
+#method 1
+ci_diff = CI_contrast(fit = fit, j1 = 4, j2 = 1, alpha = 0.05)
 plot(tt,ci_diff$trt,type = "l", ylim = c(-100000, 80000))
 lines(tt,ci_diff$lb, col = "green")
 lines(tt,ci_diff$ub, col = "blue")
 #find the CI to test the difference between  block 2 and block 1
-#way 2
-ci = CI(fit, L = c(0, 0, 0, 0, 1), alpha = 0.05)
+#method 2
+ci = CI(fit, L = c(0, 0, 0, 1, 0), alpha = 0.05)
 plot(tt,ci$trt, type = "l",ylim = c(-100000, 80000))
 lines(tt,ci$ub, col = "yellow")
 lines(tt, ci$lb, col = "orange")
@@ -37,18 +37,18 @@ X = data.frame(water,genotype)
 Y = data_Xu[,c(1:20)]
 tt = c(0:15,17:20)
 formula = "~water+genotype"
-fit = fanova(Y.na.mat = Y, X = X,tt = tt,
+fit = fanova(Y.na.mat = Y, X = X, tt = tt,
                   formula = "~water * genotype"
                   ,K.int = 6, order = 4,lower = -10, upper = 15)
 #fit$est_fun
 fit$design_mat
 #test the interaction term
-#way 1
+#method 1
 ci = CI(fit, L = c(0, 0, 0, 1), alpha = 0.05)
 plot(tt,ci$trt, type = "l", ylim = c(-20000,20000))
 lines(tt,ci$ub, col = "red")
 lines(tt, ci$lb, col = "blue")
-#way two
+#method two
 ci = CI_contrast(fit, j1 = 4, j2 = 1, alpha = 0.05)
 plot(tt,ci$trt, type = "l",ylim = c(-20000, 20000))
 lines(tt,ci$ub, col = "red")
