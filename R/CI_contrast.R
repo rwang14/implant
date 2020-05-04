@@ -32,7 +32,7 @@ CI_contrast = function(fit, j1, j2, alpha = 0.05){
     C1 = C(K,nf,j1)
     print(sum(trt))
   }
-  else{
+  if(j1 != 1 & j2 !=1) {
     C1 = C(K,nf,j1)
     C2 = C(K,nf,j2)
     trt = fit$est_fun[,j1] - fit$est_fun[,j2]
