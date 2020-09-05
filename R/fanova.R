@@ -2,11 +2,8 @@
 #library(fda)
 #source("~/Desktop/implant/input.list.R")
 fanova = function(Y.na.mat, X, tt, formula, K.int = 6, order = 4, d1 = 2,
-                       #interact = 0, #p = 2,
                       lower = -10, upper = 15){
   d0 = 0
-  #d1 = 2
-  #d2 = 2
   d2 = d1
   data.time = rbind(tt,Y.na.mat)
   T_na = Y.na.mat
@@ -31,9 +28,6 @@ fanova = function(Y.na.mat, X, tt, formula, K.int = 6, order = 4, d1 = 2,
   T.vec = Reduce(c,T)
 
   n = length(Y)
-
-  #tt = sort(as.numeric(unique(T.vec)))
-  #J = length(tt)	# number of time points
   ### basis functions ###
   order = order # In default, order = 4, cubic splines, for second derivative, using order 6 rather than 4
   total.time = max(tt)
@@ -42,28 +36,12 @@ fanova = function(Y.na.mat, X, tt, formula, K.int = 6, order = 4, d1 = 2,
   K = length(knots) + order # number of basis functions
   basis = create.bspline.basis(c(0,total.time), K, norder = order)
 
-  #design_matrix = NULL
-  #if (interact == 1) {
-   # design_matrix = model.matrix(as.formula(paste("~.^", p, sep='')), data = X)
- # }
-  #if (interact == 0){
-    design_matrix = model.matrix(as.formula(formula), data = X)
-  #}
-  ## evaluate original, the first, and second derivatives of basis functions ##
-  #dimension of BS is the length of tt by K
-  #BS = eval.basis(tt,basis,d0)
+  design_matrix = model.matrix(as.formula(formula), data = X)
+ 
   ## penalty matrix ###
   Omega = inprod(basis,basis,d1,d2)	# for second derivative, using 4 rather than 2, 2 means the original function
 
   ### Design matrix ###
-  # if(regular == 1)
-  #{
-  #dimension of BS is the length of tt by K, i.e. just one dummy variable, r1
-  # BS = eval.basis(tt,basis,d0)
-  #Xmat = design_matrix %x% BS
-  #}
-
-  #if(regular == 0){
   BS = eval.basis(T[[1]],basis,d0)
   for ( i in 2: n ){
     BSnew = eval.basis(T[[i]],basis,d0)
@@ -126,9 +104,7 @@ fanova = function(Y.na.mat, X, tt, formula, K.int = 6, order = 4, d1 = 2,
   for ( i in 1: ncol(design_matrix)){
     Omegabylam[((1+(i-1)*dim(Omega)[1]):(i*dim(Omega)[1])),((1+(i-1)*dim(Omega)[2]):(i*dim(Omega)[2]))] = Omega*lam
   }
-  #bhat = solve(t(Xmat)%*%Xmat+Omegabylam)%*%t(Xmat)%*%Y.vec
   bhat = solve(t(Xmat)%*%Xmat+Omegabylam)%*%t(Xmat)%*%Y.vec
-  #S = solve(t(Xmat)%*%Xmat+Omegabylam)%*%t(Xmat)
   S = solve(t(Xmat)%*%Xmat+Omegabylam)%*%t(Xmat)
   ########### estimated curve ###########
   BS = eval.basis(tt,basis,d0)
