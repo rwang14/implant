@@ -76,4 +76,4 @@ Find user guide from the folder: vignettes or visit: https://github.com/rwang14/
 
 A supplymentary documentation about HMRF_EM framework in this study can be found: https://github.com/rwang14/implant/blob/master/vignettes/HMRF_EM.pdf
 
-Published Paper for introducing this package: https://spj.sciencemag.org/journals/plantphenomics/2020/7481687/
+This paper is published in Plant Phenomics: https://spj.sciencemag.org/journals/plantphenomics/2020/7481687/
